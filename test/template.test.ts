@@ -1,4 +1,4 @@
-const templateFunction = require("../src/template");
+import { templateFunction } from "../src/template";
 
 describe("TemplateFunction should return half of the provided", () => {
   it("2 -> 1 ", () => {
