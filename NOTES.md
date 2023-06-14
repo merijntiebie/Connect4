@@ -1,3 +1,4 @@
+# Connect4
 We all love to play games especially as children. I have fond memories playing Connect 4 with my brother so decided to create this Kata based on the classic game. Connect 4 is known as several names such as “Four in a Row” and “Captain’s Mistress" but was made popular by Hasbro MB Games
 Connect 4
 Task
@@ -17,17 +18,3 @@ Player 1 starts the game every time and alternates with player 2.
 
 The columns are numbered 0-6 left to right.
 Good luck and enjoy!
-
-E2E
-GIVEN player 1 and player 2 play a game of connect 4
-AND player 1 has placed a disc in column 0
-AND player 2 then placed a disc in column 1
-
-
-
-
-
-
-
-WHEN player 1 places a disc in column 0
-THEN player 1 wins the game
