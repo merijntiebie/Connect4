@@ -1,4 +1,2 @@
 ##TODO 
-- add airbnb base file
-- add Jest
-- add tsConfig 
+- Guardian for getPlayerColor to restrict we dont have other players than 1 and 2

@@ -1,4 +1,5 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
+import { getPlayerColor } from "../../src/template";
 
 const feature = loadFeature("./cucumber/features/connect4.feature");
 
@@ -11,9 +12,11 @@ defineFeature(feature, (test) => {
   }) => {
     given(/^2 players play a game of Connect4$/, () => {});
 
-    and(/^player (\d+) plays with the red discs$/, (arg0) => {});
+    and(/^player (\d+) plays with the red discs$/, (playerNumber) => {
+      expect(getPlayerColor(1)).toBe("red");
+    });
 
-    and(/^player (\d+) plays with the yellow discs$/, (arg0) => {});
+    and(/^player (\d+) plays with the yellow discs$/, (playerNumber) => {expect(getPlayerColor(2)).toBe("yellow");});
 
     and(/^player (\d+) has put a disc in column (\d+)$/, (arg0, arg1) => {});
 

@@ -18,3 +18,12 @@ Player 1 starts the game every time and alternates with player 2.
 
 The columns are numbered 0-6 left to right.
 Good luck and enjoy!
+
+# Units 
+Players have an own color
+
+✅ Player 1 -> Red 
+✅ Player 2 -> Yellow
+💣 Player 3 -> empty
+
+
