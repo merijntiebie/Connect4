@@ -27,12 +27,61 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
     });
   });
   describe("Players need to be able to take a turn", () => {
-    describe("Players can put their disc in a column of their choosing. Starting with an empty board:", () => {
+    describe(`Players can put their disc in a column of their choosing. The following scenario will start with an empty board.
+      The scenarios afterwards will make use of the board updated in previous scenarios`, () => {
       const game = new Connect4();
       game.setPlayerDisk(1, "🔴");
       game.setPlayerDisk(2, "🟡");
-      it("Player 1 can put a red disk in the first column", () => {
+      it(`Player 1 can put a red disk in the first column, resulting in 
+          ⚫⚫⚫⚫⚫⚫⚫
+          ⚫⚫⚫⚫⚫⚫⚫
+          ⚫⚫⚫⚫⚫⚫⚫
+          ⚫⚫⚫⚫⚫⚫⚫
+          ⚫⚫⚫⚫⚫⚫⚫
+          🔴⚫⚫⚫⚫⚫⚫`, () => {
         game.play(1, 0);
+        expect(game.board).toEqual([
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["🔴", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ]);
+      });
+      it(`Player 2 can put a yellow disk in the second column, resulting in
+          ⚫⚫⚫⚫⚫⚫⚫
+          ⚫⚫⚫⚫⚫⚫⚫
+          ⚫⚫⚫⚫⚫⚫⚫
+          ⚫⚫⚫⚫⚫⚫⚫
+          ⚫⚫⚫⚫⚫⚫⚫
+          🔴🟡⚫⚫⚫⚫⚫`, () => {
+        game.play(2, 1);
+        expect(game.board).toEqual([
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ]);
+      });
+      it(`Player 1 can put a red disk in the first column, resulting in
+          ⚫⚫⚫⚫⚫⚫⚫
+          ⚫⚫⚫⚫⚫⚫⚫
+          ⚫⚫⚫⚫⚫⚫⚫
+          ⚫⚫⚫⚫⚫⚫⚫
+          🔴⚫⚫⚫⚫⚫⚫
+          🔴🟡⚫⚫⚫⚫⚫`, () => {
+        game.play(1, 0);
+        expect(game.board).toEqual([
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["🔴", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+          ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ]);
       });
     });
   });

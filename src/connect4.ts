@@ -19,7 +19,16 @@ class Connect4 {
   }
 
   play(player: number, column: number) {
-    this.board[5][0] = "🔴";
+    const lastRow = this.board.length - 1
+
+    for (let row = lastRow; row >= 0; row--) {
+      const space = this.board[row][column];
+
+      if (space === "⚫") {
+        this.board[row][column] = this.getPlayerDisk(player);
+        return
+      }
+    }
   }
 }
 
