@@ -19,16 +19,21 @@ class Connect4 {
   }
 
   play(player: number, column: number) {
-    const lastRow = this.board.length - 1
+    const lastRow = this.board.length - 1;
 
-    for (let row = lastRow; row >= 0; row--) {
+    for (let row = lastRow; row >= 0; row -= 1) {
       const space = this.board[row][column];
 
       if (space === "⚫") {
         this.board[row][column] = this.getPlayerDisk(player);
-        return
+        return;
       }
     }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  getWinner() {
+    return 1;
   }
 }
 

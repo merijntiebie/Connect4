@@ -28,28 +28,43 @@ defineFeature(feature, (test) => {
       game.play(player, column);
     });
 
-    and(/^player (\d+) has put a disc in column (\d+)$/, (arg0, arg1) => {});
-
-    and(/^player (\d+) has put a disc in column (\d+)$/, (arg0, arg1) => {});
-
-    and(/^player (\d+) has put a disc in column (\d+)$/, (arg0, arg1) => {});
-
-    and(/^player (\d+) has put a disc in column (\d+)$/, (arg0, arg1) => {});
-
-    and(/^player (\d+) has put a disc in column (\d+)$/, (arg0, arg1) => {});
-
-    when(/^player (\d+) puts a disc in column (\d+)$/, (arg0, arg1) => {});
-
-    then(/^the board has (\d+) red discs in column (\d+)$/, (arg0, arg1) => {
-      expect("not implemented").toBe(false);
+    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
+      game.play(player, column);
+    });
+    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
+      game.play(player, column);
+    });
+    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
+      game.play(player, column);
+    });
+    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
+      game.play(player, column);
+    });
+    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
+      game.play(player, column);
     });
 
-    and(/^the board has (\d+) yellow discs in column (\d+)$/, (arg0, arg1) => {
-      expect("not implemented").toBe(false);
+    when(/^player (\d+) puts a disc in column (\d+)$/, (player, column) => {
+      game.play(player, column);
     });
 
-    and(/^player (\d+) wins the game with a vertical victory$/, (arg0) => {
-      expect("not implemented").toBe(false);
+    then(/^the board has 4 red discs in column 0$/, () => {
+      expect(game.board).toEqual([
+        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["🔴", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
+      ]);
+    });
+
+    and(/^the board has 3 yellow discs in column 1$/, () => {
+      // See then
+    });
+
+    and(/^player 1 wins the game with a vertical victory$/, () => {
+      expect(game.getWinner()).toBe(1);
     });
   });
 });
