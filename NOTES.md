@@ -27,4 +27,19 @@ Players can choose their own disks
 
 Players can play a disk in a column
 ✅ Empty board, player 1 puts his disk in column 0 -> column 0 has a red disk in the bottom row
-🙌 Previous board, player 2 puts his disk in column 1 -> column 1 has a yellow disk in the bottom row
+✅ Previous board, player 2 puts his disk in column 1 -> column 1 has a yellow disk in the bottom row
+
+Player 1 wins:
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫ -> no win ✅
+🔴⚫⚫⚫⚫⚫⚫
+🔴🟡⚫⚫⚫⚫⚫
+🔴🟡⚫⚫⚫⚫⚫
+
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+🔴⚫⚫⚫⚫⚫⚫ -> is a win ✅
+🔴⚫⚫⚫⚫⚫⚫
+🔴🟡⚫⚫⚫⚫⚫
+🔴🟡⚫⚫⚫⚫⚫

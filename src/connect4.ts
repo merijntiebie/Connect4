@@ -37,6 +37,19 @@ class Connect4 {
 
   // eslint-disable-next-line class-methods-use-this
   getWinner() {
+    const lastColumnPlayed = this.lastCoordinate[0];
+    const lastRowPlayed = this.lastCoordinate[1];
+    const lastDiskPlayed = this.getPlayerDisk(this.lastPlayer);
+
+    if (
+      this.board[lastRowPlayed]?.[lastColumnPlayed] === lastDiskPlayed &&
+      this.board[lastRowPlayed + 1]?.[lastColumnPlayed] === lastDiskPlayed &&
+      this.board[lastRowPlayed + 2]?.[lastColumnPlayed] === lastDiskPlayed &&
+      this.board[lastRowPlayed + 3]?.[lastColumnPlayed] === lastDiskPlayed
+    ) {
+      return this.lastPlayer;
+    }
+    return undefined;
   }
 }
 

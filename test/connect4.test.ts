@@ -48,6 +48,8 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
           ["🔴", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
         ]);
+        expect(game.lastPlayer).toEqual(1);
+        expect(game.lastCoordinate).toEqual([5, 0]);
       });
       it(`Player 2 can put a yellow disk in the second column, resulting in
           ⚫⚫⚫⚫⚫⚫⚫
@@ -65,6 +67,8 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
           ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
         ]);
+        expect(game.lastPlayer).toEqual(2);
+        expect(game.lastCoordinate).toEqual([5, 1]);
       });
       it(`Player 1 can put a red disk in the first column, resulting in
           ⚫⚫⚫⚫⚫⚫⚫
@@ -82,6 +86,8 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           ["🔴", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
           ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
         ]);
+        expect(game.lastPlayer).toEqual(1);
+        expect(game.lastCoordinate).toEqual([4, 0]);
       });
       it(`Player 2 can put a yellow disk in the first column, resulting in
           ⚫⚫⚫⚫⚫⚫⚫
@@ -99,6 +105,8 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           ["🔴", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
           ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
         ]);
+        expect(game.lastPlayer).toEqual(2);
+        expect(game.lastCoordinate).toEqual([3, 0]);
       });
     });
   });
@@ -115,6 +123,8 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
       🔴⚫⚫⚫⚫⚫⚫
       🔴🟡⚫⚫⚫⚫⚫
       🔴🟡⚫⚫⚫⚫⚫`, () => {
+        game.lastPlayer = 1;
+        game.lastCoordinate = [0, 3];
         game.board = [
           ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
           ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
@@ -132,6 +142,8 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
       🔴🟡⚫⚫⚫⚫⚫
       🔴🟡⚫⚫⚫⚫⚫
       🔴🟡⚫⚫⚫⚫⚫`, () => {
+        game.lastPlayer = 1;
+        game.lastCoordinate = [0, 2];
         game.board = [
           ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
           ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
