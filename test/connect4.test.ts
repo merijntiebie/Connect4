@@ -124,7 +124,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
       🔴🟡⚫⚫⚫⚫⚫
       🔴🟡⚫⚫⚫⚫⚫`, () => {
         game.lastPlayer = 1;
-        game.lastCoordinate = [0, 3];
+        game.lastCoordinate = [3, 0];
         game.board = [
           ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
           ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
@@ -143,7 +143,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
       🔴🟡⚫⚫⚫⚫⚫
       🔴🟡⚫⚫⚫⚫⚫`, () => {
         game.lastPlayer = 1;
-        game.lastCoordinate = [0, 2];
+        game.lastCoordinate = [2, 0];
         game.board = [
           ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
           ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],

@@ -10,7 +10,7 @@ class Connect4 {
     ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
   ];
 
-  lastPlayer = 0;
+  lastPlayer: number = 0;
 
   lastCoordinate = [0, 0];
 
@@ -30,15 +30,17 @@ class Connect4 {
 
       if (space === "⚫") {
         this.board[row][column] = this.getPlayerDisk(player);
+        this.lastPlayer = player;
+        this.lastCoordinate = [row, column];
         return;
       }
     }
   }
 
   // eslint-disable-next-line class-methods-use-this
-  getWinner() {
-    const lastColumnPlayed = this.lastCoordinate[0];
-    const lastRowPlayed = this.lastCoordinate[1];
+  getWinner(): number | undefined {
+    const lastRowPlayed = this.lastCoordinate[0];
+    const lastColumnPlayed = this.lastCoordinate[1];
     const lastDiskPlayed = this.getPlayerDisk(this.lastPlayer);
 
     if (

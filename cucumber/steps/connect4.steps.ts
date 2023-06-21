@@ -16,35 +16,35 @@ defineFeature(feature, (test) => {
       game = new Connect4();
     });
 
-    and(/^player (\d+) plays with the red discs$/, (playerNumber) => {
+    and(/^player (\d+) plays with the red discs$/, (playerNumber: number) => {
       game.setPlayerDisk(playerNumber, "🔴");
     });
 
-    and(/^player (\d+) plays with the yellow discs$/, (playerNumber) => {
+    and(/^player (\d+) plays with the yellow discs$/, (playerNumber: number) => {
       game.setPlayerDisk(playerNumber, "🟡");
     });
 
-    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
+    and(/^player (\d+) has put a disc in column (\d+)$/, (player: number, column: number) => {
       game.play(player, column);
     });
 
-    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
+    and(/^player (\d+) has put a disc in column (\d+)$/, (player: number, column: number) => {
       game.play(player, column);
     });
-    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
+    and(/^player (\d+) has put a disc in column (\d+)$/, (player: number, column: number) => {
       game.play(player, column);
     });
-    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
+    and(/^player (\d+) has put a disc in column (\d+)$/, (player: number, column: number) => {
       game.play(player, column);
     });
-    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
+    and(/^player (\d+) has put a disc in column (\d+)$/, (player: number, column: number) => {
       game.play(player, column);
     });
-    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
+    and(/^player (\d+) has put a disc in column (\d+)$/, (player: number, column: number) => {
       game.play(player, column);
     });
 
-    when(/^player (\d+) puts a disc in column (\d+)$/, (player, column) => {
+    when(/^player (\d+) puts a disc in column (\d+)$/, (player: number, column: number) => {
       game.play(player, column);
     });
 
