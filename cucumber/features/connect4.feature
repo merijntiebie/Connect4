@@ -1,6 +1,12 @@
 Feature: Connect4 game
 
 Scenario: Player 1 wins with a vertical victory after 7 moves
+		⚫⚫⚫⚫⚫⚫⚫        ⚫⚫⚫⚫⚫⚫⚫
+        ⚫⚫⚫⚫⚫⚫⚫        ⚫⚫⚫⚫⚫⚫⚫
+        ⚫⚫⚫⚫⚫⚫⚫        🔴⚫⚫⚫⚫⚫⚫
+        🔴🟡⚫⚫⚫⚫⚫   >    🔴🟡⚫⚫⚫⚫⚫
+        🔴🟡⚫⚫⚫⚫⚫        🔴🟡⚫⚫⚫⚫⚫
+        🔴🟡⚫⚫⚫⚫⚫        🔴🟡⚫⚫⚫⚫⚫
 	Given 2 players play a game of Connect4
 	And player 1 plays with the red discs
 	And player 2 plays with the yellow discs

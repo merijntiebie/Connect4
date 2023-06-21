@@ -10,6 +10,10 @@ class Connect4 {
     ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
   ];
 
+  lastPlayer = 0;
+
+  lastCoordinate = [0, 0];
+
   setPlayerDisk(playerNumber: number, disc: string) {
     this.playerDiscs[playerNumber] = disc;
   }
@@ -33,7 +37,6 @@ class Connect4 {
 
   // eslint-disable-next-line class-methods-use-this
   getWinner() {
-    return 1;
   }
 }
 
