@@ -10,16 +10,16 @@ class Connect4 {
     ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
   ];
 
-  lastPlayer: number = 0;
+  lastPlayer = 0;
 
   lastCoordinate = [0, 0];
 
-  setPlayerDisk(playerNumber: number, disc: string) {
-    this.playerDiscs[playerNumber] = disc;
+  setPlayerDisk(player: number, disc: string) {
+    this.playerDiscs[player] = disc;
   }
 
-  getPlayerDisk(playerNumber: number) {
-    return this.playerDiscs[playerNumber];
+  getPlayerDisk(player: number) {
+    return this.playerDiscs[player];
   }
 
   play(player: number, column: number) {
@@ -37,7 +37,6 @@ class Connect4 {
     }
   }
 
-  // eslint-disable-next-line class-methods-use-this
   getWinner(): number | undefined {
     const lastRowPlayed = this.lastCoordinate[0];
     const lastColumnPlayed = this.lastCoordinate[1];
@@ -55,5 +54,4 @@ class Connect4 {
   }
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export { Connect4 };

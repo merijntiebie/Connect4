@@ -26,7 +26,9 @@
       "quotes": [
         "error",
         "double"
-      ]
+      ],
+      "import/prefer-default-export": 0,
+      "radix": 0
     },
     "settings": {
       "jest": {
