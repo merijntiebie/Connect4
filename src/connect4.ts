@@ -38,43 +38,42 @@ class Connect4 {
   }
 
   getDiagonalWinner(): number | undefined {
-    const lastRowPlayed = this.lastCoordinate[0];
-    const lastColumnPlayed = this.lastCoordinate[1];
     const lastDiskPlayed = this.getPlayerDisk(this.lastPlayer);
 
-    if (
-      this.board[lastRowPlayed]?.[lastColumnPlayed] === lastDiskPlayed &&
-      this.board[lastRowPlayed + 1]?.[lastColumnPlayed + 1] === lastDiskPlayed &&
-      this.board[lastRowPlayed + 2]?.[lastColumnPlayed + 2] === lastDiskPlayed &&
-      this.board[lastRowPlayed + 3]?.[lastColumnPlayed + 3] === lastDiskPlayed
-    ) {
-      return this.lastPlayer;
-    }
+    let amountOfDisksInLine = 1;
 
-    if (
-      this.board[lastRowPlayed]?.[lastColumnPlayed] === lastDiskPlayed &&
-      this.board[lastRowPlayed + 1]?.[lastColumnPlayed - 1] === lastDiskPlayed &&
-      this.board[lastRowPlayed + 2]?.[lastColumnPlayed - 2] === lastDiskPlayed &&
-      this.board[lastRowPlayed + 3]?.[lastColumnPlayed - 3] === lastDiskPlayed
-    ) {
+    const amountOfDisksToBottomRight =
+      this.findNumberOfSameColoredDiscsInBottomRightDiagonal(
+        this.lastCoordinate,
+        lastDiskPlayed
+      );
+
+    amountOfDisksInLine += amountOfDisksToBottomRight;
+
+    if (amountOfDisksInLine === 4) {
       return this.lastPlayer;
     }
 
     return undefined;
   }
 
-  getDiagonalWinner2(): number | undefined {
-    const lastRowPlayed = this.lastCoordinate[0];
-    const lastColumnPlayed = this.lastCoordinate[1];
-    const lastDiskPlayed = this.getPlayerDisk(this.lastPlayer);
+  findNumberOfSameColoredDiscsInBottomRightDiagonal(
+    coordinate: [number, number],
+    discToFind: string
+  ): number {
+    const [row, column] = coordinate;
+    let numberOfDiscs = 0;
+    if (this.board[row + 1]?.[column + 1] === discToFind) {
+      numberOfDiscs += 1;
+    }
+    if (this.board[row + 2]?.[column + 2] === discToFind) {
+      numberOfDiscs += 1;
+    }
+    if (this.board[row + 3]?.[column + 3] === discToFind) {
+      numberOfDiscs += 1;
+    }
 
-    const numberOfDisksOfSameColorFound = 1;
-    return undefined;
-    
-  }
-
-  findNumberOfSameColoredDiscsInTopRightDiagonal(coordinate: [number, number], discToFind: string): number {
-    return 1;
+    return numberOfDiscs;
   }
 
   getWinner(): number | undefined {
