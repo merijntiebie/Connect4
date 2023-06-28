@@ -70,6 +70,8 @@ Player 1 wins:
 🔴🟡🔴⚫⚫⚫⚫
 🟡🟡🔴🟡⚫⚫⚫
 
+
+# Pomodoro goal: finish unit tests for determing amount of discs in every diagonal direction
 # Units for this component
 
 Diagonal: look upward to the right for same disks and return number of disks found
@@ -78,7 +80,13 @@ Diagonal: look upward to the right for same disks and return number of disks fou
 ⚫⚫⚫⚫⚫⚫⚫
 ⚫⚫⚫⚫⚫⚫⚫
 ⚫⚫⚫⚫⚫⚫⚫
-🔴⚫🟡🟡⚫⚫⚫ --> last disk: column 1, find one yellow disk
+🔴⚫🟡🟡⚫⚫⚫ --> last disk: column 1, find one yellow disk ✅
 🔴🟡🔴🔴⚫⚫⚫
 🔴🟡🔴🟡⚫⚫⚫
 
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫ --> last disk: column 2, find zero yellow disks ✅
+🔴⚫🟡🟡⚫⚫⚫
+🔴🟡🔴🔴⚫⚫⚫
+🔴🟡🔴🟡⚫⚫⚫

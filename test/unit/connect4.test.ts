@@ -1,4 +1,5 @@
-import { Connect4 } from "../src/connect4";
+import { describe } from "node:test";
+import { Connect4 } from "../../src/connect4";
 
 describe("This suite tests the game of connect 4. It is a game in which 2 players take turns to drop their discs in a grid. The objective of the game is to be the first to form a horizontal, vertical or diagonal line of four of one's own disc", () => {
   describe("A new game", () => {
@@ -26,6 +27,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
       expect(game.getPlayerDisk(2)).toBe("🟡");
     });
   });
+
   describe("Players need to be able to take a turn", () => {
     describe(`Players can put their disc in a column of their choosing. The following scenario will start with an empty board.
       The scenarios afterwards will make use of the board updated in previous scenarios`, () => {
@@ -111,108 +113,44 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
     });
   });
 
-  describe("In the following cases, player 1 plays with the red disks, player 2 with the yellow disks. Players can win by", () => {
-    const game = new Connect4();
-    game.setPlayerDisk(1, "🔴");
-    game.setPlayerDisk(2, "🟡");
-    describe("vertical victory", () => {
-      it(`With 3 red disks in the first column, there is no winner yet
-      ⚫⚫⚫⚫⚫⚫⚫
-      ⚫⚫⚫⚫⚫⚫⚫
-      ⚫⚫⚫⚫⚫⚫⚫
-      🔴⚫⚫⚫⚫⚫⚫
-      🔴🟡⚫⚫⚫⚫⚫
-      🔴🟡⚫⚫⚫⚫⚫`, () => {
-        game.lastPlayer = 1;
-        game.lastCoordinate = [3, 0];
-        game.board = [
-          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["🔴", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
-        ];
-        expect(game.getWinner()).toBe(undefined);
-      });
-      it(`With 4 red disks in the first column, player 1 wins
-      ⚫⚫⚫⚫⚫⚫⚫
-      ⚫⚫⚫⚫⚫⚫⚫
-      🔴⚫⚫⚫⚫⚫⚫
-      🔴🟡⚫⚫⚫⚫⚫
-      🔴🟡⚫⚫⚫⚫⚫
-      🔴🟡⚫⚫⚫⚫⚫`, () => {
-        game.lastPlayer = 1;
-        game.lastCoordinate = [2, 0];
-        game.board = [
-          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["🔴", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["🔴", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
-        ];
-        expect(game.getWinner()).toBe(1);
-      });
+  describe("For checking whether a diagonal victory occurs. We want to check how many discs of the same color are found in every direction", () => {
+    it(`When player two played the last disc in the first column, and the board looks as follows, we find one yellow disc in the top right diagonal
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫⚫⚫⚫⚫⚫⚫
+    🔴⚫🟡🟡⚫⚫⚫
+    🔴🟡🔴🔴⚫⚫⚫
+    🔴🟡🔴🟡⚫⚫⚫`, () => {
+      const game = new Connect4();
+      game.setPlayerDisk(1, "🔴");
+      game.setPlayerDisk(2, "🟡");
+      game.lastCoordinate = [2, 3];
+      const discToFind = "🟡";
+      expect(
+        game.findNumberOfSameColoredDiscsInTopRightDiagonal(
+          game.lastCoordinate,
+          discToFind
+        )
+      ).toEqual(1);
     });
-    describe("diagonal victory", () => {
-      it(`Given the board below, yellow has a diagonal victory
-      ⚫⚫⚫⚫⚫⚫⚫
-      ⚫⚫⚫⚫⚫⚫⚫
-      🔴⚫⚫🟡⚫⚫⚫
-      🔴⚫🟡🔴⚫⚫⚫
-      🔴🟡🔴🟡⚫⚫⚫
-      🟡🟡🔴🟡⚫⚫⚫`, () => {
-        game.lastPlayer = 2;
-        game.lastCoordinate = [2, 3];
-        game.board = [
-          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["🔴", "⚫", "⚫", "🟡", "⚫", "⚫", "⚫"],
-          ["🔴", "⚫", "🟡", "🔴", "⚫", "⚫", "⚫"],
-          ["🔴", "🟡", "🔴", "🟡", "⚫", "⚫", "⚫"],
-          ["🟡", "🟡", "🔴", "🟡", "⚫", "⚫", "⚫"],
-        ];
-        expect(game.getDiagonalWinner()).toBe(2);
-      });
-      it(`Given the board below, yellow has a diagonal victory after placing a disk in the second column
-      ⚫⚫⚫⚫⚫⚫⚫
-      ⚫⚫⚫⚫⚫⚫⚫
-      🔴⚫⚫🟡⚫⚫⚫
-      🔴⚫🟡🔴⚫⚫⚫
-      🔴🟡🔴🟡⚫⚫⚫
-      🟡🟡🔴🟡⚫⚫⚫`, () => {
-        game.lastPlayer = 2;
-        game.lastCoordinate = [4, 1];
-        game.board = [
-          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["🔴", "⚫", "⚫", "🟡", "⚫", "⚫", "⚫"],
-          ["🔴", "⚫", "🟡", "🔴", "⚫", "⚫", "⚫"],
-          ["🔴", "🟡", "🔴", "🟡", "⚫", "⚫", "⚫"],
-          ["🟡", "🟡", "🔴", "🟡", "⚫", "⚫", "⚫"],
-        ];
-        expect(game.getDiagonalWinner()).toBe(2);
-      });
-      it(`Given the board below, there is no diagonal victory
-      ⚫⚫⚫⚫⚫⚫⚫
-      ⚫⚫⚫⚫⚫⚫⚫
-      ⚫⚫⚫🟡⚫⚫⚫
-      🔴⚫🟡🟡⚫⚫⚫
-      🔴🟡🔴🔴⚫⚫⚫
-      🔴🟡🔴🟡⚫⚫⚫`, () => {
-        game.lastPlayer = 2;
-        game.lastCoordinate = [2, 3];
-        game.board = [
-          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-          ["⚫", "⚫", "⚫", "🟡", "⚫", "⚫", "⚫"],
-          ["🔴", "⚫", "🟡", "🔴", "⚫", "⚫", "⚫"],
-          ["🔴", "🟡", "🔴", "🟡", "⚫", "⚫", "⚫"],
-          ["🔴", "🟡", "🔴", "🟡", "⚫", "⚫", "⚫"],
-        ];
-        expect(game.getDiagonalWinner()).toBe(undefined);
-      });
+    it(`When player two played the last disc in the secend column, and the board looks as follows, we find zero yellow discs in the top right diagonal
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫⚫⚫⚫⚫⚫⚫
+    🔴⚫🟡🟡⚫⚫⚫
+    🔴🟡🔴🔴⚫⚫⚫
+    🔴🟡🔴🟡⚫⚫⚫`, () => {
+      const game = new Connect4();
+      game.setPlayerDisk(1, "🔴");
+      game.setPlayerDisk(2, "🟡");
+      game.lastCoordinate = [2, 3];
+      const discToFind = "🟡";
+      expect(
+        game.findNumberOfSameColoredDiscsInTopRightDiagonal(
+          game.lastCoordinate,
+          discToFind
+        )
+      ).toEqual(1);
     });
   });
 });

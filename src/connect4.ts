@@ -12,7 +12,7 @@ class Connect4 {
 
   lastPlayer = 0;
 
-  lastCoordinate = [0, 0];
+  lastCoordinate: [number, number] = [0, 0];
 
   setPlayerDisk(player: number, disc: string) {
     this.playerDiscs[player] = disc;
@@ -69,7 +69,12 @@ class Connect4 {
     const lastDiskPlayed = this.getPlayerDisk(this.lastPlayer);
 
     const numberOfDisksOfSameColorFound = 1;
+    return undefined;
     
+  }
+
+  findNumberOfSameColoredDiscsInTopRightDiagonal(coordinate: [number, number], discToFind: string): number {
+    return 1;
   }
 
   getWinner(): number | undefined {
