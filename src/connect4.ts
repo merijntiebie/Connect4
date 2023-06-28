@@ -37,6 +37,41 @@ class Connect4 {
     }
   }
 
+  getDiagonalWinner(): number | undefined {
+    const lastRowPlayed = this.lastCoordinate[0];
+    const lastColumnPlayed = this.lastCoordinate[1];
+    const lastDiskPlayed = this.getPlayerDisk(this.lastPlayer);
+
+    if (
+      this.board[lastRowPlayed]?.[lastColumnPlayed] === lastDiskPlayed &&
+      this.board[lastRowPlayed + 1]?.[lastColumnPlayed + 1] === lastDiskPlayed &&
+      this.board[lastRowPlayed + 2]?.[lastColumnPlayed + 2] === lastDiskPlayed &&
+      this.board[lastRowPlayed + 3]?.[lastColumnPlayed + 3] === lastDiskPlayed
+    ) {
+      return this.lastPlayer;
+    }
+
+    if (
+      this.board[lastRowPlayed]?.[lastColumnPlayed] === lastDiskPlayed &&
+      this.board[lastRowPlayed + 1]?.[lastColumnPlayed - 1] === lastDiskPlayed &&
+      this.board[lastRowPlayed + 2]?.[lastColumnPlayed - 2] === lastDiskPlayed &&
+      this.board[lastRowPlayed + 3]?.[lastColumnPlayed - 3] === lastDiskPlayed
+    ) {
+      return this.lastPlayer;
+    }
+
+    return undefined;
+  }
+
+  getDiagonalWinner2(): number | undefined {
+    const lastRowPlayed = this.lastCoordinate[0];
+    const lastColumnPlayed = this.lastCoordinate[1];
+    const lastDiskPlayed = this.getPlayerDisk(this.lastPlayer);
+
+    const numberOfDisksOfSameColorFound = 1;
+    
+  }
+
   getWinner(): number | undefined {
     const lastRowPlayed = this.lastCoordinate[0];
     const lastColumnPlayed = this.lastCoordinate[1];

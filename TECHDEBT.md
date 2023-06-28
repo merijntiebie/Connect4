@@ -7,3 +7,6 @@
 
 - GetWinner test cases: last coordinates/player is error prone
 - GetWinner test cases: extract the board into a fixture file to reduce the duplication in test case title
+
+- Make it easier to create test cases by not having to create a game board by hand all the time
+- Create component test for getWinner

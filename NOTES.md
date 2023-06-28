@@ -20,16 +20,16 @@ The columns are numbered 0-6 left to right.
 Good luck and enjoy!
 
 # Units 
-Players can choose their own disks
+## Players can choose their own disks
 
 ✅ Player 1 -> Red 
 ✅ Player 2 -> Yellow
 
-Players can play a disk in a column
+## Players can play a disk in a column
 ✅ Empty board, player 1 puts his disk in column 0 -> column 0 has a red disk in the bottom row, including last player and coordinate played
 ✅ Previous board, player 2 puts his disk in column 1 -> column 1 has a yellow disk in the bottom row, including last player and coordinate played
 
-
+## Vertical
 Player 1 wins:
 ⚫⚫⚫⚫⚫⚫⚫
 ⚫⚫⚫⚫⚫⚫⚫
@@ -44,3 +44,41 @@ Player 1 wins:
 🔴⚫⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
+
+
+# Components!
+## Diagonal victory
+
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+🔴⚫⚫🟡⚫⚫⚫ -> is a win ✅
+🔴⚫🟡⚫⚫⚫⚫
+🔴🟡🔴⚫⚫⚫⚫
+🟡🟡🔴🟡⚫⚫⚫
+
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫🟡⚫⚫⚫ -> is not a win ✅
+🔴⚫🟡🟡⚫⚫⚫
+🔴🟡🔴🔴⚫⚫⚫
+🔴🟡🔴🟡⚫⚫⚫
+
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+🔴⚫⚫🟡⚫⚫⚫ -> is a win, last disc played is in column 1 
+🔴⚫🟡⚫⚫⚫⚫
+🔴🟡🔴⚫⚫⚫⚫
+🟡🟡🔴🟡⚫⚫⚫
+
+# Units for this component
+
+Diagonal: look upward to the right for same disks and return number of disks found
+
+
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+🔴⚫🟡🟡⚫⚫⚫ --> last disk: column 1, find one yellow disk
+🔴🟡🔴🔴⚫⚫⚫
+🔴🟡🔴🟡⚫⚫⚫
+
