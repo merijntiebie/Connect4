@@ -90,3 +90,5 @@ Diagonal: look upward to the right for same disks and return number of disks fou
 🔴⚫🟡🟡⚫⚫⚫
 🔴🟡🔴🔴⚫⚫⚫
 🔴🟡🔴🟡⚫⚫⚫
+
+Heej!
