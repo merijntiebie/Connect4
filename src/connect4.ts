@@ -76,7 +76,7 @@ class Connect4 {
     return numberOfDiscs;
   }
 
-  getWinner(): number | undefined {
+  getverticalWinner(): number | undefined {
     const lastRowPlayed = this.lastCoordinate[0];
     const lastColumnPlayed = this.lastCoordinate[1];
     const lastDiskPlayed = this.getPlayerDisk(this.lastPlayer);
@@ -89,6 +89,18 @@ class Connect4 {
     ) {
       return this.lastPlayer;
     }
+  }
+
+  getWinner(): number | undefined {
+    const diagionalWinner = this.getDiagonalWinner();
+    if (diagionalWinner !== undefined) {
+      return diagionalWinner;
+    }
+    const verticalWinner = this.getverticalWinner();
+    if (verticalWinner !== undefined) {
+      return verticalWinner;
+    }
+
     return undefined;
   }
 }
