@@ -50,6 +50,14 @@ class Connect4 {
 
     amountOfDisksInLine += amountOfDisksToBottomRight;
 
+    const amountOfDisksToTopLeft =
+      this.fundNumberOfSameColoredDiscsInTopLeftDiagonal(
+        this.lastCoordinate,
+        lastDiskPlayed
+      );
+
+    amountOfDisksInLine += amountOfDisksToTopLeft;
+
     if (amountOfDisksInLine === 4) {
       return this.lastPlayer;
     }
@@ -76,6 +84,25 @@ class Connect4 {
     return numberOfDiscs;
   }
 
+  fundNumberOfSameColoredDiscsInTopLeftDiagonal(
+    coordinate: [number, number],
+    discToFind: string
+  ): number {
+    const [row, column] = coordinate;
+    let numberOfDiscs = 0;
+    if (this.board[row - 1]?.[column - 1] === discToFind) {
+      numberOfDiscs += 1;
+    }
+    if (this.board[row - 2]?.[column - 2] === discToFind) {
+      numberOfDiscs += 1;
+    }
+    if (this.board[row - 3]?.[column - 3] === discToFind) {
+      numberOfDiscs += 1;
+    }
+
+    return numberOfDiscs;
+  }
+
   getWinner(): number | undefined {
     const lastRowPlayed = this.lastCoordinate[0];
     const lastColumnPlayed = this.lastCoordinate[1];
@@ -88,6 +115,10 @@ class Connect4 {
       this.board[lastRowPlayed + 3]?.[lastColumnPlayed] === lastDiskPlayed
     ) {
       return this.lastPlayer;
+    }
+    const diagonalWinner = this.getDiagonalWinner();
+    if (diagonalWinner !== undefined) {
+      return this.getDiagonalWinner();
     }
     return undefined;
   }

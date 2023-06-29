@@ -83,6 +83,25 @@ describe("In the following cases, player 1 plays with the red disks, player 2 wi
       ];
       expect(game.getDiagonalWinner()).toBe(2);
     });
+    it(`Yellow has a diagonal victory after placing a disk in the third column
+      ⚫⚫⚫⚫⚫⚫⚫
+      ⚫⚫⚫⚫⚫⚫⚫
+      ⚫🟡⚫⚫⚫⚫⚫
+      ⚫🔴🟡🔴⚫⚫⚫
+      ⚫🔴🟡🟡🔴⚫⚫
+      🔴🟡🟡🔴🟡🔴⚫`, () => {
+      game.lastPlayer = 2;
+      game.lastCoordinate = [3, 2];
+      game.board = [
+        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["⚫", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["⚫", "🔴", "🟡", "🔴", "⚫", "⚫", "⚫"],
+        ["⚫", "🔴", "🟡", "🟡", "🔴", "⚫", "⚫"],
+        ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
+      ];
+      expect(game.getDiagonalWinner()).toBe(2);
+    });
     // it(`Given the board below, yellow has a diagonal victory
     //   ⚫⚫⚫⚫⚫⚫⚫
     //   ⚫⚫⚫⚫⚫⚫⚫

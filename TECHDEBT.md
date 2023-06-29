@@ -10,3 +10,4 @@
 
 - Make it easier to create test cases by not having to create a game board by hand all the time
 - Create component test for getWinner
+- Extract vertical winner check to own function
