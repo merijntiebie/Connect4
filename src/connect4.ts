@@ -51,7 +51,7 @@ class Connect4 {
     amountOfDisksInLine += amountOfDisksToBottomRight;
 
     const amountOfDisksToTopLeft =
-      this.fundNumberOfSameColoredDiscsInTopLeftDiagonal(
+      this.findNumberOfSameColoredDiscsInTopLeftDiagonal(
         this.lastCoordinate,
         lastDiskPlayed
       );
@@ -65,6 +65,7 @@ class Connect4 {
     return undefined;
   }
 
+  // TODO: add else after if to stop checking when an other type of disk is found
   findNumberOfSameColoredDiscsInBottomRightDiagonal(
     coordinate: [number, number],
     discToFind: string
@@ -84,7 +85,7 @@ class Connect4 {
     return numberOfDiscs;
   }
 
-  fundNumberOfSameColoredDiscsInTopLeftDiagonal(
+  findNumberOfSameColoredDiscsInTopLeftDiagonal(
     coordinate: [number, number],
     discToFind: string
   ): number {
@@ -92,14 +93,13 @@ class Connect4 {
     let numberOfDiscs = 0;
     if (this.board[row - 1]?.[column - 1] === discToFind) {
       numberOfDiscs += 1;
-    }
+    } else return numberOfDiscs;
     if (this.board[row - 2]?.[column - 2] === discToFind) {
       numberOfDiscs += 1;
-    }
+    } else return numberOfDiscs;
     if (this.board[row - 3]?.[column - 3] === discToFind) {
       numberOfDiscs += 1;
-    }
-
+    } else return numberOfDiscs;
     return numberOfDiscs;
   }
 
