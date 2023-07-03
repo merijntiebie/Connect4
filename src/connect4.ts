@@ -72,14 +72,13 @@ class Connect4 {
   ): number {
     const [row, column] = coordinate;
     let numberOfDiscs = 0;
-    if (this.board[row + 1]?.[column + 1] === discToFind) {
-      numberOfDiscs += 1;
-    }
-    if (this.board[row + 2]?.[column + 2] === discToFind) {
-      numberOfDiscs += 1;
-    }
-    if (this.board[row + 3]?.[column + 3] === discToFind) {
-      numberOfDiscs += 1;
+
+    for (let step = 1; step < 4; step += 1) {
+      if (this.board[row + step]?.[column + step] === discToFind) {
+        numberOfDiscs += 1;
+      } else {
+        return numberOfDiscs;
+      }
     }
 
     return numberOfDiscs;
@@ -91,19 +90,19 @@ class Connect4 {
   ): number {
     const [row, column] = coordinate;
     let numberOfDiscs = 0;
-    if (this.board[row - 1]?.[column - 1] === discToFind) {
-      numberOfDiscs += 1;
-    } else return numberOfDiscs;
-    if (this.board[row - 2]?.[column - 2] === discToFind) {
-      numberOfDiscs += 1;
-    } else return numberOfDiscs;
-    if (this.board[row - 3]?.[column - 3] === discToFind) {
-      numberOfDiscs += 1;
-    } else return numberOfDiscs;
+
+    for (let step = 1; step < 4; step += 1) {
+      if (this.board[row - step]?.[column - step] === discToFind) {
+        numberOfDiscs += 1;
+      } else {
+        return numberOfDiscs;
+      }
+    }
+
     return numberOfDiscs;
   }
 
-  getWinner(): number | undefined {
+  getVerticalWinner(): number | undefined {
     const lastRowPlayed = this.lastCoordinate[0];
     const lastColumnPlayed = this.lastCoordinate[1];
     const lastDiskPlayed = this.getPlayerDisk(this.lastPlayer);
@@ -116,9 +115,19 @@ class Connect4 {
     ) {
       return this.lastPlayer;
     }
+
+    return undefined;
+  }
+
+  getWinner(): number | undefined {
+    const verticalWinner = this.getVerticalWinner();
+    if (verticalWinner !== undefined) {
+      return verticalWinner;
+    }
+
     const diagonalWinner = this.getDiagonalWinner();
     if (diagonalWinner !== undefined) {
-      return this.getDiagonalWinner();
+      return diagonalWinner;
     }
     return undefined;
   }

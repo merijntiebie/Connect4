@@ -45,6 +45,13 @@ Player 1 wins:
 🔴🟡⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
 
+⚫⚫⚫⚫⚫⚫⚫
+🔴⚫⚫⚫⚫⚫⚫
+🟡⚫⚫⚫⚫⚫⚫ -> no win 🏳‍🌈
+🔴⚫⚫⚫⚫⚫⚫
+🔴🟡⚫⚫⚫⚫⚫
+🔴🟡⚫⚫⚫⚫⚫
+
 
 # Components!
 ## Diagonal victory
@@ -91,8 +98,10 @@ Player 1 wins:
 🔴🟡🔴🔴⚫⚫⚫
 🔴🟡🔴🟡⚫⚫⚫
 
+- 1 disk further away, with a space inbetween --> 0 ✔
+- 
 ## Diagonal: look up to the left for the same disks and return number of disks found
 
-- 1 disk --> 1 🍅
-- no disk --> 0
-- 3 disks --> 3
+- 2 disks --> 2 ✔
+- 1 disk --> 1 ✔
+- 1 disk further away, with a space inbetween --> 0 ✔
