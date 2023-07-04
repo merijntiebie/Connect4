@@ -200,9 +200,11 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
         ];
         expect(
-          game.findNumberOfSameColoredDiscsInBottomRightDiagonal(
+          game.findNumberOfSameColoredDiscsInDiagonal(
             coordinate,
-            discToFind
+            discToFind,
+            1,
+            1
           )
         ).toEqual(3);
       });
@@ -228,9 +230,11 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
         ];
         expect(
-          game.findNumberOfSameColoredDiscsInBottomRightDiagonal(
+          game.findNumberOfSameColoredDiscsInDiagonal(
             coordinate,
-            discToFind
+            discToFind,
+            1,
+            1
           )
         ).toEqual(2);
       });
@@ -256,9 +260,11 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
         ];
         expect(
-          game.findNumberOfSameColoredDiscsInBottomRightDiagonal(
+          game.findNumberOfSameColoredDiscsInDiagonal(
             coordinate,
-            discToFind
+            discToFind,
+            1,
+            1
           )
         ).toEqual(0);
       });
@@ -286,9 +292,11 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
         ];
         expect(
-          game.findNumberOfSameColoredDiscsInTopLeftDiagonal(
+          game.findNumberOfSameColoredDiscsInDiagonal(
             coordinate,
-            discToFind
+            discToFind,
+            -1,
+            -1
           )
         ).toEqual(1);
       });
@@ -314,9 +322,11 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
         ];
         expect(
-          game.findNumberOfSameColoredDiscsInTopLeftDiagonal(
+          game.findNumberOfSameColoredDiscsInDiagonal(
             coordinate,
-            discToFind
+            discToFind,
+            -1,
+            -1
           )
         ).toEqual(2);
       });
@@ -342,9 +352,101 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
         ];
         expect(
-          game.findNumberOfSameColoredDiscsInTopLeftDiagonal(
+          game.findNumberOfSameColoredDiscsInDiagonal(
             coordinate,
-            discToFind
+            discToFind,
+            -1,
+            -1
+          )
+        ).toEqual(0);
+      });
+    });
+    describe("Checking towards the bottom left diagonal:", () => {
+      it(`When player two played the last disc in the third column, and the board looks as follows, we find one yellow disc
+        ⚫⚫⚫⚫⚫⚫⚫
+        ⚫🔴⚫⚫⚫⚫⚫
+        ⚫🟡🟡⚫⚫⚫⚫
+        ⚫🟡🔴🔴⚫⚫⚫
+        ⚫🔴🟡🟡🔴⚫⚫
+        🔴🟡🟡🔴🟡🔴⚫`, () => {
+        const game = new Connect4();
+        game.setPlayerDisk(1, "🔴");
+        game.setPlayerDisk(2, "🟡");
+        const coordinate: [number, number] = [2, 2];
+        const discToFind = "🟡";
+
+        game.board = [
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "🔴", "⚫"],
+          ["⚫", "🔴", "⚫", "⚫", "🔴", "🔴", "⚫"],
+          ["⚫", "🟡", "🟡", "⚫", "🔴", "🔴", "⚫"],
+          ["⚫", "🟡", "🔴", "🔴", "⚫", "🔴", "⚫"],
+          ["⚫", "🔴", "🟡", "🟡", "🔴", "⚫", "⚫"],
+          ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
+        ];
+        expect(
+          game.findNumberOfSameColoredDiscsInDiagonal(
+            coordinate,
+            discToFind,
+            1,
+            -1
+          )
+        ).toEqual(1);
+      });
+      it(`When player one played the last disc in the fourth column, and the board looks as follows, we find two red discs
+        ⚫⚫⚫⚫⚫⚫⚫
+        ⚫🔴⚫⚫⚫⚫⚫
+        ⚫🟡🔴⚫🔴⚫⚫
+        ⚫🟡🟡🔴⚫⚫⚫
+        ⚫🔴🔴🟡🔴⚫⚫
+        🔴🔴🟡🔴🟡🔴⚫`, () => {
+        const game = new Connect4();
+        game.setPlayerDisk(1, "🔴");
+        game.setPlayerDisk(2, "🟡");
+        const coordinate: [number, number] = [3, 3];
+        const discToFind = "🔴";
+        game.board = [
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "🔴", "⚫"],
+          ["⚫", "🔴", "⚫", "⚫", "🔴", "⚫", "⚫"],
+          ["⚫", "🟡", "🔴", "⚫", "🔴", "🔴", "⚫"],
+          ["⚫", "🟡", "🟡", "🔴", "⚫", "🔴", "⚫"],
+          ["⚫", "🔴", "🔴", "🟡", "🔴", "⚫", "⚫"],
+          ["🔴", "🔴", "🟡", "🔴", "🟡", "🔴", "⚫"],
+        ];
+        expect(
+          game.findNumberOfSameColoredDiscsInDiagonal(
+            coordinate,
+            discToFind,
+            1,
+            -1
+          )
+        ).toEqual(2);
+      });
+      it(`When player one played the last disc in the fourth column, and the board looks as follows, we find no red discs
+        ⚫⚫⚫⚫⚫⚫⚫
+        ⚫🔴⚫⚫⚫⚫⚫
+        ⚫🟡⚫⚫⚫⚫⚫
+        ⚫🟡🟡🔴⚫⚫⚫
+        ⚫🔴🟡🟡🔴⚫⚫
+        🔴🔴🟡🔴🟡🔴⚫`, () => {
+        const game = new Connect4();
+        game.setPlayerDisk(1, "🔴");
+        game.setPlayerDisk(2, "🟡");
+        const coordinate: [number, number] = [3, 3];
+        const discToFind = "🔴";
+        game.board = [
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "🔴", "⚫"],
+          ["⚫", "🔴", "⚫", "⚫", "🔴", "⚫", "⚫"],
+          ["⚫", "🟡", "⚫", "⚫", "🔴", "🔴", "⚫"],
+          ["⚫", "🟡", "🟡", "🔴", "⚫", "🔴", "⚫"],
+          ["⚫", "🔴", "🟡", "🟡", "🔴", "⚫", "⚫"],
+          ["🔴", "🔴", "🟡", "🔴", "🟡", "🔴", "⚫"],
+        ];
+        expect(
+          game.findNumberOfSameColoredDiscsInDiagonal(
+            coordinate,
+            discToFind,
+            1,
+            -1
           )
         ).toEqual(0);
       });

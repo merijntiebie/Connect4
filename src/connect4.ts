@@ -65,7 +65,7 @@ class Connect4 {
     return undefined;
   }
 
-  // TODO: add else after if to stop checking when an other type of disk is found
+  // TODO: remove these functions
   findNumberOfSameColoredDiscsInBottomRightDiagonal(
     coordinate: [number, number],
     discToFind: string
@@ -93,6 +93,48 @@ class Connect4 {
 
     for (let step = 1; step < 4; step += 1) {
       if (this.board[row - step]?.[column - step] === discToFind) {
+        numberOfDiscs += 1;
+      } else {
+        return numberOfDiscs;
+      }
+    }
+
+    return numberOfDiscs;
+  }
+
+  findNumberOfSameColoredDiscsInBottomLeftDiagonal(
+    coordinate: [number, number],
+    discToFind: string
+  ): number {
+    const [row, column] = coordinate;
+    let numberOfDiscs = 0;
+
+    for (let step = 1; step < 4; step += 1) {
+      if (this.board[row + step]?.[column - step] === discToFind) {
+        numberOfDiscs += 1;
+      } else {
+        return numberOfDiscs;
+      }
+    }
+
+    return numberOfDiscs;
+  }
+
+  // Create a function that finds the number of same colored discs in a diagonal. Look at the function findNumberOfSameColoredDiscsInBottomRightDiagonal for inspiration. Make it generic for all diagonal directions. Consider the directions as input parameters.
+  findNumberOfSameColoredDiscsInDiagonal(
+    coordinate: [number, number],
+    discToFind: string,
+    rowStep: number,
+    columnStep: number
+  ): number {
+    const [row, column] = coordinate;
+    let numberOfDiscs = 0;
+
+    for (let step = 1; step < 4; step += 1) {
+      const newRow = row + step * rowStep;
+      const newColumn = column + step * columnStep;
+
+      if (this.board[newRow]?.[newColumn] === discToFind) {
         numberOfDiscs += 1;
       } else {
         return numberOfDiscs;

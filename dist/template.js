@@ -1,6 +1,6 @@
 "use strict";
 function templateFunction(x) {
-    return x / 2;
+  return x / 2;
 }
 module.exports = templateFunction;
 

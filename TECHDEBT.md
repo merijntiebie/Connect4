@@ -1,4 +1,5 @@
-##TODO 
+##TODO
+
 - ✅ Add lastPlayer and lastCoordinate to the play-function + tests
 - ✅ Show the actual boards in play function tests
 - Guardian for getPlayerColor to restrict we dont have other players than 1 and 2
@@ -11,3 +12,5 @@
 - Make it easier to create test cases by not having to create a game board by hand all the time
 - Create component test for getWinner
 - Extract vertical winner check to own function
+
+- Create a generic function to check for the number of disks in the diagonal direction ✅
