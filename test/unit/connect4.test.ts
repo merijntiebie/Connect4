@@ -170,6 +170,34 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
         )
       ).toEqual(2);
     });
+    it(`When player two played the last disc in the second column, and the board looks as follows, we find two yellow discs in the bottom right diagonal
+    ⚫⚫⚫⚫⚫⚫⚫
+		⚫⚫⚫⚫⚫⚫⚫
+		⚫🟡⚫⚫⚫⚫⚫
+		⚫🔴⚫🔴⚫⚫⚫
+		⚫🔴🟡🟡🔴⚫⚫
+		🔴🟡🟡🔴🟡🔴⚫`, () => {
+      const game = new Connect4();
+      game.setPlayerDisk(1, "🔴");
+      game.setPlayerDisk(2, "🟡");
+      const coordinate: [number, number] = [2, 1];
+      const discToFind = "🟡";
+
+      game.board = [
+        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["⚫", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["⚫", "🔴", "⚫", "🔴", "⚫", "⚫", "⚫"],
+        ["⚫", "🔴", "🟡", "🟡", "🔴", "⚫", "⚫"],
+        ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
+      ];
+      expect(
+        game.findNumberOfSameColoredDiscsInBottomRightDiagonal(
+          coordinate,
+          discToFind
+        )
+      ).toEqual(0);
+    });
     // it(`When player two played the last disc in the secend column, and the board looks as follows, we find zero yellow discs in the top right diagonal
     // ⚫⚫⚫⚫⚫⚫⚫
     // ⚫⚫⚫⚫⚫⚫⚫

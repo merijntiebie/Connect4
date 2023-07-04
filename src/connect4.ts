@@ -63,16 +63,11 @@ class Connect4 {
   ): number {
     const [row, column] = coordinate;
     let numberOfDiscs = 0;
-    if (this.board[row + 1]?.[column + 1] === discToFind) {
-      numberOfDiscs += 1;
+    for (let i = 1; i < 4; i++) {
+      if (this.board[row + i]?.[column + i] === discToFind) {
+        numberOfDiscs += 1;
+      } else return numberOfDiscs;
     }
-    if (this.board[row + 2]?.[column + 2] === discToFind) {
-      numberOfDiscs += 1;
-    }
-    if (this.board[row + 3]?.[column + 3] === discToFind) {
-      numberOfDiscs += 1;
-    }
-
     return numberOfDiscs;
   }
 
