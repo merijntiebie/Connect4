@@ -71,6 +71,20 @@ class Connect4 {
     return numberOfDiscs;
   }
 
+  findNumberOfSameColoredDiscsInTopRightDiagonal(
+    coordinate: [number, number],
+    discToFind: string
+  ): number {
+    const [row, column] = coordinate;
+    let numberOfDiscs = 0;
+    for (let i = 1; i < 4; i++) {
+      if (this.board[row - i]?.[column + i] === discToFind) {
+        numberOfDiscs += 1;
+      } else return numberOfDiscs;
+    }
+    return numberOfDiscs;
+  }
+
   getverticalWinner(): number | undefined {
     const lastRowPlayed = this.lastCoordinate[0];
     const lastColumnPlayed = this.lastCoordinate[1];
