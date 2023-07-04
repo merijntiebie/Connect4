@@ -48,7 +48,14 @@ class Connect4 {
         lastDiskPlayed
       );
 
+    const amountOfDisksToTopRight =
+      this.findNumberOfSameColoredDiscsInTopRightDiagonal(
+        this.lastCoordinate,
+        lastDiskPlayed
+      );
+
     amountOfDisksInLine += amountOfDisksToBottomRight;
+    amountOfDisksInLine += amountOfDisksToTopRight;
 
     if (amountOfDisksInLine === 4) {
       return this.lastPlayer;

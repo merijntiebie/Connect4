@@ -91,7 +91,7 @@ describe("In the following cases, player 1 plays with the red disks, player 2 wi
       🔴🟡🔴🟡⚫⚫⚫
       🟡🟡🔴🟡⚫⚫⚫`, () => {
       game.lastPlayer = 2;
-      game.lastCoordinate = [2, 3];
+      game.lastCoordinate = [4, 1];
       game.board = [
         ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
         ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
