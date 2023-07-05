@@ -451,5 +451,36 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
         ).toEqual(0);
       });
     });
+    describe("Checking towards the top right diagonal:", () => {
+      it(`When player one played the last disc in the fourth column, and the board looks as follows, we find no red discs
+        ⚫⚫⚫⚫⚫⚫🔴
+        ⚫🔴⚫⚫⚫🔴⚫
+        ⚫🟡⚫⚫🔴⚫⚫
+        ⚫🟡🟡🔴⚫⚫⚫
+        ⚫🔴🟡🟡🔴⚫⚫
+        🔴🔴🟡🔴🟡🔴⚫`, () => {
+        const game = new Connect4();
+        game.setPlayerDisk(1, "🔴");
+        game.setPlayerDisk(2, "🟡");
+        const coordinate: [number, number] = [3, 3];
+        const discToFind = "🔴";
+        game.board = [
+          ["⚫", "⚫", "⚫", "⚫", "⚫", "🔴", "🔴"],
+          ["⚫", "🔴", "⚫", "⚫", "🔴", "🔴", "⚫"],
+          ["⚫", "🟡", "⚫", "⚫", "🔴", "🔴", "⚫"],
+          ["⚫", "🟡", "🟡", "🔴", "⚫", "🔴", "⚫"],
+          ["⚫", "🔴", "🟡", "🟡", "🔴", "⚫", "⚫"],
+          ["🔴", "🔴", "🟡", "🔴", "🟡", "🔴", "⚫"],
+        ];
+        expect(
+          game.findNumberOfSameColoredDiscsInDiagonal(
+            coordinate,
+            discToFind,
+            -1,
+            1
+          )
+        ).toEqual(3);
+      });
+    });
   });
 });
