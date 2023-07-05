@@ -4,7 +4,8 @@
 - ✅ Show the actual boards in play function tests
 
 - GetWinner test cases: extract the board into a fixture file to reduce the duplication in test case title
-- Make it easier to create test cases by not having to create a game board by hand all the time
+
+- 👀 Make it easier to create test cases by not having to create a game board by hand all the time
 - Ensure that floating discs cannot happen
 
 - Guardian for getPlayerColor to restrict we dont have other players than 1 and 2

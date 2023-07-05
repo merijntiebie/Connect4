@@ -34,13 +34,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
       const game = new Connect4();
       game.setPlayerDisk(1, "🔴");
       game.setPlayerDisk(2, "🟡");
-      it(`Player 1 can put a red disk in the first column, resulting in 
-          ⚫⚫⚫⚫⚫⚫⚫
-          ⚫⚫⚫⚫⚫⚫⚫
-          ⚫⚫⚫⚫⚫⚫⚫
-          ⚫⚫⚫⚫⚫⚫⚫
-          ⚫⚫⚫⚫⚫⚫⚫
-          🔴⚫⚫⚫⚫⚫⚫`, () => {
+      it("Player 1 can place a red disc in an empty board", () => {
         game.play(1, 0);
         expect(game.board).toEqual([
           ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
@@ -178,13 +172,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
 
   describe("For checking whether a diagonal victory occurs. We want to check how many discs of the same color are found in every direction", () => {
     describe("Checking towards the bottom right diagonal:", () => {
-      it(`When player two played the last disc in the first column, and the board looks as follows, we find three yellow discs
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫🟡⚫⚫⚫⚫⚫
-        ⚫🔴🟡🔴⚫⚫⚫
-        ⚫🔴🟡🟡🔴⚫⚫
-        🔴🟡🟡🔴🟡🔴⚫`, () => {
+      it("We are able to find 3 yellow discs", () => {
         const game = new Connect4();
         game.setPlayerDisk(1, "🔴");
         game.setPlayerDisk(2, "🟡");
@@ -208,13 +196,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           )
         ).toEqual(3);
       });
-      it(`When player two played the last disc in the second column, and the board looks as follows, we find two yellow discs
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫🔴🟡🔴⚫⚫⚫
-        ⚫🔴🟡🟡🔴⚫⚫
-        🔴🟡🟡🔴🟡🔴⚫`, () => {
+      it("We are able to find 2 yellow discs", () => {
         const game = new Connect4();
         game.setPlayerDisk(1, "🔴");
         game.setPlayerDisk(2, "🟡");
@@ -238,13 +220,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           )
         ).toEqual(2);
       });
-      it(`When player one played the last disc in the second column, and the board looks as follows, we find two yellow discs
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫🔴⚫⚫⚫⚫⚫
-        ⚫🔴⚫⚫⚫⚫⚫
-        ⚫🟡🟡🔴⚫⚫⚫
-        ⚫🔴🟡🟡🔴⚫⚫
-        🔴🟡🟡🔴🟡🔴⚫`, () => {
+      it("We are able to find 0 red disks", () => {
         const game = new Connect4();
         game.setPlayerDisk(1, "🔴");
         game.setPlayerDisk(2, "🟡");
@@ -270,13 +246,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
       });
     });
     describe("Checking towards the top left diagonal:", () => {
-      it(`When player two played the last disc in the third column, and the board looks as follows, we find one yellow disc
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫🟡⚫⚫⚫⚫⚫
-        ⚫🔴🟡🔴⚫⚫⚫
-        ⚫🔴🟡🟡🔴⚫⚫
-        🔴🟡🟡🔴🟡🔴⚫`, () => {
+      it("We are able to find 1 yellow disc", () => {
         const game = new Connect4();
         game.setPlayerDisk(1, "🔴");
         game.setPlayerDisk(2, "🟡");
@@ -300,13 +270,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           )
         ).toEqual(1);
       });
-      it(`When player one played the last disc in the fourth column, and the board looks as follows, we find two red discs
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫🔴⚫⚫⚫⚫⚫
-        ⚫🟡🔴⚫⚫⚫⚫
-        ⚫🔴🟡🔴⚫⚫⚫
-        ⚫🔴🟡🟡🔴⚫⚫
-        🔴🟡🟡🔴🟡🔴⚫`, () => {
+      it("We are able to find 2 red discs", () => {
         const game = new Connect4();
         game.setPlayerDisk(1, "🔴");
         game.setPlayerDisk(2, "🟡");
@@ -330,13 +294,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           )
         ).toEqual(2);
       });
-      it(`When player one played the last disc in the fourth column, and the board looks as follows, we find no red discs
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫🔴⚫⚫⚫⚫⚫
-        ⚫🟡⚫⚫⚫⚫⚫
-        ⚫🔴🟡🔴⚫⚫⚫
-        ⚫🔴🟡🟡🔴⚫⚫
-        🔴🟡🟡🔴🟡🔴⚫`, () => {
+      it("We are able to find 0 red discs", () => {
         const game = new Connect4();
         game.setPlayerDisk(1, "🔴");
         game.setPlayerDisk(2, "🟡");
@@ -362,13 +320,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
       });
     });
     describe("Checking towards the bottom left diagonal:", () => {
-      it(`When player two played the last disc in the third column, and the board looks as follows, we find one yellow disc
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫🔴⚫⚫⚫⚫⚫
-        ⚫🟡🟡⚫⚫⚫⚫
-        ⚫🟡🔴🔴⚫⚫⚫
-        ⚫🔴🟡🟡🔴⚫⚫
-        🔴🟡🟡🔴🟡🔴⚫`, () => {
+      it("We are able to find 1 yellow disc", () => {
         const game = new Connect4();
         game.setPlayerDisk(1, "🔴");
         game.setPlayerDisk(2, "🟡");
@@ -392,13 +344,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           )
         ).toEqual(1);
       });
-      it(`When player one played the last disc in the fourth column, and the board looks as follows, we find two red discs
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫🔴⚫⚫⚫⚫⚫
-        ⚫🟡🔴⚫🔴⚫⚫
-        ⚫🟡🟡🔴⚫⚫⚫
-        ⚫🔴🔴🟡🔴⚫⚫
-        🔴🔴🟡🔴🟡🔴⚫`, () => {
+      it("We are able to find 2 red discs", () => {
         const game = new Connect4();
         game.setPlayerDisk(1, "🔴");
         game.setPlayerDisk(2, "🟡");
@@ -421,13 +367,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
           )
         ).toEqual(2);
       });
-      it(`When player one played the last disc in the fourth column, and the board looks as follows, we find no red discs
-        ⚫⚫⚫⚫⚫⚫⚫
-        ⚫🔴⚫⚫⚫⚫⚫
-        ⚫🟡⚫⚫⚫⚫⚫
-        ⚫🟡🟡🔴⚫⚫⚫
-        ⚫🔴🟡🟡🔴⚫⚫
-        🔴🔴🟡🔴🟡🔴⚫`, () => {
+      it("We are able to find 0 red discs", () => {
         const game = new Connect4();
         game.setPlayerDisk(1, "🔴");
         game.setPlayerDisk(2, "🟡");
@@ -452,13 +392,7 @@ describe("This suite tests the game of connect 4. It is a game in which 2 player
       });
     });
     describe("Checking towards the top right diagonal:", () => {
-      it(`When player one played the last disc in the fourth column, and the board looks as follows, we find no red discs
-        ⚫⚫⚫⚫⚫⚫🔴
-        ⚫🔴⚫⚫⚫🔴⚫
-        ⚫🟡⚫⚫🔴⚫⚫
-        ⚫🟡🟡🔴⚫⚫⚫
-        ⚫🔴🟡🟡🔴⚫⚫
-        🔴🔴🟡🔴🟡🔴⚫`, () => {
+      it("We are able to find 3 red discs", () => {
         const game = new Connect4();
         game.setPlayerDisk(1, "🔴");
         game.setPlayerDisk(2, "🟡");
