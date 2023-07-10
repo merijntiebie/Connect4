@@ -20,132 +20,13 @@ The columns are numbered 0-6 left to right.
 Good luck and enjoy!
 
 # Units 
-## Players can choose their own disks
+
+## Board creation
+✅ We start with an empty board
+## Players have their own disks
 
 ✅ Player 1 -> Red 
 ✅ Player 2 -> Yellow
 
 ## Players can play a disk in a column
-✅ Empty board, player 1 puts his disk in column 0 -> column 0 has a red disk in the bottom row, including last player and coordinate played
-✅ Previous board, player 2 puts his disk in column 1 -> column 1 has a yellow disk in the bottom row, including last player and coordinate played
-
-## Vertical
-Player 1 wins:
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫ -> no win ✅
-🔴⚫⚫⚫⚫⚫⚫
-🔴🟡⚫⚫⚫⚫⚫
-🔴🟡⚫⚫⚫⚫⚫
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-🔴⚫⚫⚫⚫⚫⚫ -> is a win ✅
-🔴⚫⚫⚫⚫⚫⚫
-🔴🟡⚫⚫⚫⚫⚫
-🔴🟡⚫⚫⚫⚫⚫
-
-
-# Components!
-## Diagonal victory
-
-⚫⚫⚫⚫⚫⚫⚫  
-⚫⚫⚫⚫⚫⚫⚫  
-⚫⚫⚫⚫⚫⚫⚫  
-⚫🔴🟡🔴⚫⚫⚫  -> not a win ✅
-⚫🔴🟡🟡🔴⚫⚫  
-🔴🟡🟡🔴🟡🔴⚫  
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-⚫🟡⚫⚫⚫⚫⚫
-⚫🔴🟡🔴⚫⚫⚫   -> a win ✅
-⚫🔴🟡🟡🔴⚫⚫
-🔴🟡🟡🔴🟡🔴⚫
-
-# Pomodoro goal: finish unit tests for determing amount of discs in every diagonal direction
-# Units for this component
-
-Diagonal: look downward to the right for same disks and return number of disks found
-
-    ⚫⚫⚫⚫⚫⚫⚫
-	⚫⚫⚫⚫⚫⚫⚫
-   	⚫⚫⚫⚫⚫⚫⚫
-   	⚫🔴🟡🔴⚫⚫⚫ --> last disk: column 2, find 2 yellow discs ✔
-   	⚫🔴🟡🟡🔴⚫⚫
-   	🔴🟡🟡🔴🟡🔴⚫
-
-    ⚫⚫⚫⚫⚫⚫⚫
-    ⚫⚫⚫⚫⚫⚫⚫
-    ⚫🟡⚫⚫⚫⚫⚫
-    ⚫🔴🟡🔴⚫⚫⚫ --> last disk: column 1, find 3 yellow discs ✔
-    ⚫🔴🟡🟡🔴⚫⚫
-    🔴🟡🟡🔴🟡🔴⚫
-
-    ⚫⚫⚫⚫⚫⚫⚫
-    ⚫⚫⚫⚫⚫⚫⚫
-    ⚫🟡⚫⚫⚫⚫⚫
-    ⚫🔴⚫🔴⚫⚫⚫ --> last disk: column 1, find 0 yellow discs 
-    ⚫🔴🟡🟡🔴⚫⚫
-    🔴🟡🟡🔴🟡🔴⚫
-
-
-# component diagonal win, searching for discs in top right corner
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-🔴⚫⚫🟡⚫⚫⚫ -> last disc in column 0 is a win ✅
-🔴⚫🟡⚫⚫⚫⚫
-🔴🟡🔴⚫⚫⚫⚫
-🟡🟡🔴🟡⚫⚫⚫
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-🔴⚫⚫🟡⚫⚫⚫ -> last disc in column 1 is a win 🙌
-🔴⚫🟡⚫⚫⚫⚫
-🔴🟡🔴⚫⚫⚫⚫
-🟡🟡🔴🟡⚫⚫⚫
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫🟡⚫⚫⚫ -> is not a win 
-🔴⚫🟡🟡⚫⚫⚫
-🔴🟡🔴🔴⚫⚫⚫
-🔴🟡🔴🟡⚫⚫⚫
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-🔴⚫⚫🟡⚫⚫⚫ -> is a win, last disc played is in column 1 
-🔴⚫🟡⚫⚫⚫⚫
-🔴🟡🔴⚫⚫⚫⚫
-🟡🟡🔴🟡⚫⚫⚫
-
-
-# relating unit tests:
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-🔴⚫⚫🟡⚫⚫⚫
-🔴⚫🟡🟡⚫⚫⚫ --> last disk: column 0, find 3 yellow disks ✅
-🔴🟡🔴🔴⚫⚫⚫
-🟡🟡🔴🟡⚫⚫⚫
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-🔴⚫⚫🟡⚫⚫⚫
-🔴⚫🟡🟡⚫⚫⚫ --> last disk: column 1, find 2 yellow disks ✅
-🔴🟡🔴🔴⚫⚫⚫
-🟡🟡🔴🟡⚫⚫⚫
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫ --> last disk: column 2, find zero yellow disks 
-🔴⚫🟡🟡⚫⚫⚫
-🔴🟡🔴🔴⚫⚫⚫
-🔴🟡🔴🟡⚫⚫⚫
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫🟡⚫⚫⚫ --> last disk: column 1, find zero yellow disks 
-🔴⚫⚫🟡⚫⚫⚫
-🔴🟡🔴🔴⚫⚫⚫
-🔴🟡🔴🟡⚫⚫⚫
+🙌 Empty board, player 1 in column 0
