@@ -16,12 +16,12 @@ defineFeature(feature, (test) => {
       game = new Connect4();
     });
 
-    and(/^player (\d+) plays with the red discs$/, (player) => {
-      game.setPlayerDisk(parseInt(player), "🔴");
+    and(/^player 1 plays with the red discs$/, () => {
+      expect(game.player1).toEqual("🔴");
     });
 
-    and(/^player (\d+) plays with the yellow discs$/, (player) => {
-      game.setPlayerDisk(parseInt(player), "🟡");
+    and(/^player 2 plays with the yellow discs$/, () => {
+      expect(game.player2).toEqual("🟡");
     });
 
     and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
