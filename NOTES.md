@@ -19,18 +19,29 @@ Player 1 starts the game every time and alternates with player 2.
 The columns are numbered 0-6 left to right.
 Good luck and enjoy!
 
-# Units 
+# Player Class
 
-## Board creation
+# Board Class
+## Units 
+### Board creation
 ✅ We start with an empty board
 ## Players have their own disks
 
 ✅ Player 1 -> Red 
 ✅ Player 2 -> Yellow
 
-## Players can play a disk in a column
+## A disk should be dropped in a column
 
 ### Empty board
 ✅ red disc in column 0
 ✅ yellow disc in column 1
 ✅ red disc in column 4
+
+### Partially filled column
+✅ 1st column, red disc on top of yellow disc
+
+### Column full --> error
+✅ Column 4 full --> error
+
+### Unknown column --> error
+Column 8 --> error
