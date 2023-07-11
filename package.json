@@ -28,7 +28,7 @@
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "ts-jest": "^29.1.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.6"
   },
   "scripts": {
     "build": "tsc",

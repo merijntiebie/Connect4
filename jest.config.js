@@ -9,5 +9,6 @@ module.exports = {
     testMatch: [
         '**/test/**/*.test.(ts|js)','**/*.steps.ts'
     ],
+    preset: 'ts-jest',
     testEnvironment: 'node'
 };
