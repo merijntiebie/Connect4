@@ -29,4 +29,8 @@ Good luck and enjoy!
 ✅ Player 2 -> Yellow
 
 ## Players can play a disk in a column
-🙌 Empty board, player 1 in column 0
+
+### Empty board
+✅ red disc in column 0
+✅ yellow disc in column 1
+✅ red disc in column 4
