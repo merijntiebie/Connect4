@@ -20,15 +20,19 @@ The columns are numbered 0-6 left to right.
 Good luck and enjoy!
 
 # Player Class
+## Units
+## Players have their own disks
+✅ Player 1 -> Red 
+✅ Player 2 -> Yellow
+## Components
+## Playing
+Player 1 -> column 0 -> disc in column zero | player 2 new active player
 
 # Board Class
 ## Units 
 ### Board creation
 ✅ We start with an empty board
-## Players have their own disks
 
-✅ Player 1 -> Red 
-✅ Player 2 -> Yellow
 
 ## A disk should be dropped in a column
 
@@ -42,6 +46,11 @@ Good luck and enjoy!
 
 ### Column full --> error
 ✅ Column 4 full --> error
+
+
+
+
+
 
 ### Unknown column --> error
 Column 8 --> error
