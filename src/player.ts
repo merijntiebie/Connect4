@@ -1,5 +1,3 @@
-import { Board } from "../../src/board";
-
 class Player {
   private discColor: string;
 
@@ -11,8 +9,6 @@ class Player {
     return this.discColor;
   }
 
-  play(column: number): void {
-    Board.dropDisc(column, this.discColor);
 }
 
 export { Player };

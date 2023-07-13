@@ -7,7 +7,7 @@ class Board {
       .map(() => Array(7).fill("⚫"));
   }
 
-  getBoard(): string[][] {
+  getBoardState(): string[][] {
     return this.board;
   }
 
