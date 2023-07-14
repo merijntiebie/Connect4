@@ -24,9 +24,6 @@ Good luck and enjoy!
 ## Players have their own disks
 ✅ Player 1 -> Red 
 ✅ Player 2 -> Yellow
-## Components
-## Playing
-Player 1 -> column 0 -> disc in column zero | player 2 new active player
 
 # Board Class
 ## Units 
@@ -48,9 +45,19 @@ Player 1 -> column 0 -> disc in column zero | player 2 new active player
 ✅ Column 4 full --> error
 
 
-
-
-
-
 ### Unknown column --> error
 Column 8 --> error
+
+# Game class
+## units
+
+### Check if board contains a vertical victory
+
+
+
+
+
+## Components
+### Playing
+✅ Player 1 -> column 0 -> disc in column zero | player 2 new active player | column 0 is the last played column
+✅ Player 2 -> column 1 -> disc in column 1 | player 1 new active player | column 1 is the last played column

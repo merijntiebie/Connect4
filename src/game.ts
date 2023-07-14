@@ -10,15 +10,22 @@ class Game {
 
   activePlayer: Player;
 
+  lastPlayedColumn: number;
+
   constructor() {
     this.board = new Board();
     this.player1 = new Player("🔴");
     this.player2 = new Player("🟡");
     this.activePlayer = this.player1;
+    this.lastPlayedColumn = -1;
   }
 
   getActivePlayer(): Player {
     return this.activePlayer;
+  }
+
+  getLastPlayedColumn() {
+    return this.lastPlayedColumn;
   }
 
   switchActivePlayer() {
@@ -37,6 +44,7 @@ class Game {
     const activePlayer = this.getActivePlayer();
     this.board.dropDisc(column, activePlayer.getDiscColor());
     this.switchActivePlayer();
+    this.lastPlayedColumn = column;
   }
 }
 
