@@ -46,6 +46,10 @@ class Game {
     this.switchActivePlayer();
     this.lastPlayedColumn = column;
   }
+
+  determineVerticalWinner(board, lastPlayedColumn) {
+    return undefined;
+  }
 }
 
 export { Game };
