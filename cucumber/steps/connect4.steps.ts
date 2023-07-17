@@ -24,28 +24,28 @@ defineFeature(feature, (test) => {
       expect(game.player2.getDiscColor()).toEqual("🟡");
     });
 
-    and(/^player (\d+) has put a disc in column (\d+)$/, (column) => {
-      game.play(column);
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
 
-    and(/^player (\d+) has put a disc in column (\d+)$/, (column) => {
-      game.play(column);
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
-    and(/^player (\d+) has put a disc in column (\d+)$/, (column) => {
-      game.play(column);
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
-    and(/^player (\d+) has put a disc in column (\d+)$/, (column) => {
-      game.play(column);
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
-    and(/^player (\d+) has put a disc in column (\d+)$/, (column) => {
-      game.play(column);
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
-    and(/^player (\d+) has put a disc in column (\d+)$/, (column) => {
-      game.play(column);
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
 
-    when(/^player (\d+) puts a disc in column (\d+)$/, (column) => {
-      game.play(column);
+    when(/^player 1 puts a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
 
     then(/^the board has 4 red discs in column 0$/, () => {
@@ -64,9 +64,9 @@ defineFeature(feature, (test) => {
     });
 
 
-    // and(/^player 1 wins the board with a vertical victory$/, () => {
-    //   expect(true).toBe(false);
-    // });
+    and(/^player 1 wins the board with a vertical victory$/, () => {
+      expect(true).toBe(false);
+    });
   });
 
   // test("Player 2 wins with a diagonal victory after 14 moves", ({

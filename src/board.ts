@@ -1,10 +1,14 @@
 class Board {
   private board: string[][];
 
+  private width = 7;
+
+  private height = 6;
+
   constructor() {
-    this.board = Array(6)
+    this.board = Array(this.height)
       .fill(null)
-      .map(() => Array(7).fill("⚫"));
+      .map(() => Array(this.width).fill("⚫"));
   }
 
   getBoardState(): string[][] {
@@ -12,26 +16,26 @@ class Board {
   }
 
   doesColumnExist(column: number): boolean {
-    return column >= 0 && column <= 6;
+    return column >= 0 && column < this.width;
+  }
+
+  placeDiscInColumn(column: number, disc: string) {
+    for (let row = 5; row >= 0; row -= 1) {
+      if (this.board[row][column] === "⚫") {
+        this.board[row][column] = disc;
+        return;
+      }
+    }
+
+    throw new Error("Column is full");
   }
 
   dropDisc(column: number, disc: string): void {
-    if (column > 6) {
-      throw new Error("Column does not exist");
-    } else if (column < 0) {
+    if (!this.doesColumnExist(column)) {
       throw new Error("Column does not exist");
     }
 
-    for (let row = 5; row >= 0; row--) {
-      if (this.board[row][column] === "⚫") {
-        this.board[row][column] = disc;
-        break;
-      }
-
-      if (row === 0) {
-        throw new Error("Column is full");
-      }
-    }
+    this.placeDiscInColumn(column, disc);
   }
 }
 
