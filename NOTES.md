@@ -52,6 +52,22 @@ Column 8 --> error
 ## units
 
 ### Check if board contains a vertical victory
+🙌 three dics of same color played (see below) --> no vertical victory
+⚫⚫⚫⚫⚫⚫⚫ 
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+🔴🟡⚫⚫⚫⚫⚫
+🔴🟡⚫⚫⚫⚫⚫
+🔴🟡⚫⚫⚫⚫⚫
+
+four dics of same color played (see below)--> vertical victory
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+🔴⚫⚫⚫⚫⚫⚫
+🔴🟡⚫⚫⚫⚫⚫
+🔴🟡⚫⚫⚫⚫⚫
+🔴🟡⚫⚫⚫⚫⚫
+
 
 
 
