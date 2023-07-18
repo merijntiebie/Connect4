@@ -46,37 +46,26 @@ Good luck and enjoy!
 
 
 ### Unknown column --> error
-Column 8 --> error
+✅ Column 8 --> error
 
-# Game class
-## Units
 ### Extract a column from the board
 
 ✅ extract the first column, that contains 3 red discs
-extract the 2nd column, that contains 3 yellow discs
+✅ extract the 2nd column, that contains 3 yellow discs
+
+# Game class
+## Units
 
 ## Components
 
 ### Check if board contains a vertical victory
-three dics of same color played (see below) --> no vertical victory
+✅ Player one just placed his disc in the 1st colum --> victory
 ⚫⚫⚫⚫⚫⚫⚫ 
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-🔴🟡⚫⚫⚫⚫⚫
-🔴🟡⚫⚫⚫⚫⚫
-🔴🟡⚫⚫⚫⚫⚫
-
-four dics of same color played (see below)--> vertical victory
-⚫⚫⚫⚫⚫⚫⚫
 ⚫⚫⚫⚫⚫⚫⚫
 🔴⚫⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
-
-
-
-
 
 
 ## Components

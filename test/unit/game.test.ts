@@ -1,5 +1,5 @@
 import { Game } from "../../src/game";
-import { gameWithAlmostVerticalVictory } from "./game.doubles";
+import { gameWithAlmostVerticalVictoryForPlayerOne } from "../doubles/game.doubles";
 
 describe("This suite tests the game functionality of connect4.", () => {
   describe("One of the most important concepts is that players have to take turns.", () => {
@@ -17,4 +17,5 @@ describe("This suite tests the game functionality of connect4.", () => {
       expect(newActivePlayer).toBe(newGame.player1);
     });
   });
+  
 });

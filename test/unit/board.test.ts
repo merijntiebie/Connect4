@@ -1,10 +1,10 @@
 import { Board } from "../../src/board";
-import { gameWithAlmostVerticalVictory } from "./game.doubles";
+import { gameWithAlmostVerticalVictoryForPlayerOne } from "../doubles/game.doubles";
 import { boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo } from "./board.doubles";
 
-describe("This suite tests the board of connect 4.", () => {
+describe("This unit test suite tests the functionality of the board of a game called Connect 4.", () => {
   describe("A new game starts with a fresh board that", () => {
-    it("consists of 6 rows and 7 columns", () => {
+    it("Consists of 6 rows and 7 columns, with every slot of the board being empty", () => {
       const board = new Board();
       const boardState = board.getBoardState();
       expect(boardState).toEqual([
@@ -17,8 +17,8 @@ describe("This suite tests the board of connect 4.", () => {
       ]);
     });
   });
-  describe("We should be able to drop a disc in a column and the disc should fall to the first available position", () => {
-    describe("Only columns that actually exist can be used", () => {
+  describe("One of the most important parts of the board is that each column of the board contains an opening at the top, through which a disc can be dropped. ", () => {
+    describe("Only columns that actually exist can be used, otherwise the disc will fall to the ground", () => {
       it("First one exists", () => {
         const board = new Board();
         const doesColumnExist = board.doesColumnExist(0);
@@ -35,7 +35,7 @@ describe("This suite tests the board of connect 4.", () => {
         expect(doesColumnExist).toEqual(false);
       });
     });
-    describe("When a column is empty, the disc should fall straight down to the bottom", () => {
+    describe("When a column is empty, the disc should fall straight down to the bottom of the column", () => {
       it("A red disc drops to the bottom of the first column", () => {
         const board = new Board();
         board.placeDiscInColumn(0, "🔴");
@@ -43,14 +43,14 @@ describe("This suite tests the board of connect 4.", () => {
         expect(boardState[5][0]).toEqual("🔴");
         expect(boardState[4][0]).toEqual("⚫");
       });
-      it("A yellow disc drops to the bottom of the second column", () => {
+      it("A yellow disc drops to the bottom of the lonely second column", () => {
         const board = new Board();
         board.placeDiscInColumn(1, "🟡");
         const boardState = board.getBoardState();
         expect(boardState[5][1]).toEqual("🟡");
         expect(boardState[4][1]).toEqual("⚫");
       });
-      it("A red disc is dropped in the fifth column", () => {
+      it("A red disc is dropped in the fifth column and falls all the way down to the lonely canyon called the bottom", () => {
         const board = new Board();
         board.placeDiscInColumn(4, "🔴");
         const boardState = board.getBoardState();
@@ -58,8 +58,8 @@ describe("This suite tests the board of connect 4.", () => {
         expect(boardState[5][5]).toEqual("⚫");
       });
     });
-    describe("When a column is partially filled, the disc should occupy the next available space within the column", () => {
-      it("A red disc drops on top of a yellow disc in the first column", () => {
+    describe("When a column is partially filled, the disc should fall to the next available slot within the column", () => {
+      it("A red disc drops on top of a yellow disc in the first column that was already there", () => {
         const board = new Board();
         board.placeDiscInColumn(0, "🟡");
         board.placeDiscInColumn(0, "🔴");
@@ -68,8 +68,8 @@ describe("This suite tests the board of connect 4.", () => {
         expect(boardState[4][0]).toEqual("🔴");
       });
     });
-    describe("When a column is full, the disc should not be dropped", () => {
-      it("When the third column is full, a red disc should not be dropped in that column", () => {
+    describe("When a column is full a disc will not fit through the opening at the top of the column anymore", () => {
+      it("When the third column is full, a red disc cannot be dropped in that column", () => {
         const board = new Board();
         board.placeDiscInColumn(2, "🔴");
         board.placeDiscInColumn(2, "🔴");
@@ -84,18 +84,16 @@ describe("This suite tests the board of connect 4.", () => {
     });
   });
 
-  // TODO: vervang de double van de game door een double van het Board
   describe("We need to check if the game is won by a vertical victory. To do this we need to extract a column from the board.", () => {
     it("Extract the first column from the board", () => {
       const board = boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo();
       const firstColumn = ["⚫", "⚫", "⚫", "🔴", "🔴", "🔴"];
       expect(board.extractColumn(0)).toEqual(firstColumn);
     });
-    // it("Extract the second column from the board", () => {
-    //   const game = gameWithAlmostVerticalVictory();
-    //   const boardState = game.getBoardState();
-    //   const secondColumn = ["⚫️", "⚫️", "⚫️", "🟡", "🟡", "🟡"];
-    //   expect(boardState.extractColumn(1)).toEqual(secondColumn);
-    // });
+    it("Extract the second column from the board", () => {
+      const board = boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo();
+      const secondColumn = ["⚫", "⚫", "⚫", "🟡", "🟡", "🟡"];
+      expect(board.extractColumn(1)).toEqual(secondColumn);
+    });
   });
 });
