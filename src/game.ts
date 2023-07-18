@@ -47,8 +47,8 @@ class Game {
     this.lastPlayedColumn = column;
   }
 
-  determineVerticalWinner(board, lastPlayedColumn) {
-    return undefined;
+  determineVerticalWinner() {
+    return true;
   }
 }
 

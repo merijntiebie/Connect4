@@ -37,6 +37,12 @@ class Board {
 
     this.placeDiscInColumn(column, disc);
   }
+
+  extractColumn(column: number): string[] {
+    const extractedColumn = this.board.map((row) => row[column]);
+    console.log(extractedColumn);
+    return extractedColumn;
+  }
 }
 
 export { Board };

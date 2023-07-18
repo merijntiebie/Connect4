@@ -1,4 +1,6 @@
 import { Board } from "../../src/board";
+import { gameWithAlmostVerticalVictory } from "./game.doubles";
+import { boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo } from "./board.doubles";
 
 describe("This suite tests the board of connect 4.", () => {
   describe("A new game starts with a fresh board that", () => {
@@ -80,5 +82,20 @@ describe("This suite tests the board of connect 4.", () => {
         }).toThrowError("Column is full");
       });
     });
+  });
+
+  // TODO: vervang de double van de game door een double van het Board
+  describe("We need to check if the game is won by a vertical victory. To do this we need to extract a column from the board.", () => {
+    it("Extract the first column from the board", () => {
+      const board = boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo();
+      const firstColumn = ["⚫", "⚫", "⚫", "🔴", "🔴", "🔴"];
+      expect(board.extractColumn(0)).toEqual(firstColumn);
+    });
+    // it("Extract the second column from the board", () => {
+    //   const game = gameWithAlmostVerticalVictory();
+    //   const boardState = game.getBoardState();
+    //   const secondColumn = ["⚫️", "⚫️", "⚫️", "🟡", "🟡", "🟡"];
+    //   expect(boardState.extractColumn(1)).toEqual(secondColumn);
+    // });
   });
 });

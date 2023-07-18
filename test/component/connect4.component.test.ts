@@ -28,3 +28,21 @@ describe("When a player takes a turn, a disc should be dropped in the column of 
     expect(connect4.getLastPlayedColumn()).toEqual(1);
   });
 });
+
+describe("A player can win the game by connecting 4 discs of the same color in a row.", () => {
+  describe("A vertical vicory occurs", () => {
+    it("When there is a row of four discs of the same color in a column", () => {
+      const game = gameWithAlmostVerticalVictory();
+      game.play(0);
+      const isVerticalWinner = game.determineVerticalWinner();
+      expect(isVerticalWinner).toBe(true);
+    });
+  });
+  describe("There is no vertical victory", () => {
+    it("When there are only 3 discs of the same color in a column", () => {
+      const game = gameWithAlmostVerticalVictory();
+      const isVerticalWinner = game.determineVerticalWinner();
+      expect(isVerticalWinner).toBe(false);
+    });
+  });
+});
