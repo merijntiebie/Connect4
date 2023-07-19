@@ -34,5 +34,7 @@ function yellowWinsVerticallyInSecondColumn() {
   return game;
 }
 
-
-export { gameWithAlmostVerticalVictoryForPlayerOne, yellowWinsVerticallyInSecondColumn };
+export {
+  gameWithAlmostVerticalVictoryForPlayerOne,
+  yellowWinsVerticallyInSecondColumn,
+};

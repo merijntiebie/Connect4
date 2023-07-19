@@ -1,8 +1,5 @@
 import { Game } from "../../src/game";
-import {
-  gameWithAlmostVerticalVictoryForPlayerOne,
-  yellowWinsVerticallyInSecondColumn,
-} from "../doubles/game.doubles";
+import { gameWithAlmostVerticalVictoryForPlayerOne } from "../doubles/game.doubles";
 
 describe("When a player takes a turn, a number of things happen. A turn starts with a player dropping a disc in the column of their choosing, which is then marked as the last-played column. After the disc has fallen to its place we need to check if a victory has occured. If the game is still undecided, the active player should be switched.", () => {
   describe("Consider a new game in which both players take a turn. A win will not be possible yet, because you need to connect 4 discs.", () => {

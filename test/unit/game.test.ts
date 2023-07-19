@@ -1,5 +1,4 @@
 import { Game } from "../../src/game";
-import { gameWithAlmostVerticalVictoryForPlayerOne } from "../doubles/game.doubles";
 
 describe("This suite tests the game functionality of connect4.", () => {
   describe("One of the most important concepts is that players have to take turns.", () => {
@@ -17,5 +16,12 @@ describe("This suite tests the game functionality of connect4.", () => {
       expect(newActivePlayer).toBe(newGame.player1);
     });
   });
-  
+  describe("The game needs to be able to determine whether there are 4 discs in a row", () => {
+    describe("The game needs to be able to determine the longest streak of the discs of the active player in a given line of discs", () => {
+      it("A line of 7 empty cells => 0", () => {
+        const game = new Game();
+        const line = ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"];
+      })
+    });
+  });
 });

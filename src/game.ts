@@ -51,14 +51,15 @@ class Game {
 
   play(column: number) {
     this.letActivePlayerDropADisc(column);
-    this.determineNumberOfDiscsOfActivePlayerInColumn();
-    if (this.determineVerticalWinner() === true) {
+
+    if (this.determineVerticalWinner()) {
       this.winner = this.getActivePlayer();
     }
+
     this.switchActivePlayer();
   }
 
-  determineNumberOfDiscsOfActivePlayerInColumn(): number {
+  determineMaximumStreakOfActivePlayerDiscs(): number {
     const extractedColumn = this.board.extractColumn(this.lastPlayedColumn);
     let numberOfDiscsOfActivePlayer = 0;
 
@@ -72,21 +73,8 @@ class Game {
     return numberOfDiscsOfActivePlayer;
   }
 
-  determineHorizontalVictoryInRow (row: string[]): number {
-    let numberOfDiscsOfActivePlayer = 0;
-
-    for (let i = 0; i < row.length; i += 1) {
-      if (row[i] === this.getActivePlayer().getDiscColor()) {
-        numberOfDiscsOfActivePlayer += 1;
-      } else {
-        numberOfDiscsOfActivePlayer = 0;
-      }
-    }
-    return numberOfDiscsOfActivePlayer;
-  }
-
   determineVerticalWinner() {
-    return this.determineNumberOfDiscsOfActivePlayerInColumn() === 4;
+    return this.determineMaximumStreakOfActivePlayerDiscs() === 4;
   }
 }
 
