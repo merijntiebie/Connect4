@@ -72,6 +72,19 @@ class Game {
     return numberOfDiscsOfActivePlayer;
   }
 
+  determineHorizontalVictoryInRow (row: string[]): number {
+    let numberOfDiscsOfActivePlayer = 0;
+
+    for (let i = 0; i < row.length; i += 1) {
+      if (row[i] === this.getActivePlayer().getDiscColor()) {
+        numberOfDiscsOfActivePlayer += 1;
+      } else {
+        numberOfDiscsOfActivePlayer = 0;
+      }
+    }
+    return numberOfDiscsOfActivePlayer;
+  }
+
   determineVerticalWinner() {
     return this.determineNumberOfDiscsOfActivePlayerInColumn() === 4;
   }

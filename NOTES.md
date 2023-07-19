@@ -29,30 +29,20 @@ Good luck and enjoy!
 ## Units 
 ### Board creation
 ✅ We start with an empty board
-
-
-## A disk should be dropped in a column
-
-### Empty board
+### A disk should be dropped in a column
+#### Empty board
 ✅ red disc in column 0
 ✅ yellow disc in column 1
 ✅ red disc in column 4
-
-### Partially filled column
+#### Partially filled column
 ✅ 1st column, red disc on top of yellow disc
-
-### Column full --> error
+#### Column full --> error
 ✅ Column 4 full --> error
-
-
-### Unknown column --> error
+#### Unknown column --> error
 ✅ Column 8 --> error
-
 ### Extract a column from the board
-
 ✅ extract the first column, that contains 3 red discs
 ✅ extract the 2nd column, that contains 3 yellow discs
-
 # Game class
 ## Units
 
@@ -66,9 +56,10 @@ Good luck and enjoy!
 🔴🟡⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
-
-
-## Components
+### Check if board contains a horizontal victory
+bottom row: ⚫⚫⚫⚫⚫⚫⚫ --> false
+bottom row: 🟡🟡🟡🟡⚫⚫⚫ --> true
+middle row: ⚫⚫🔴🔴🔴🔴⚫ --> true
 ### Playing
 ✅ Player 1 -> column 0 -> disc in column zero | player 2 new active player | column 0 is the last played column
 ✅ Player 2 -> column 1 -> disc in column 1 | player 1 new active player | column 1 is the last played column
