@@ -57,7 +57,7 @@ Good luck and enjoy!
 🔴🟡⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
 ### Check if board contains a horizontal victory
-bottom row: ⚫⚫⚫⚫⚫⚫⚫ --> false
+🙌 bottom row: ⚫⚫⚫⚫⚫⚫⚫ --> false
 bottom row: 🟡🟡🟡🟡⚫⚫⚫ --> true
 middle row: ⚫⚫🔴🔴🔴🔴⚫ --> true
 ### Playing

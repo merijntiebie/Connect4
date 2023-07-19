@@ -17,6 +17,18 @@ function gameWithAlmostVerticalVictoryForPlayerOne() {
   return game;
 }
 
+function gameWithAlmostHorizontalVictoryForPlayerTwo() {
+  const game = new Game();
+  game.play(0);
+  game.play(1);
+  game.play(0);
+  game.play(2);
+  game.play(0);
+  game.play(3);
+  game.play(1);
+  return game;
+}
+
 function yellowWinsVerticallyInSecondColumn() {
   const game = new Game();
   game.play(1);
@@ -34,5 +46,8 @@ function yellowWinsVerticallyInSecondColumn() {
   return game;
 }
 
-
-export { gameWithAlmostVerticalVictoryForPlayerOne, yellowWinsVerticallyInSecondColumn };
+export {
+  gameWithAlmostVerticalVictoryForPlayerOne,
+  gameWithAlmostHorizontalVictoryForPlayerTwo,
+  yellowWinsVerticallyInSecondColumn,
+};

@@ -1,6 +1,7 @@
 import { Game } from "../../src/game";
 import {
   gameWithAlmostVerticalVictoryForPlayerOne,
+  gameWithAlmostHorizontalVictoryForPlayerTwo,
   yellowWinsVerticallyInSecondColumn,
 } from "../doubles/game.doubles";
 
@@ -33,6 +34,15 @@ describe("When a player takes a turn, a number of things happen. A turn starts w
         const game = gameWithAlmostVerticalVictoryForPlayerOne();
         game.play(0);
         expect(game.winner).toBe(game.player1);
+      });
+    });
+  });
+  describe("Another option in which a game can end, is an horizontal victory, which is a victory achieved by getting 4 discs from the same color in a unbroken row.", () => {
+    describe("There are 3 yellow discs sequentially in the bottom row, from column 2 until 4. A horizontal victory then occurs", () => {
+      it("When player two places his disc in column 5, making it 4 yellow discs in a row", () => {
+        const game = gameWithAlmostHorizontalVictoryForPlayerTwo();
+        game.play(4);
+        expect(game.winner).toBe(game.player2);
       });
     });
   });
