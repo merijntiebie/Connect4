@@ -12,6 +12,8 @@ class Game {
 
   lastPlayedColumn: number;
 
+  lastPlayedRow: number;
+
   winner: Player | null;
 
   constructor() {
@@ -20,6 +22,7 @@ class Game {
     this.player2 = new Player("🟡");
     this.activePlayer = this.player1;
     this.lastPlayedColumn = -1;
+    this.lastPlayedRow = -1;
     this.winner = null;
   }
 
@@ -43,14 +46,23 @@ class Game {
     return this.board.getBoardState();
   }
 
+  determineRowOfLastPlayedDisc() {
+    const column = this.lastPlayedColumn;
+    const columnArray = this.board.extractColumn(column);
+    const discColorOfActivePlayer = this.getActivePlayer().getDiscColor();
+    const row = columnArray.indexOf(discColorOfActivePlayer);
+    this.lastPlayedRow = row;
+  }
+
   letActivePlayerDropADisc(column: number) {
     const activePlayer = this.getActivePlayer();
     this.board.dropDisc(column, activePlayer.getDiscColor());
-    this.lastPlayedColumn = column;
   }
 
   play(column: number) {
     this.letActivePlayerDropADisc(column);
+    this.lastPlayedColumn = column;
+    this.determineRowOfLastPlayedDisc();
     this.determineNumberOfDiscsOfActivePlayerInColumn();
     if (this.determineVerticalWinner() === true) {
       this.winner = this.getActivePlayer();

@@ -5,7 +5,12 @@ import {
   yellowWinsVerticallyInSecondColumn,
 } from "../doubles/game.doubles";
 
-describe("When a player takes a turn, a number of things happen. A turn starts with a player dropping a disc in the column of their choosing, which is then marked as the last-played column. After the disc has fallen to its place we need to check if a victory has occured. If the game is still undecided, the active player should be switched.", () => {
+describe(`When a player takes a turn, a number of things happen:
+          - A turn starts with a player dropping a disc in the column of their choosing,
+          - which is then marked as the last-played column. 
+          - The row in which the disc ends up is then marked as the last-played row.
+          - After the disc has fallen to its place we need to check if a victory has occured. 
+          - If the game is still undecided, the active player should be switched.`, () => {
   describe("Consider a new game in which both players take a turn. A win will not be possible yet, because you need to connect 4 discs.", () => {
     const newGame = new Game();
     it("Player 1 plays the 1st column. Player 2 is the new active player.", () => {
@@ -16,6 +21,7 @@ describe("When a player takes a turn, a number of things happen. A turn starts w
       const activePlayer = newGame.getActivePlayer();
       expect(activePlayer.getDiscColor()).toEqual("🟡");
       expect(newGame.getLastPlayedColumn()).toEqual(0);
+      expect(newGame.lastPlayedRow).toEqual(5);
     });
     it("Player 2 then plays the 2nd column. Player 1 is the new active player.", () => {
       const boardStateBeforeSecondTurn = newGame.getBoardState();
@@ -26,6 +32,7 @@ describe("When a player takes a turn, a number of things happen. A turn starts w
       const activePlayer = newGame.getActivePlayer();
       expect(activePlayer.getDiscColor()).toEqual("🔴");
       expect(newGame.getLastPlayedColumn()).toEqual(1);
+      expect(newGame.lastPlayedRow).toEqual(5);
     });
   });
   describe("Now lets jump a little bit into the future. The game has progressed a bit and we are close to getting a vertical victory. Which is a victory achieved by getting 4 discs from the same color in a unbroken row.", () => {
