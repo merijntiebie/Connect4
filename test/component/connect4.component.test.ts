@@ -13,7 +13,10 @@ describe(`When a player takes a turn, a number of things happen:
           - If the game is still undecided, the active player should be switched.`, () => {
   describe("Consider a new game in which both players take a turn. A win will not be possible yet, because you need to connect 4 discs.", () => {
     const newGame = new Game();
-    it("Player 1 plays the 1st column. Player 2 is the new active player.", () => {
+    it(`- Player 1 plays the 1st column. 
+        - Player 2 is the new active player.
+        - Last played column is the 1st column
+        - Last played row is the 6th row`, () => {
       newGame.play(0);
       const boardState = newGame.getBoardState();
       expect(boardState[5][0]).toEqual("🔴");
@@ -23,7 +26,10 @@ describe(`When a player takes a turn, a number of things happen:
       expect(newGame.getLastPlayedColumn()).toEqual(0);
       expect(newGame.lastPlayedRow).toEqual(5);
     });
-    it("Player 2 then plays the 2nd column. Player 1 is the new active player.", () => {
+    it(`- Player 2 then plays the 2nd column. 
+        - Player 1 is the new active player.
+        - Last played column is the second column
+        - Last played row is the 6th row`, () => {
       const boardStateBeforeSecondTurn = newGame.getBoardState();
       expect(boardStateBeforeSecondTurn[5][1]).toEqual("⚫");
       newGame.play(1);

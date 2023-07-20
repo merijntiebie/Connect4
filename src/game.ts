@@ -67,6 +67,9 @@ class Game {
     if (this.determineVerticalWinner() === true) {
       this.winner = this.getActivePlayer();
     }
+    if (this.determineHorizontalVictoryInRow() === true) {
+      this.winner = this.getActivePlayer();
+    }
     this.switchActivePlayer();
   }
 
@@ -84,17 +87,25 @@ class Game {
     return numberOfDiscsOfActivePlayer;
   }
 
-  determineHorizontalVictoryInRow (row: string[]): number {
+  determineHorizontalVictoryInRow(): boolean {
+    const lastPlayedRowNumber = this.lastPlayedRow;
+    const boardState = this.getBoardState();
+    const lastPlayedRow = boardState[lastPlayedRowNumber];
     let numberOfDiscsOfActivePlayer = 0;
+    console.log(boardState.join("\n"));
 
-    for (let i = 0; i < row.length; i += 1) {
-      if (row[i] === this.getActivePlayer().getDiscColor()) {
+    for (
+      let i = 0;
+      i < lastPlayedRow.length && numberOfDiscsOfActivePlayer < 4;
+      i += 1
+    ) {
+      if (lastPlayedRow[i] === this.getActivePlayer().getDiscColor()) {
         numberOfDiscsOfActivePlayer += 1;
       } else {
         numberOfDiscsOfActivePlayer = 0;
       }
     }
-    return numberOfDiscsOfActivePlayer;
+    return numberOfDiscsOfActivePlayer === 4;
   }
 
   determineVerticalWinner() {
