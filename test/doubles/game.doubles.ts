@@ -46,8 +46,21 @@ function yellowWinsVerticallyInSecondColumn() {
   return game;
 }
 
+function gameWithTwoColorsInOneRowAndNoWinner() {
+  const game = new Game();
+  game.play(0);
+  game.play(1);
+  game.play(2);
+  game.play(4);
+  game.play(3);
+  game.play(5);
+  game.play(6);
+  return game;
+}
+
 export {
   gameWithAlmostVerticalVictoryForPlayerOne,
   gameWithAlmostHorizontalVictoryForPlayerTwo,
   yellowWinsVerticallyInSecondColumn,
+  gameWithTwoColorsInOneRowAndNoWinner,
 };

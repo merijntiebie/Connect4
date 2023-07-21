@@ -1,8 +1,7 @@
 import { Game } from "../../src/game";
 import {
   gameWithAlmostVerticalVictoryForPlayerOne,
-  gameWithAlmostHorizontalVictoryForPlayerTwo,
-  yellowWinsVerticallyInSecondColumn,
+  gameWithAlmostHorizontalVictoryForPlayerTwo
 } from "../doubles/game.doubles";
 
 describe(`When a player takes a turn, a number of things happen:
@@ -21,9 +20,8 @@ describe(`When a player takes a turn, a number of things happen:
       const boardState = newGame.getBoardState();
       expect(boardState[5][0]).toEqual("🔴");
       expect(boardState[4][0]).toEqual("⚫");
-      const activePlayer = newGame.getActivePlayer();
-      expect(activePlayer.getDiscColor()).toEqual("🟡");
-      expect(newGame.getLastPlayedColumn()).toEqual(0);
+      expect(newGame.activePlayer.getDiscColor()).toEqual("🟡");
+      expect(newGame.lastPlayedColumn).toEqual(0);
       expect(newGame.lastPlayedRow).toEqual(5);
     });
     it(`- Player 2 then plays the 2nd column. 
@@ -35,9 +33,8 @@ describe(`When a player takes a turn, a number of things happen:
       newGame.play(1);
       const boardStateAfterSecondTurn = newGame.getBoardState();
       expect(boardStateAfterSecondTurn[5][1]).toEqual("🟡");
-      const activePlayer = newGame.getActivePlayer();
-      expect(activePlayer.getDiscColor()).toEqual("🔴");
-      expect(newGame.getLastPlayedColumn()).toEqual(1);
+      expect(newGame.activePlayer.getDiscColor()).toEqual("🔴");
+      expect(newGame.lastPlayedColumn).toEqual(1);
       expect(newGame.lastPlayedRow).toEqual(5);
     });
   });

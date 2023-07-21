@@ -46,6 +46,14 @@ Good luck and enjoy!
 # Game class
 ## Units
 
+CheckIfPlayerWinsHorizontally:
+✅ bottom row: 🔴🟡🟡🟡🟡⚫⚫ --> true
+✅ fifth row row:🔴🔴⚫⚫⚫⚫⚫ --> false
+✅ fourth row: ⚫⚫⚫⚫⚫⚫⚫ --> false
+✅ bottom row and red is active player: 🔴🟡🟡🟡🟡⚫⚫ --> false
+✅ bottom row: 🔴🟡🔴🔴🟡🟡🔴 --> false
+✅ 🔴🟡🟡🟡🟡🟡⚫ --> true
+
 ### In which row was the last disc dropped?
 ✅ Empty board, column 0 --> 5
 ✅ Then again column 0 --> 4
@@ -64,6 +72,8 @@ Good luck and enjoy!
 ### Check if board contains a horizontal victory
 🙌 bottom row: 🔴🟡🟡🟡⚫⚫⚫ --> false
 ✅ bottom row: 🔴🟡🟡🟡🟡⚫⚫ --> true
+
+
 ### Playing
 ✅ Player 1 -> column 0 -> disc in column zero | player 2 new active player | column 0 is the last played column | row 5 is the last played row
 ✅ Player 2 -> column 1 -> disc in column 1 | player 1 new active player | column 1 is the last played column | row 5 is the last played row

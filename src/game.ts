@@ -30,10 +30,6 @@ class Game {
     return this.activePlayer;
   }
 
-  getLastPlayedColumn() {
-    return this.lastPlayedColumn;
-  }
-
   switchActivePlayer() {
     if (this.activePlayer === this.player1) {
       this.activePlayer = this.player2;
@@ -49,57 +45,40 @@ class Game {
   determineRowOfLastPlayedDisc() {
     const column = this.lastPlayedColumn;
     const columnArray = this.board.extractColumn(column);
-    const discColorOfActivePlayer = this.getActivePlayer().getDiscColor();
+    const discColorOfActivePlayer = this.activePlayer.getDiscColor();
     const row = columnArray.indexOf(discColorOfActivePlayer);
     this.lastPlayedRow = row;
   }
 
   letActivePlayerDropADisc(column: number) {
-    const activePlayer = this.getActivePlayer();
-    this.board.dropDisc(column, activePlayer.getDiscColor());
+    this.board.dropDisc(column, this.activePlayer.getDiscColor());
   }
 
   play(column: number) {
     this.letActivePlayerDropADisc(column);
     this.lastPlayedColumn = column;
     this.determineRowOfLastPlayedDisc();
-    this.determineNumberOfDiscsOfActivePlayerInColumn();
-    if (this.determineVerticalWinner() === true) {
-      this.winner = this.getActivePlayer();
+    if (this.checkIfPlayerWinsVertically() === true) {
+      this.winner = this.activePlayer;
     }
-    if (this.determineHorizontalVictoryInRow() === true) {
-      this.winner = this.getActivePlayer();
+    if (this.checkIfPlayerWinsHorizontally() === true) {
+      this.winner = this.activePlayer;
     }
     this.switchActivePlayer();
   }
 
-  determineNumberOfDiscsOfActivePlayerInColumn(): number {
-    const extractedColumn = this.board.extractColumn(this.lastPlayedColumn);
-    let numberOfDiscsOfActivePlayer = 0;
-
-    for (let i = 0; i < extractedColumn.length; i += 1) {
-      if (extractedColumn[i] === this.getActivePlayer().getDiscColor()) {
-        numberOfDiscsOfActivePlayer += 1;
-      } else {
-        numberOfDiscsOfActivePlayer = 0;
-      }
-    }
-    return numberOfDiscsOfActivePlayer;
-  }
-
-  determineHorizontalVictoryInRow(): boolean {
+  checkIfPlayerWinsHorizontally(): boolean {
     const lastPlayedRowNumber = this.lastPlayedRow;
     const boardState = this.getBoardState();
     const lastPlayedRow = boardState[lastPlayedRowNumber];
     let numberOfDiscsOfActivePlayer = 0;
-    console.log(boardState.join("\n"));
 
     for (
       let i = 0;
       i < lastPlayedRow.length && numberOfDiscsOfActivePlayer < 4;
       i += 1
     ) {
-      if (lastPlayedRow[i] === this.getActivePlayer().getDiscColor()) {
+      if (lastPlayedRow[i] === this.activePlayer.getDiscColor()) {
         numberOfDiscsOfActivePlayer += 1;
       } else {
         numberOfDiscsOfActivePlayer = 0;
@@ -108,8 +87,18 @@ class Game {
     return numberOfDiscsOfActivePlayer === 4;
   }
 
-  determineVerticalWinner() {
-    return this.determineNumberOfDiscsOfActivePlayerInColumn() === 4;
+  checkIfPlayerWinsVertically(): boolean {
+    const extractedColumn = this.board.extractColumn(this.lastPlayedColumn);
+    let numberOfDiscsOfActivePlayer = 0;
+
+    for (let i = 0; i < extractedColumn.length; i += 1) {
+      if (extractedColumn[i] === this.activePlayer.getDiscColor()) {
+        numberOfDiscsOfActivePlayer += 1;
+      } else {
+        numberOfDiscsOfActivePlayer = 0;
+      }
+    }
+    return numberOfDiscsOfActivePlayer === 4;
   }
 }
 
