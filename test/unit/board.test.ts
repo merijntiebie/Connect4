@@ -1,6 +1,5 @@
 import { Board } from "../../src/board";
-import { gameWithAlmostVerticalVictoryForPlayerOne } from "../doubles/game.doubles";
-import { boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo } from "./board.doubles";
+import { boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo } from "../doubles/board.doubles";
 
 describe("This unit test suite tests the functionality of the board of a game called Connect 4.", () => {
   describe("A new game starts with a fresh board that", () => {

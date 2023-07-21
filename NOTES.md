@@ -58,11 +58,12 @@ Good luck and enjoy!
 🔴🟡⚫⚫⚫⚫⚫
 
 
-### Check if board contains a horizontal victory
-bottom row: ⚫⚫⚫⚫⚫⚫⚫ --> false
-bottom row: 🟡🟡🟡🟡⚫⚫⚫ --> true
-middle row: ⚫⚫🔴🔴🔴🔴⚫ --> true
-middle row: ⚫🟡🔴🔴🔴🔴🟡 --> true
+### Determine the longest streak of active player discs in a line of discs
+⚫⚫⚫⚫⚫⚫⚫ -> 0 ✅
+⚫⚫⚫🔴🔴🔴🔴 -> 4 ✅
+⚫⚫🔴🟡🔴🔴🔴 -> 3 ✅
+🔴🔴🔴🟡⚫🔴🔴 -> 3 ✅
+
 ### Playing
 ✅ Player 1 -> column 0 -> disc in column zero | player 2 new active player | column 0 is the last played column
 ✅ Player 2 -> column 1 -> disc in column 1 | player 1 new active player | column 1 is the last played column

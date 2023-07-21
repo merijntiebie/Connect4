@@ -59,22 +59,33 @@ class Game {
     this.switchActivePlayer();
   }
 
-  determineMaximumStreakOfActivePlayerDiscs(): number {
-    const extractedColumn = this.board.extractColumn(this.lastPlayedColumn);
-    let numberOfDiscsOfActivePlayer = 0;
+  determineMaximumStreakOfActivePlayerDiscs(line: string[]): number {
+    let currentStreak = 0;
+    let longestStreak = 0;
 
-    for (let i = 0; i < extractedColumn.length; i += 1) {
-      if (extractedColumn[i] === this.getActivePlayer().getDiscColor()) {
-        numberOfDiscsOfActivePlayer += 1;
+    const activePlayerDisc = this.activePlayer.getDiscColor();
+
+    line.forEach((cell) => {
+      if (cell === activePlayerDisc) {
+        currentStreak += 1;
+
+        if (currentStreak > longestStreak) {
+          longestStreak = currentStreak;
+        }
       } else {
-        numberOfDiscsOfActivePlayer = 0;
+        currentStreak = 0;
       }
-    }
-    return numberOfDiscsOfActivePlayer;
+    });
+
+    return longestStreak;
   }
 
   determineVerticalWinner() {
-    return this.determineMaximumStreakOfActivePlayerDiscs() === 4;
+    const lastPlayedColumn = this.board.extractColumn(this.lastPlayedColumn);
+
+    return (
+      this.determineMaximumStreakOfActivePlayerDiscs(lastPlayedColumn) === 4
+    );
   }
 }
 

@@ -21,7 +21,27 @@ describe("This suite tests the game functionality of connect4.", () => {
       it("A line of 7 empty cells => 0", () => {
         const game = new Game();
         const line = ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"];
-      })
+
+        expect(game.determineMaximumStreakOfActivePlayerDiscs(line)).toEqual(0);
+      });
+      it("A line of 4 red discs of the active player => 4", () => {
+        const game = new Game();
+        const line = ["⚫", "⚫", "⚫", "🔴", "🔴", "🔴", "🔴"];
+
+        expect(game.determineMaximumStreakOfActivePlayerDiscs(line)).toEqual(4);
+      });
+      it("A line of 1 red discs, 1 yellow disc, and 3 red discs => 3", () => {
+        const game = new Game();
+        const line = ["⚫", "⚫", "🔴", "🟡", "🔴", "🔴", "🔴"];
+
+        expect(game.determineMaximumStreakOfActivePlayerDiscs(line)).toEqual(3);
+      });
+      it("A line of 3 red discs, 1 yellow disc, 1 empty cell and 2 red discs => 3", () => {
+        const game = new Game();
+        const line = ["🔴", "🔴", "🔴", "🟡", "⚫", "🔴", "🔴"];
+
+        expect(game.determineMaximumStreakOfActivePlayerDiscs(line)).toEqual(3);
+      });
     });
   });
 });
