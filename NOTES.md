@@ -48,7 +48,7 @@ Good luck and enjoy!
 
 ### CheckIfPlayerWinsHorizontally:
 ✅ bottom row: 🔴🟡🟡🟡🟡⚫⚫ --> true
-✅ fifth row row:🔴🔴⚫⚫⚫⚫⚫ --> false
+✅ fifth row:🔴🔴⚫⚫⚫⚫⚫ --> false
 ✅ fourth row: ⚫⚫⚫⚫⚫⚫⚫ --> false
 ✅ bottom row and red is active player: 🔴🟡🟡🟡🟡⚫⚫ --> false
 ✅ bottom row: 🔴🟡🔴🔴🟡🟡🔴 --> false
@@ -58,8 +58,8 @@ Good luck and enjoy!
 ✅ first column: ⚫⚫⚫🔴🔴🔴 --> false
 ✅ first column: ⚫⚫🔴🔴🔴🔴 --> true
 ✅ second column: ⚫⚫⚫🟡🟡🟡 --> false
-🙌 second column: ⚫⚫🟡🟡🟡🟡 --> true
-
+✅ second column: ⚫⚫🟡🟡🟡🟡 --> true
+✅ second column: ⚫🟡🟡🔴🟡🟡 --> false
 ### In which row was the last disc dropped?
 ✅ Empty board, column 0 --> 5
 ✅ Then again column 0 --> 4

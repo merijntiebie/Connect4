@@ -64,10 +64,24 @@ function gameWithTwoColorsInOneRowAndNoWinner() {
   return game;
 }
 
+function gameWithFourYellowDiscsInSecondColumnInterruptedByARedDisc() {
+  const game = new Game();
+  game.play(0);
+  game.play(1);
+  game.play(0);
+  game.play(1);
+  game.play(1);
+  game.play(1);
+  game.play(0);
+  game.letActivePlayerDropADisc(1);
+  game.lastPlayedColumn = 1;
+}
+
 export {
   gameWithAlmostVerticalVictoryForPlayerOne,
   gameWithAlmostHorizontalVictoryForPlayerTwo,
   yellowWinsVerticallyInSecondColumn,
   gameWithTwoColorsInOneRowAndNoWinner,
   gameWithAlmostVerticalVictoryForPlayerTwo,
+  gameWithFourYellowDiscsInSecondColumnInterruptedByARedDisc,
 };
