@@ -1,5 +1,5 @@
 import { Game } from "../../src/game";
-import { gameWithAlmostHorizontalVictoryForPlayerTwo } from "../doubles/game.doubles";
+import { gameWithAlmostHorizontalVictoryForPlayerTwo, gameWithAlmostVerticalVictoryForPlayerOne, gameWithAlmostVerticalVictoryForPlayerTwo } from "../doubles/game.doubles";
 import { gameWithTwoColorsInOneRowAndNoWinner } from "../doubles/game.doubles";
 import { gameWherePlayerOneJustDroppedADiscInColumnZero } from "./game.doubles";
 
@@ -42,7 +42,7 @@ describe("newGame suite tests the game functionality of connect4.", () => {
   });
   describe(`
   After dropping a disc, we need to check if the game has a winner`, () => {
-    describe("We first check if the active player has achieved a horizontal victory", () => {
+    describe("A player can achieve a victory by having four of his own discs in a row, and with row we mean horizontal, duh.", () => {
       it("🔴⚫⚫⚫⚫⚫⚫ | active player 🔴 -> no winner", () => {
         const newGame = gameWithAlmostHorizontalVictoryForPlayerTwo();
         newGame.activePlayer = newGame.player1;
@@ -53,12 +53,6 @@ describe("newGame suite tests the game functionality of connect4.", () => {
         const newGame = gameWithAlmostHorizontalVictoryForPlayerTwo();
         newGame.activePlayer = newGame.player1;
         newGame.lastPlayedRow = 4;
-        expect(newGame.checkIfPlayerWinsHorizontally()).toBe(false);
-      });
-      it("🔴🟡🟡🟡🟡⚫⚫ | active player 🔴 -> no winner", () => {
-        const newGame = gameWithAlmostHorizontalVictoryForPlayerTwo();
-        newGame.activePlayer = newGame.player1;
-        newGame.lastPlayedRow = 5;
         expect(newGame.checkIfPlayerWinsHorizontally()).toBe(false);
       });
       it("🔴🟡🔴🔴🟡🟡🔴 | active player 🔴 -> no winner", () => {
@@ -80,6 +74,30 @@ describe("newGame suite tests the game functionality of connect4.", () => {
         newGame.letActivePlayerDropADisc(4);
         newGame.lastPlayedRow = 5;
         expect(newGame.checkIfPlayerWinsHorizontally()).toBe(true);
+      });
+    });
+    describe("A player can achieve a victory by having four of his own discs in a column, and with column we mean vertical, duh.", () => {
+      it("⚫⚫⚫🔴🔴🔴 | active player 🔴 -> no winner", () => {
+        const newGame = gameWithAlmostVerticalVictoryForPlayerOne();
+        expect(newGame.checkIfPlayerWinsVertically()).toBe(false);
+      });
+      it("⚫⚫🔴🔴🔴🔴 | active player 🔴 -> we have a winner!", () => {
+        const newGame = gameWithAlmostVerticalVictoryForPlayerOne();
+        newGame.letActivePlayerDropADisc(0);
+        newGame.lastPlayedColumn = 0;
+        expect(newGame.checkIfPlayerWinsVertically()).toBe(true);
+      });
+      it("⚫⚫⚫🟡🟡🟡 | active player 🟡 -> no winner", () => {
+        const newGame = gameWithAlmostVerticalVictoryForPlayerTwo();
+        expect(newGame.checkIfPlayerWinsVertically()).toBe(false);
+      });
+      it("⚫⚫🟡🟡🟡🟡 | active player 🟡 -> player one has won the game!!!", () => {
+        const newGame = gameWithAlmostVerticalVictoryForPlayerTwo();
+        newGame.switchActivePlayer();
+        newGame.play(4);
+        newGame.letActivePlayerDropADisc(1);
+        newGame.lastPlayedColumn = 1;
+        expect(newGame.checkIfPlayerWinsVertically()).toBe(true);
       });
     });
   });

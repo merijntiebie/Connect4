@@ -2,18 +2,24 @@ import { Game } from "../../src/game";
 
 function gameWithAlmostVerticalVictoryForPlayerOne() {
   const game = new Game();
-  game.letActivePlayerDropADisc(0);
-  game.switchActivePlayer();
+  game.play(0);
+  game.play(1);
+  game.play(0);
+  game.play(1);
+  game.play(0);
+  game.play(1);
+  return game;
+}
+
+function gameWithAlmostVerticalVictoryForPlayerTwo() {
+  const game = new Game();
+  game.play(0);
+  game.play(1);
+  game.play(0);
+  game.play(1);
+  game.play(0);
   game.letActivePlayerDropADisc(1);
-  game.switchActivePlayer();
-  game.letActivePlayerDropADisc(0);
-  game.switchActivePlayer();
-  game.letActivePlayerDropADisc(1);
-  game.switchActivePlayer();
-  game.letActivePlayerDropADisc(0);
-  game.switchActivePlayer();
-  game.letActivePlayerDropADisc(1);
-  game.switchActivePlayer();
+  game.lastPlayedColumn = 1;
   return game;
 }
 
@@ -63,4 +69,5 @@ export {
   gameWithAlmostHorizontalVictoryForPlayerTwo,
   yellowWinsVerticallyInSecondColumn,
   gameWithTwoColorsInOneRowAndNoWinner,
+  gameWithAlmostVerticalVictoryForPlayerTwo,
 };
