@@ -42,6 +42,10 @@ class Board {
     const extractedColumn = this.board.map((row) => row[column]);
     return extractedColumn;
   }
+
+  extractRow(row: number): string[] {
+    return this.board[row];
+  }
 }
 
 export { Board };

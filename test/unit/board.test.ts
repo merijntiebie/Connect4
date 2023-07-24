@@ -1,5 +1,8 @@
 import { Board } from "../../src/board";
-import { boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo } from "../doubles/board.doubles";
+import {
+  boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo,
+  testBoardForExtractingRow,
+} from "../doubles/board.doubles";
 
 describe("This unit test suite tests the functionality of the board of a game called Connect 4.", () => {
   describe("A new game starts with a fresh board that", () => {
@@ -85,14 +88,34 @@ describe("This unit test suite tests the functionality of the board of a game ca
 
   describe("We need to check if the game is won by a vertical victory. To do this we need to extract a column from the board.", () => {
     it("Extract the first column from the board", () => {
-      const board = boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo();
+      const board =
+        boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo();
       const firstColumn = ["⚫", "⚫", "⚫", "🔴", "🔴", "🔴"];
       expect(board.extractColumn(0)).toEqual(firstColumn);
     });
     it("Extract the second column from the board", () => {
-      const board = boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo();
+      const board =
+        boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo();
       const secondColumn = ["⚫", "⚫", "⚫", "🟡", "🟡", "🟡"];
       expect(board.extractColumn(1)).toEqual(secondColumn);
+    });
+  });
+
+  describe("We need to check if the game is won by a horizontal victory. To do this we need to extract a row from the board.", () => {
+    it("Extract the bottom row from the board", () => {
+      const board = testBoardForExtractingRow();
+      const bottomRow = ["⚫", "🔴", "🟡", "⚫", "🔴", "🟡", "🔴"];
+      expect(board.extractRow(5)).toEqual(bottomRow);
+    });
+    it("Extract row 4 from the board", () => {
+      const board = testBoardForExtractingRow();
+      const row4 = ["⚫", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"];
+      expect(board.extractRow(4)).toEqual(row4);
+    });
+    it("Extract row 1 from the board", () => {
+      const board = testBoardForExtractingRow();
+      const row1 = ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"];
+      expect(board.extractRow(1)).toEqual(row1);
     });
   });
 });

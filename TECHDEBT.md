@@ -1,1 +1,2 @@
-TODO The Game class contains a number of functions that do not have unit tests, yet are units. 
+TODO give logic name
+TODO refactor determineHorizonalWinner function

@@ -1,6 +1,6 @@
 import { Board } from "../../src/board";
 
-function boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo() {
+export function boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo() {
   const board = new Board();
   board.placeDiscInColumn(0, "🔴");
   board.placeDiscInColumn(0, "🔴");
@@ -11,4 +11,13 @@ function boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo() {
   return board;
 }
 
-export { boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo };
+export function testBoardForExtractingRow() {
+  const board = new Board();
+  board.placeDiscInColumn(1,"🔴");
+  board.placeDiscInColumn(4, "🔴");
+  board.placeDiscInColumn(6, "🔴");
+  board.placeDiscInColumn(1, "🟡");
+  board.placeDiscInColumn(2, "🟡");
+  board.placeDiscInColumn(5, "🟡");
+  return board;
+}

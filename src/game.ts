@@ -52,7 +52,7 @@ class Game {
   play(column: number) {
     this.letActivePlayerDropADisc(column);
 
-    if (this.determineVerticalWinner()) {
+    if (this.determineVerticalWinner() || this.determineHorizontalWinner()) {
       this.winner = this.getActivePlayer();
     }
 
@@ -85,6 +85,18 @@ class Game {
 
     return (
       this.determineMaximumStreakOfActivePlayerDiscs(lastPlayedColumn) === 4
+    );
+  }
+
+  determineHorizontalWinner() {
+    const lastPlayedColumn = this.board.extractColumn(this.lastPlayedColumn);
+
+    const lastPlayedRowIndex = lastPlayedColumn.findIndex((cell) => cell !== "⚫");
+    
+    const lastPlayedRow = this.board.extractRow(lastPlayedRowIndex);
+
+    return (
+      this.determineMaximumStreakOfActivePlayerDiscs(lastPlayedRow) === 4
     );
   }
 }

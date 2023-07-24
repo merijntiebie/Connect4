@@ -43,8 +43,20 @@ Good luck and enjoy!
 ### Extract a column from the board
 ✅ extract the first column, that contains 3 red discs
 ✅ extract the 2nd column, that contains 3 yellow discs
+
+### Extract a row from a board
+ ✅ extract the bottom row, that contains 3 red discs and 2 yellow
+ ✅ extract the row 4, that contains 1 yellow discs
+ ✅ extract the first row, that contains no player discs
 # Game class
 ## Units
+
+### Determine the longest streak of active player discs in a line of discs
+
+⚫⚫⚫⚫⚫⚫⚫ -> 0 ✅
+⚫⚫⚫🔴🔴🔴🔴 -> 4 ✅
+⚫⚫🔴🟡🔴🔴🔴 -> 3 ✅
+🔴🔴🔴🟡⚫🔴🔴 -> 3 ✅
 
 ## Components
 
@@ -57,12 +69,16 @@ Good luck and enjoy!
 🔴🟡⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
 
+### Check if board contains a horizontal victory
 
-### Determine the longest streak of active player discs in a line of discs
-⚫⚫⚫⚫⚫⚫⚫ -> 0 ✅
-⚫⚫⚫🔴🔴🔴🔴 -> 4 ✅
-⚫⚫🔴🟡🔴🔴🔴 -> 3 ✅
-🔴🔴🔴🟡⚫🔴🔴 -> 3 ✅
+ ✅ Player one just placed his disc in the 1st colum --> victory
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫🟡🟡🟡⚫⚫⚫
+🔴🔴🔴🔴⚫⚫⚫
+
 
 ### Playing
 ✅ Player 1 -> column 0 -> disc in column zero | player 2 new active player | column 0 is the last played column

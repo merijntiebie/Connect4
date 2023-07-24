@@ -34,7 +34,25 @@ function yellowWinsVerticallyInSecondColumn() {
   return game;
 }
 
+function gameWithAlmostHorizonalVictoryForPlayerOne() {
+  const game = new Game();
+  game.letActivePlayerDropADisc(1);
+  game.switchActivePlayer();
+  game.letActivePlayerDropADisc(1);
+  game.switchActivePlayer();
+  game.letActivePlayerDropADisc(2);
+  game.switchActivePlayer();
+  game.letActivePlayerDropADisc(2);
+  game.switchActivePlayer();
+  game.letActivePlayerDropADisc(3);
+  game.switchActivePlayer();
+  game.letActivePlayerDropADisc(3);
+  game.switchActivePlayer();
+  return game;
+}
+
 export {
   gameWithAlmostVerticalVictoryForPlayerOne,
   yellowWinsVerticallyInSecondColumn,
+  gameWithAlmostHorizonalVictoryForPlayerOne,
 };
