@@ -1,7 +1,8 @@
 import { Game } from "../../src/game";
 import {
   gameWithAlmostVerticalVictoryForPlayerOne,
-  gameWithAlmostHorizontalVictoryForPlayerTwo
+  gameWithAlmostHorizontalVictoryForPlayerTwo,
+  gameWithAlmostDiagonalVictoryForPlayerTwo,
 } from "../doubles/game.doubles";
 
 describe(`When a player takes a turn, a number of things happen:
@@ -52,6 +53,21 @@ describe(`When a player takes a turn, a number of things happen:
       it("When player two places his disc in column 5, making it 4 yellow discs in a row", () => {
         const game = gameWithAlmostHorizontalVictoryForPlayerTwo();
         game.play(4);
+        expect(game.winner).toBe(game.player2);
+      });
+    });
+  });
+  describe("A game can also end because of a diagonal victory, which is a victory achieved by getting 4 discs from the same color in a unbroken diagonal.", () => {
+    describe(`In a board that looks as follows:
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫🔴🟡🔴⚫⚫⚫
+    ⚫🔴🟡🟡🔴⚫⚫
+    🔴🟡🟡🔴🟡🔴⚫`, () => {
+      it("When player two places his disc in column 1, making it 4 yellow discs in a diagonal", () => {
+        const game = gameWithAlmostDiagonalVictoryForPlayerTwo();
+        game.play(1);
         expect(game.winner).toBe(game.player2);
       });
     });

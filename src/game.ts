@@ -64,6 +64,9 @@ class Game {
     if (this.checkIfPlayerWinsHorizontally() === true) {
       this.winner = this.activePlayer;
     }
+    if (this.checkIfPlayerWinsDiagonallyTopLeftToBottomRight() === true) {
+      this.winner = this.activePlayer;
+    }
     this.switchActivePlayer();
   }
 
@@ -96,6 +99,26 @@ class Game {
         numberOfDiscsOfActivePlayer += 1;
       } else {
         numberOfDiscsOfActivePlayer = 0;
+      }
+    }
+    return numberOfDiscsOfActivePlayer === 4;
+  }
+
+  checkIfPlayerWinsDiagonallyTopLeftToBottomRight(): boolean {
+    const boardState = this.getBoardState();
+    let numberOfDiscsOfActivePlayer = 0;
+    let onlyDiscsOfSameColorFound = true;
+    let column = this.lastPlayedColumn;
+    for (
+      let row = this.lastPlayedRow;
+      row < boardState.length && onlyDiscsOfSameColorFound === true;
+      row += 1
+    ) {
+      if (boardState[row][column] === this.activePlayer.getDiscColor()) {
+        numberOfDiscsOfActivePlayer += 1;
+        column += 1;
+      } else {
+        onlyDiscsOfSameColorFound = false;
       }
     }
     return numberOfDiscsOfActivePlayer === 4;

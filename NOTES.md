@@ -76,9 +76,17 @@ Good luck and enjoy!
 🔴🟡⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
 ### Check if board contains a horizontal victory
-🙌 bottom row: 🔴🟡🟡🟡⚫⚫⚫ --> false
+✅ bottom row: 🔴🟡🟡🟡⚫⚫⚫ --> false
 ✅ bottom row: 🔴🟡🟡🟡🟡⚫⚫ --> true
 
+### Check if board contains a vertical victory
+🙌 Player two just placed his disc in the 1st colum --> victory
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫🟡⚫⚫⚫⚫⚫
+⚫🔴🟡🔴⚫⚫⚫
+⚫🔴🟡🟡🔴⚫⚫
+🔴🟡🟡🔴🟡🔴⚫
 
 ### Playing
 ✅ Player 1 -> column 0 -> disc in column zero | player 2 new active player | column 0 is the last played column | row 5 is the last played row

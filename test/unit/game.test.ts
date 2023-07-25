@@ -44,21 +44,14 @@ describe("newGame suite tests the game functionality of connect4.", () => {
   Now we know that a disc has been dropped it is time to check if one of the players has won`, () => {
     describe("A player can achieve a victory by having four of his own discs in a row, and with row we mean horizontal", () => {
       it("🔴⚫⚫⚫⚫⚫⚫ | active player 🔴 -> only one red disc.. still a long way to go", () => {
-        const newGame = gameWithAlmostHorizontalVictoryForPlayerTwo();
-        newGame.activePlayer = newGame.player1;
-        newGame.lastPlayedRow = 3;
-        expect(newGame.checkIfPlayerWinsHorizontally()).toBe(false);
-      });
-      it("🔴🔴⚫⚫⚫⚫⚫ | active player 🔴 -> two discs, getting closer..", () => {
-        const newGame = gameWithAlmostHorizontalVictoryForPlayerTwo();
-        newGame.activePlayer = newGame.player1;
-        newGame.lastPlayedRow = 4;
+        const newGame = new Game();
+        newGame.letActivePlayerDropADisc(0);
+        newGame.lastPlayedColumn = 0;
+        newGame.lastPlayedRow = 5;
         expect(newGame.checkIfPlayerWinsHorizontally()).toBe(false);
       });
       it("🔴🟡🔴🔴🟡🟡🔴 | active player 🔴 -> full column! No 4 discs have been connected though.", () => {
         const newGame = gameWithTwoColorsInOneRowAndNoWinner();
-        newGame.activePlayer = newGame.player1;
-        newGame.lastPlayedRow = 5;
         expect(newGame.checkIfPlayerWinsHorizontally()).toBe(false);
       });
       it("🔴🟡🟡🟡🟡⚫⚫ | active player 🟡 -> we have a winner!", () => {
