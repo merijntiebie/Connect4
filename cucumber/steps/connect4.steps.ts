@@ -123,7 +123,7 @@ defineFeature(feature, (test) => {
 
     then(/^the board has 4 yellow discs in row 5$/, () => {
       console.log(game.getBoardState().join("\n"));
-      
+
       expect(game.getBoardState()).toEqual([
         ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
         ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
@@ -143,59 +143,97 @@ defineFeature(feature, (test) => {
     });
   });
 
-  // test("Player 2 wins with a diagonal victory after 14 moves", ({
-  //   given,
-  //   and,
-  //   when,
-  //   then,
-  // }) => {
-  //   let board: Connect4;
+  test("Player 2 wins with a diagonal victory after 14 moves", ({
+    given,
+    and,
+    when,
+    then,
+  }) => {
+    let game: Game;
 
-  //   given(/^2 players play a board of Connect4$/, () => {
-  //     board = new Connect4();
-  //   });
+    given(/^2 players play a game of Connect4$/, () => {
+      game = new Game();
+    });
 
-  //   and(/^player (\d+) plays with the red discs$/, (player) => {
-  //     board.setPlayerDisk(parseInt(player), "🔴");
-  //   });
+    and(/^player 1 plays with the red discs$/, () => {
+      expect(game.player1.getDiscColor()).toEqual("🔴");
+    });
 
-  //   and(/^player (\d+) plays with the yellow discs$/, (player) => {
-  //     board.setPlayerDisk(parseInt(player), "🟡");
-  //   });
+    and(/^player 2 plays with the yellow discs$/, () => {
+      expect(game.player2.getDiscColor()).toEqual("🟡");
+    });
 
-  //   and(/^player 1 has just put his disc in column 3$/, () => {
-  //     board.lastPlayer = 1;
-  //     board.lastCoordinate = [3, 3];
-  //   });
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
 
-  //   and("the current board looks like", () => {
-  //     board.board = [
-  //       ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-  //       ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-  //       ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-  //       ["⚫", "🔴", "🟡", "🔴", "⚫", "⚫", "⚫"],
-  //       ["⚫", "🔴", "🟡", "🟡", "🔴", "⚫", "⚫"],
-  //       ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
-  //     ];
-  //   });
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
 
-  //   when(/^player 2 puts a disc in column 1$/, () => {
-  //     board.play(2, 1);
-  //   });
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
 
-  //   then("the board looks like", () => {
-  //     expect(board.board).toEqual([
-  //       ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-  //       ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-  //       ["⚫", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
-  //       ["⚫", "🔴", "🟡", "🔴", "⚫", "⚫", "⚫"],
-  //       ["⚫", "🔴", "🟡", "🟡", "🔴", "⚫", "⚫"],
-  //       ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
-  //     ]);
-  //   });
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
 
-  //   and(/^player 2 wins with a diagonal victory$/, () => {
-  //     expect(board.getWinner()).toEqual(2);
-  //   });
-  // });
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    when(/^player 2 puts a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    then(/^the board looks like$/, () => {
+      console.log(game.getBoardState().join("\n"));
+
+      expect(game.getBoardState()).toEqual([
+        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["⚫", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["⚫", "🔴", "🟡", "🔴", "⚫", "⚫", "⚫"],
+        ["⚫", "🔴", "🟡", "🟡", "🔴", "⚫", "⚫"],
+        ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
+      ]);
+    });
+
+    and(/^player 2 wins with a diagonal victory$/, () => {
+      expect(game.winner).toBe(game.player2);
+    });
+  });
 });

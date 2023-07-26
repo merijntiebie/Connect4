@@ -1,6 +1,7 @@
 import { Board } from "../../src/board";
 import {
   boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo,
+  testBoardForExtractingDiagonal,
   testBoardForExtractingRow,
 } from "../doubles/board.doubles";
 
@@ -116,6 +117,24 @@ describe("This unit test suite tests the functionality of the board of a game ca
       const board = testBoardForExtractingRow();
       const row1 = ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"];
       expect(board.extractRow(1)).toEqual(row1);
+    });
+  });
+
+  describe("We need to check if the game is won by a diagonal victory. To do this we need to extract the first diagonal (top-left to bottom right).", () => {
+    it("Extract the first diagonal from a board", () => {
+      const board = testBoardForExtractingDiagonal();
+      const row = 5;
+      const column = 0;
+      const firstDiagonal = ["🔴"];
+      expect(board.extractTopLeftDiagonal(row, column)).toEqual(firstDiagonal);
+    });
+
+    it("Extract the third diagonal from a board", () => {
+      const board = testBoardForExtractingDiagonal();
+      const row = 4;
+      const column = 1;
+      const thirdDiagonal = ["⚫", "🔴", "🟡"];
+      expect(board.extractTopLeftDiagonal(row, column)).toEqual(thirdDiagonal);
     });
   });
 });

@@ -21,3 +21,22 @@ export function testBoardForExtractingRow() {
   board.placeDiscInColumn(5, "🟡");
   return board;
 }
+
+export function testBoardForExtractingDiagonal() {
+  const board = new Board();
+  board.placeDiscInColumn(0, "🔴");
+  board.placeDiscInColumn(1, "🟡");
+  board.placeDiscInColumn(1, "🔴");
+  board.placeDiscInColumn(2, "🟡");
+  board.placeDiscInColumn(3, "🔴");
+  board.placeDiscInColumn(2, "🟡");
+  board.placeDiscInColumn(1, "🔴");
+  board.placeDiscInColumn(1, "🟡");
+  board.placeDiscInColumn(5, "🔴");
+  board.placeDiscInColumn(4, "🟡");
+  board.placeDiscInColumn(4, "🔴");
+  board.placeDiscInColumn(3, "🟡");
+  board.placeDiscInColumn(3, "🔴");
+  board.placeDiscInColumn(2, "🟡");
+  return board;
+}
