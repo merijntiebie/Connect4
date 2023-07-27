@@ -13,7 +13,7 @@ export function boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo(
 
 export function testBoardForExtractingRow() {
   const board = new Board();
-  board.placeDiscInColumn(1,"🔴");
+  board.placeDiscInColumn(1, "🔴");
   board.placeDiscInColumn(4, "🔴");
   board.placeDiscInColumn(6, "🔴");
   board.placeDiscInColumn(1, "🟡");
