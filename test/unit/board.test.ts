@@ -136,5 +136,12 @@ describe("This unit test suite tests the functionality of the board of a game ca
       const thirdDiagonal = ["⚫", "🔴", "🟡"];
       expect(board.extractTopLeftDiagonal(row, column)).toEqual(thirdDiagonal);
     });
+    it("Extract the fifth diagonal from a board", () => {
+      const board = testBoardForExtractingDiagonal();
+      const row = 5;
+      const column = 5;
+      const fifthDiagonal = ["⚫", "⚫", "⚫", "🔴", "🔴", "🔴",];
+      expect(board.extractTopLeftDiagonal(row, column)).toEqual(fifthDiagonal);
+    });
   });
 });

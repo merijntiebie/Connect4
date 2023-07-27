@@ -42,6 +42,11 @@ describe("This suite tests the game functionality of connect4.", () => {
 
         expect(game.determineMaximumStreakOfActivePlayerDiscs(line)).toEqual(3);
       });
+      it("One cell --> 1", () => {
+        const game = new Game();
+        const line = ["🔴"];
+        expect(game.determineMaximumStreakOfActivePlayerDiscs(line)).toEqual(1);
+      });
     });
   });
 });
