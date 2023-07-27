@@ -120,28 +120,66 @@ describe("This unit test suite tests the functionality of the board of a game ca
     });
   });
 
-  describe("We need to check if the game is won by a diagonal victory. To do this we need to extract the first diagonal (top-left to bottom right).", () => {
-    it("Extract the first diagonal from a board", () => {
-      const board = testBoardForExtractingDiagonal();
-      const row = 5;
-      const column = 0;
-      const firstDiagonal = ["🔴"];
-      expect(board.extractTopLeftDiagonal(row, column)).toEqual(firstDiagonal);
-    });
+  describe("We need to check if the game is won by a diagonal victory. ", () => {
+    describe("To do this we need to extract the first diagonal (top left to bottom right).", () => {
+      it("Extract the first diagonal from a board", () => {
+        const board = testBoardForExtractingDiagonal();
+        const row = 5;
+        const column = 0;
+        const firstDiagonal = ["🔴"];
+        expect(board.extractTopLeftDiagonal(row, column)).toEqual(
+          firstDiagonal
+        );
+      });
 
-    it("Extract the third diagonal from a board", () => {
-      const board = testBoardForExtractingDiagonal();
-      const row = 4;
-      const column = 1;
-      const thirdDiagonal = ["⚫", "🔴", "🟡"];
-      expect(board.extractTopLeftDiagonal(row, column)).toEqual(thirdDiagonal);
+      it("Extract the third diagonal from a board", () => {
+        const board = testBoardForExtractingDiagonal();
+        const row = 4;
+        const column = 1;
+        const thirdDiagonal = ["⚫", "🔴", "🟡"];
+        expect(board.extractTopLeftDiagonal(row, column)).toEqual(
+          thirdDiagonal
+        );
+      });
+      it("Extract the sixth diagonal from a board", () => {
+        const board = testBoardForExtractingDiagonal();
+        const row = 5;
+        const column = 5;
+        const fifthDiagonal = ["⚫", "⚫", "⚫", "🔴", "🔴", "🔴"];
+        expect(board.extractTopLeftDiagonal(row, column)).toEqual(
+          fifthDiagonal
+        );
+      });
     });
-    it("Extract the fifth diagonal from a board", () => {
-      const board = testBoardForExtractingDiagonal();
-      const row = 5;
-      const column = 5;
-      const fifthDiagonal = ["⚫", "⚫", "⚫", "🔴", "🔴", "🔴",];
-      expect(board.extractTopLeftDiagonal(row, column)).toEqual(fifthDiagonal);
+    describe("To do this we need to extract the second diagonal (top right to bottom left).", () => {
+      it("Extract the first diagonal from a board", () => {
+        const board = testBoardForExtractingDiagonal();
+        const row = 0;
+        const column = 0;
+        const firstDiagonal = ["⚫"];
+        expect(board.extractTopRightDiagonal(row, column)).toEqual(
+          firstDiagonal
+        );
+      });
+
+      it("Extract the fifth diagonal from a board", () => {
+        const board = testBoardForExtractingDiagonal();
+        const row = 3;
+        const column = 1;
+        const fifthDiagonal = ["⚫", "🔴", "⚫", "⚫", "⚫"];
+        expect(board.extractTopRightDiagonal(row, column)).toEqual(
+          fifthDiagonal
+        );
+      });
+      it("Extract the sixth diagonal from a board", () => {
+        const board = testBoardForExtractingDiagonal();
+        const row = 3;
+        const column = 3;
+        const sixthDiagonal = ["🟡", "🟡", "🔴", "⚫", "⚫", "⚫"];
+        expect(board.extractTopRightDiagonal(row, column)).toEqual(
+          sixthDiagonal
+        );
+      });
     });
   });
 });

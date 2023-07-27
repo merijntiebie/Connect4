@@ -52,7 +52,11 @@ class Game {
   play(column: number) {
     this.letActivePlayerDropADisc(column);
 
-    if (this.determineVerticalWinner() || this.determineHorizontalWinner()) {
+    if (
+      this.determineVerticalWinner() ||
+      this.determineHorizontalWinner() ||
+      this.determineDiagonalWinner()
+    ) {
       this.winner = this.getActivePlayer();
     }
 
@@ -91,12 +95,35 @@ class Game {
   determineHorizontalWinner() {
     const lastPlayedColumn = this.board.extractColumn(this.lastPlayedColumn);
 
-    const lastPlayedRowIndex = lastPlayedColumn.findIndex((cell) => cell !== "⚫");
-    
+    const lastPlayedRowIndex = lastPlayedColumn.findIndex(
+      (cell) => cell !== "⚫"
+    );
+
     const lastPlayedRow = this.board.extractRow(lastPlayedRowIndex);
 
+    return this.determineMaximumStreakOfActivePlayerDiscs(lastPlayedRow) === 4;
+  }
+
+  determineDiagonalWinner() {
+    const lastPlayedColumn = this.board.extractColumn(this.lastPlayedColumn);
+
+    const lastPlayedRowIndex = lastPlayedColumn.findIndex(
+      (cell) => cell !== "⚫"
+    );
+
+    const topLeftDiagonal = this.board.extractTopLeftDiagonal(
+      lastPlayedRowIndex,
+      this.lastPlayedColumn
+    );
+
+    const topRightDiagonal = this.board.extractTopRightDiagonal(
+      lastPlayedRowIndex,
+      this.lastPlayedColumn
+    );
+
     return (
-      this.determineMaximumStreakOfActivePlayerDiscs(lastPlayedRow) === 4
+      this.determineMaximumStreakOfActivePlayerDiscs(topLeftDiagonal) === 4 ||
+      this.determineMaximumStreakOfActivePlayerDiscs(topRightDiagonal) === 4
     );
   }
 }

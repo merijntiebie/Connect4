@@ -99,10 +99,36 @@ Good luck and enjoy!
 ⚫🔴🟡🟡🔴⚫⚫
 🔴🟡🟡🔴🟡🔴⚫
 
-✅ Fifth diagonal
+✅ Sixth diagonal
 ⚫⚫⚫⚫⚫⚫⚫
 ⚫⚫⚫⚫⚫⚫⚫
 ⚫🟡⚫⚫⚫⚫⚫ -> ⚫⚫⚫🔴🔴🔴
+⚫🔴⚫🔴⚫⚫⚫
+⚫🔴🟡🟡🔴⚫⚫
+🔴🟡🟡🔴🟡🔴⚫
+
+#### Second check is the top right diagonal
+
+✅ First diagonal
+⚫⚫⚫⚫⚫⚫⚫ 
+⚫⚫⚫⚫⚫⚫⚫ 
+⚫🟡⚫⚫⚫⚫⚫ -> ⚫
+⚫🔴⚫🔴⚫⚫⚫ 
+⚫🔴🟡🟡🔴⚫⚫ 
+🔴🟡🟡🔴🟡🔴⚫
+
+✅ Fifth diagonal
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫🟡⚫⚫⚫⚫⚫ -> ⚫🔴⚫⚫⚫
+⚫🔴⚫🔴⚫⚫⚫
+⚫🔴🟡🟡🔴⚫⚫
+🔴🟡🟡🔴🟡🔴⚫
+
+✅ Sixth diagonal
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫🟡⚫⚫⚫⚫⚫ -> 🟡🟡🔴⚫⚫⚫
 ⚫🔴⚫🔴⚫⚫⚫
 ⚫🔴🟡🟡🔴⚫⚫
 🔴🟡🟡🔴🟡🔴⚫

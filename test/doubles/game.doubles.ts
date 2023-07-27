@@ -1,6 +1,6 @@
 import { Game } from "../../src/game";
 
-function gameWithAlmostVerticalVictoryForPlayerOne() {
+export function gameWithAlmostVerticalVictoryForPlayerOne() {
   const game = new Game();
   game.letActivePlayerDropADisc(0);
   game.switchActivePlayer();
@@ -17,24 +17,7 @@ function gameWithAlmostVerticalVictoryForPlayerOne() {
   return game;
 }
 
-function yellowWinsVerticallyInSecondColumn() {
-  const game = new Game();
-  game.play(1);
-  game.play(0);
-  game.play(1);
-  game.play(0);
-  game.play(2);
-  game.play(1);
-  game.play(2);
-  game.play(1);
-  game.play(2);
-  game.play(1);
-  game.play(2);
-  game.play(1);
-  return game;
-}
-
-function gameWithAlmostHorizonalVictoryForPlayerOne() {
+export function gameWithAlmostHorizonalVictoryForPlayerOne() {
   const game = new Game();
   game.letActivePlayerDropADisc(1);
   game.switchActivePlayer();
@@ -51,8 +34,51 @@ function gameWithAlmostHorizonalVictoryForPlayerOne() {
   return game;
 }
 
-export {
-  gameWithAlmostVerticalVictoryForPlayerOne,
-  yellowWinsVerticallyInSecondColumn,
-  gameWithAlmostHorizonalVictoryForPlayerOne,
-};
+export function gameWithAlmostDiagonalVictoryForPlayerTwo() {
+  const game = new Game();
+  game.play(0);
+  game.play(1);
+  game.play(1);
+  game.play(2);
+  game.play(3);
+  game.play(2);
+  game.play(1);
+  game.play(1);
+  game.play(5);
+  game.play(4);
+  game.play(4);
+  game.play(3);
+  game.play(3);
+
+  // ⚫⚫⚫⚫⚫⚫⚫
+  // ⚫⚫⚫⚫⚫⚫⚫
+  // ⚫🟡⚫⚫⚫⚫⚫
+  // ⚫🔴⚫🔴⚫⚫⚫
+  // ⚫🔴🟡🟡🔴⚫⚫
+  // 🔴🟡🟡🔴🟡🔴⚫
+
+  return game;
+}
+
+export function gameWithAlmostDiagonalVictoryForPlayerOne() {
+  const game = new Game();
+  game.play(2);
+  game.play(3);
+  game.play(3);
+  game.play(4);
+  game.play(4);
+  game.play(5);
+  game.play(6);
+  game.play(5);
+  game.play(4);
+  game.play(5);
+
+  // ⚫⚫⚫⚫⚫⚫⚫
+  // ⚫⚫⚫⚫⚫⚫⚫
+  // ⚫⚫⚫⚫⚫⚫⚫
+  // ⚫⚫⚫⚫🔴🟡⚫
+  // ⚫⚫⚫🔴🔴🟡⚫
+  // ⚫⚫🔴🟡🟡🟡🔴
+
+  return game;
+}

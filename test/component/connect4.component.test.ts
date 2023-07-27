@@ -2,6 +2,8 @@ import { Game } from "../../src/game";
 import {
   gameWithAlmostVerticalVictoryForPlayerOne,
   gameWithAlmostHorizonalVictoryForPlayerOne,
+  gameWithAlmostDiagonalVictoryForPlayerTwo,
+  gameWithAlmostDiagonalVictoryForPlayerOne,
 } from "../doubles/game.doubles";
 
 describe("When a player takes a turn, a number of things happen. A turn starts with a player dropping a disc in the column of their choosing, which is then marked as the last-played column. After the disc has fallen to its place we need to check if a victory has occured. If the game is still undecided, the active player should be switched.", () => {
@@ -42,6 +44,26 @@ describe("When a player takes a turn, a number of things happen. A turn starts w
       it("When player one places his disc in the first column, making it 4 red discs in the first row", () => {
         const game = gameWithAlmostHorizonalVictoryForPlayerOne();
         game.play(0);
+        expect(game.winner).toBe(game.player1);
+      });
+    });
+  });
+
+  describe("Now lets jump a little bit into the future. The game has progressed a bit and we are close to getting a horizontal victory. Which is a victory achieved by getting 4 discs from the same color in a unbroken row.", () => {
+    describe("Player 2 almost has a diagonal vicory from top left to bottom right", () => {
+      it("When player 2 places his disc in a diagonal line with 3 other yellow discs, they win the game", () => {
+        const game = gameWithAlmostDiagonalVictoryForPlayerTwo();
+        game.play(2);
+        expect(game.winner).toBe(game.player2);
+      });
+    });
+  });
+
+  describe("Now lets jump a little bit into the future. The game has progressed a bit and we are close to getting a horizontal victory. Which is a victory achieved by getting 4 discs from the same color in a unbroken row.", () => {
+    describe("Player 1 almost has a diagonal vicory from top right to bottom left", () => {
+      it("When player 1 places his disc in a diagonal line with 3 other red discs, they win the game", () => {
+        const game = gameWithAlmostDiagonalVictoryForPlayerOne();
+        game.play(5);
         expect(game.winner).toBe(game.player1);
       });
     });

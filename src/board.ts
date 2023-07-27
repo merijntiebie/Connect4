@@ -67,6 +67,28 @@ class Board {
 
     return diagonal;
   }
+
+  extractTopRightDiagonal(row: number, column: number): string[] {
+    const diagonal: string[] = [];
+    const numRows = this.board.length;
+    const numCols = this.board[0].length;
+
+    // Calculate the offset to keep the diagonal within bounds
+    const offset = Math.min(numRows - 1 - row, column);
+
+    // Starting position within the diagonal
+    let rowNumber = row + offset;
+    let columnNumber = column - offset;
+
+    // Traverse the diagonal from the bottom left to the top right
+    while (rowNumber >= 0 && columnNumber < numCols) {
+      diagonal.push(this.board[rowNumber][columnNumber]);
+      rowNumber -= 1;
+      columnNumber += 1;
+    }
+
+    return diagonal;
+  }
 }
 
 export { Board };
