@@ -35,7 +35,7 @@ function gameWithAlmostHorizontalVictoryForPlayerTwo() {
   return game;
 }
 
-function gameWithAlmostDiagonalVictoryForPlayerTwo() {
+function gameWithAlmostDiagonalVictoryForPlayerTwoInColumn1() {
   const game = new Game();
   game.play(0);
   game.play(1);
@@ -50,6 +50,43 @@ function gameWithAlmostDiagonalVictoryForPlayerTwo() {
   game.play(4);
   game.play(2);
   game.play(5);
+  return game;
+}
+
+function gameWithAlmostDiagonalVictoryForPlayerTwoInColumn2() {
+  const game = new Game();
+  game.play(0);
+  game.play(1);
+  game.play(1);
+  game.play(2);
+  game.play(1);
+  game.play(2);
+  game.play(3);
+  game.play(3);
+  game.play(3);
+  game.play(4);
+  game.play(4);
+  game.play(1);
+  game.play(5);
+  return game;
+}
+
+function gameWithAlmostDiagonalVictoryForPlayerOneInColumn4() {
+  const game = new Game();
+  game.play(0);
+  game.play(2);
+  game.play(1);
+  game.play(1);
+  game.play(2);
+  game.play(1);
+  game.play(5);
+  game.play(2);
+  game.play(3);
+  game.play(3);
+  game.play(3);
+  game.play(4);
+  game.play(4);
+  game.play(4);
   return game;
 }
 
@@ -104,5 +141,7 @@ export {
   gameWithTwoColorsInOneRowAndNoWinner,
   gameWithAlmostVerticalVictoryForPlayerTwo,
   gameWithFourYellowDiscsInSecondColumnInterruptedByARedDisc,
-  gameWithAlmostDiagonalVictoryForPlayerTwo,
+  gameWithAlmostDiagonalVictoryForPlayerTwoInColumn1,
+  gameWithAlmostDiagonalVictoryForPlayerTwoInColumn2,
+  gameWithAlmostDiagonalVictoryForPlayerOneInColumn4,
 };

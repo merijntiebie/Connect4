@@ -67,6 +67,9 @@ class Game {
     if (this.checkIfPlayerWinsDiagonallyTopLeftToBottomRight() === true) {
       this.winner = this.activePlayer;
     }
+    if (this.checkIfPlayerWinsDiagonallyTopRightToBottomLeft() === true) {
+      this.winner = this.activePlayer;
+    }
     this.switchActivePlayer();
   }
 
@@ -105,6 +108,33 @@ class Game {
   }
 
   checkIfPlayerWinsDiagonallyTopLeftToBottomRight(): boolean {
+    let numberOfDiscsOfActivePlayer = 1;
+    const numberOfDiscsOfActivePlayerToBottomRight =
+      this.countNumberOfDiscsOfActivePlayerInDiagonal(1, 1);
+    const numberOfDiscsOfActivePlayerToTopLeft =
+      this.countNumberOfDiscsOfActivePlayerInDiagonal(-1, -1);
+
+    numberOfDiscsOfActivePlayer += numberOfDiscsOfActivePlayerToBottomRight;
+    numberOfDiscsOfActivePlayer += numberOfDiscsOfActivePlayerToTopLeft;
+    return numberOfDiscsOfActivePlayer >= 4;
+  }
+
+  checkIfPlayerWinsDiagonallyTopRightToBottomLeft(): boolean {
+    let numberOfDiscsOfActivePlayer = 1;
+    const numberOfDiscsOfActivePlayerToTopRight =
+      this.countNumberOfDiscsOfActivePlayerInDiagonal(-1, 1);
+    const numberOfDiscsOfActivePlayerToBottomLeft =
+      this.countNumberOfDiscsOfActivePlayerInDiagonal(1, -1);
+
+    numberOfDiscsOfActivePlayer += numberOfDiscsOfActivePlayerToTopRight;
+    numberOfDiscsOfActivePlayer += numberOfDiscsOfActivePlayerToBottomLeft;
+    return numberOfDiscsOfActivePlayer >= 4;
+  }
+
+  countNumberOfDiscsOfActivePlayerInDiagonal(
+    rowDirection: number,
+    columnDirection: number
+  ): number {
     const boardState = this.getBoardState();
     let numberOfDiscsOfActivePlayer = 0;
     let onlyDiscsOfSameColorFound = true;
@@ -112,16 +142,16 @@ class Game {
     for (
       let row = this.lastPlayedRow;
       row < boardState.length && onlyDiscsOfSameColorFound === true;
-      row += 1
+      row += rowDirection
     ) {
       if (boardState[row][column] === this.activePlayer.getDiscColor()) {
         numberOfDiscsOfActivePlayer += 1;
-        column += 1;
+        column += columnDirection;
       } else {
         onlyDiscsOfSameColorFound = false;
       }
     }
-    return numberOfDiscsOfActivePlayer === 4;
+    return numberOfDiscsOfActivePlayer;
   }
 }
 

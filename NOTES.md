@@ -79,14 +79,38 @@ Good luck and enjoy!
 ✅ bottom row: 🔴🟡🟡🟡⚫⚫⚫ --> false
 ✅ bottom row: 🔴🟡🟡🟡🟡⚫⚫ --> true
 
-### Check if board contains a vertical victory
-🙌 Player two just placed his disc in the 1st colum --> victory
+### Check if board contains a diagonal victory
+✅ Player two places his disc in the 1st colum --> victory
 ⚫⚫⚫⚫⚫⚫⚫
 ⚫⚫⚫⚫⚫⚫⚫
-⚫🟡⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
 ⚫🔴🟡🔴⚫⚫⚫
 ⚫🔴🟡🟡🔴⚫⚫
 🔴🟡🟡🔴🟡🔴⚫
+
+✅ Player two places his disc in the 2nd colum --> victory
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫🟡⚫⚫⚫⚫⚫
+⚫🔴⚫🔴⚫⚫⚫
+⚫🔴🟡🟡🔴⚫⚫
+🔴🟡🟡🔴🟡🔴⚫
+
+✅ Player one places his disc in the 4th colum --> victory
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫🟡🟡🔴🟡⚫⚫
+⚫🟡🔴🟡🔴⚫⚫
+🔴🔴🟡🔴🟡🔴⚫
+
+🙌TODO Player one places his disc in the 2nd colum --> victory
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫🟡⚫⚫
+⚫⚫⚫⚫🔴⚫⚫
+⚫🟡⚫🔴🟡⚫⚫
+⚫🟡⚫🟡🔴⚫⚫
+🔴🔴🟡🔴🟡🔴⚫
 
 ### Playing
 ✅ Player 1 -> column 0 -> disc in column zero | player 2 new active player | column 0 is the last played column | row 5 is the last played row

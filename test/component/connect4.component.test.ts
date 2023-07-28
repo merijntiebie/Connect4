@@ -2,7 +2,9 @@ import { Game } from "../../src/game";
 import {
   gameWithAlmostVerticalVictoryForPlayerOne,
   gameWithAlmostHorizontalVictoryForPlayerTwo,
-  gameWithAlmostDiagonalVictoryForPlayerTwo,
+  gameWithAlmostDiagonalVictoryForPlayerTwoInColumn1,
+  gameWithAlmostDiagonalVictoryForPlayerTwoInColumn2,
+  gameWithAlmostDiagonalVictoryForPlayerOneInColumn4
 } from "../doubles/game.doubles";
 
 describe(`When a player takes a turn, a number of things happen:
@@ -58,18 +60,41 @@ describe(`When a player takes a turn, a number of things happen:
     });
   });
   describe("A game can also end because of a diagonal victory, which is a victory achieved by getting 4 discs from the same color in a unbroken diagonal.", () => {
-    describe(`In a board that looks as follows:
+    it(`In a board that looks as follows:
     ⚫⚫⚫⚫⚫⚫⚫
     ⚫⚫⚫⚫⚫⚫⚫
     ⚫⚫⚫⚫⚫⚫⚫
     ⚫🔴🟡🔴⚫⚫⚫
     ⚫🔴🟡🟡🔴⚫⚫
-    🔴🟡🟡🔴🟡🔴⚫`, () => {
-      it("When player two places his disc in column 1, making it 4 yellow discs in a diagonal", () => {
-        const game = gameWithAlmostDiagonalVictoryForPlayerTwo();
-        game.play(1);
-        expect(game.winner).toBe(game.player2);
-      });
+    🔴🟡🟡🔴🟡🔴⚫
+      When player two places his disc in column 1, we have a winner!`, () => {
+      const game = gameWithAlmostDiagonalVictoryForPlayerTwoInColumn1();
+      game.play(1);
+      expect(game.winner).toBe(game.player2);
+    });
+    it(`In a board that looks as follows:
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫🟡⚫⚫⚫⚫⚫
+    ⚫🔴⚫🔴⚫⚫⚫
+    ⚫🔴🟡🟡🔴⚫⚫
+    🔴🟡🟡🔴🟡🔴⚫
+      When player two places his disc in column 2, we have a winner!`, () => {
+      const game = gameWithAlmostDiagonalVictoryForPlayerTwoInColumn2();
+      game.play(2);
+      expect(game.winner).toBe(game.player2);
+    });
+    it(`In a board that looks as follows:
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫🟡🟡🔴🟡⚫⚫
+    ⚫🟡🔴🟡🔴⚫⚫
+    🔴🔴🟡🔴🟡🔴⚫
+      When player one places his disc in column 4, we have a winner!`, () => {
+      const game = gameWithAlmostDiagonalVictoryForPlayerOneInColumn4();
+      game.play(4);
+      expect(game.winner).toBe(game.player1);
     });
   });
 });
