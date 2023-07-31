@@ -138,9 +138,9 @@ class Game {
     const boardState = this.getBoardState();
     let numberOfDiscsOfActivePlayer = 0;
     let onlyDiscsOfSameColorFound = true;
-    let column = this.lastPlayedColumn;
+    let column = this.lastPlayedColumn + columnDirection;
     for (
-      let row = this.lastPlayedRow;
+      let row = this.lastPlayedRow + rowDirection;
       row < boardState.length && onlyDiscsOfSameColorFound === true;
       row += rowDirection
     ) {

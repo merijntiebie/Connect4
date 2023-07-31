@@ -4,7 +4,8 @@ import {
   gameWithAlmostHorizontalVictoryForPlayerTwo,
   gameWithAlmostDiagonalVictoryForPlayerTwoInColumn1,
   gameWithAlmostDiagonalVictoryForPlayerTwoInColumn2,
-  gameWithAlmostDiagonalVictoryForPlayerOneInColumn4
+  gameWithAlmostDiagonalVictoryForPlayerOneInColumn4,
+  gameWithAlmostDiagonalVictoryForPlayerOneInColumn2,
 } from "../doubles/game.doubles";
 
 describe(`When a player takes a turn, a number of things happen:
@@ -67,7 +68,7 @@ describe(`When a player takes a turn, a number of things happen:
     ⚫🔴🟡🔴⚫⚫⚫
     ⚫🔴🟡🟡🔴⚫⚫
     🔴🟡🟡🔴🟡🔴⚫
-      When player two places his disc in column 1, we have a winner!`, () => {
+      When player 2 places his disc in column 1, we have a winner!`, () => {
       const game = gameWithAlmostDiagonalVictoryForPlayerTwoInColumn1();
       game.play(1);
       expect(game.winner).toBe(game.player2);
@@ -79,7 +80,7 @@ describe(`When a player takes a turn, a number of things happen:
     ⚫🔴⚫🔴⚫⚫⚫
     ⚫🔴🟡🟡🔴⚫⚫
     🔴🟡🟡🔴🟡🔴⚫
-      When player two places his disc in column 2, we have a winner!`, () => {
+      When player 2 places his disc in column 2, we have a winner!`, () => {
       const game = gameWithAlmostDiagonalVictoryForPlayerTwoInColumn2();
       game.play(2);
       expect(game.winner).toBe(game.player2);
@@ -91,9 +92,21 @@ describe(`When a player takes a turn, a number of things happen:
     ⚫🟡🟡🔴🟡⚫⚫
     ⚫🟡🔴🟡🔴⚫⚫
     🔴🔴🟡🔴🟡🔴⚫
-      When player one places his disc in column 4, we have a winner!`, () => {
+      When player 1 places his disc in column 4, we have a winner!`, () => {
       const game = gameWithAlmostDiagonalVictoryForPlayerOneInColumn4();
       game.play(4);
+      expect(game.winner).toBe(game.player1);
+    });
+    it(`In a board that looks as follows:
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫⚫⚫⚫⚫⚫⚫
+    ⚫⚫⚫⚫🟡⚫⚫
+    ⚫🟡⚫🔴🟡⚫⚫
+    ⚫🟡⚫🟡🔴⚫⚫
+    🔴🔴🟡🔴🟡🔴⚫
+      When player 1 places his disc in column 2, we have a winner!`, () => {
+      const game = gameWithAlmostDiagonalVictoryForPlayerOneInColumn2();
+      game.play(2);
       expect(game.winner).toBe(game.player1);
     });
   });

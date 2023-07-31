@@ -65,6 +65,35 @@ Good luck and enjoy!
 ✅ Then again column 0 --> 4
 ✅ And again --> 3
 
+## CheckNumberOfDiscsOfActivePlayerInDiagonal
+
+✅ - play in column 2 | active player 2
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫🟡⚫⚫⚫⚫⚫     ✅ 2 discs in bottom right corner
+⚫🔴⚫🔴⚫⚫⚫     ✅ 1 disc in top left corner
+⚫🔴🟡🟡🔴⚫⚫     ✅ 0 discs in bottom left corner    
+🔴🟡🟡🔴🟡🔴⚫     ✅ 0 discs in top right corner
+
+
+Player one places his disc in the 2nd colum --> victory
+✅ play in column 2 | active player 1
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫🟡⚫⚫     ✅ 2 discs in top right corner
+⚫⚫⚫⚫🔴⚫⚫
+⚫🟡⚫🔴🟡⚫⚫
+⚫🟡⚫🟡🔴⚫⚫
+🔴🔴🟡🔴🟡🔴⚫
+
+Player one places his disc in the 2nd colum --> victory
+✅ play in column 2 | active player 2
+⚫⚫⚫⚫⚫⚫⚫
+⚫🔴⚫⚫🟡⚫⚫     ✅ 0 discs in top right corner
+⚫🔴⚫⚫🔴⚫⚫
+⚫🟡⚫🔴🟡⚫⚫
+⚫🟡🟡🟡🔴⚫⚫
+🔴🔴🟡🔴🟡🔴⚫
+
 ## Components
 
 ### Check if board contains a vertical victory
@@ -104,7 +133,7 @@ Good luck and enjoy!
 ⚫🟡🔴🟡🔴⚫⚫
 🔴🔴🟡🔴🟡🔴⚫
 
-🙌TODO Player one places his disc in the 2nd colum --> victory
+✅ Player one places his disc in the 2nd colum --> victory
 ⚫⚫⚫⚫⚫⚫⚫
 ⚫⚫⚫⚫🟡⚫⚫
 ⚫⚫⚫⚫🔴⚫⚫
@@ -115,3 +144,5 @@ Good luck and enjoy!
 ### Playing
 ✅ Player 1 -> column 0 -> disc in column zero | player 2 new active player | column 0 is the last played column | row 5 is the last played row
 ✅ Player 2 -> column 1 -> disc in column 1 | player 1 new active player | column 1 is the last played column | row 5 is the last played row
+
+

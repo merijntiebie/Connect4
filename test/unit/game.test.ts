@@ -1,6 +1,13 @@
 import { Game } from "../../src/game";
-import { gameWithAlmostHorizontalVictoryForPlayerTwo, gameWithAlmostVerticalVictoryForPlayerOne, gameWithAlmostVerticalVictoryForPlayerTwo } from "../doubles/game.doubles";
-import { gameWithTwoColorsInOneRowAndNoWinner } from "../doubles/game.doubles";
+import {
+  gameWithAlmostHorizontalVictoryForPlayerTwo,
+  gameWithAlmostVerticalVictoryForPlayerOne,
+  gameWithAlmostVerticalVictoryForPlayerTwo,
+  gameWithTwoColorsInOneRowAndNoWinner,
+  gameWithAlmostDiagonalVictoryForPlayerTwoInColumn2,
+  gameWithAlmostDiagonalVictoryForPlayerOneInColumn2,
+} from "../doubles/game.doubles";
+
 import { gameWherePlayerOneJustDroppedADiscInColumnZero } from "./game.doubles";
 
 describe("newGame suite tests the game functionality of connect4.", () => {
@@ -99,6 +106,67 @@ describe("newGame suite tests the game functionality of connect4.", () => {
         newGame.letActivePlayerDropADisc(1);
         newGame.lastPlayedColumn = 1;
         expect(newGame.checkIfPlayerWinsVertically()).toBe(true);
+      });
+    });
+  });
+  describe("Finally, a winner can achieve a victory if there are 4 discs of his color connected in ia diagonal", () => {
+    describe("To be able to determine if such a victory exists, we count the number of connected discs from the last played disc", () => {
+      it("- Player 2 has 2 discs connected in the bottom right corner", () => {
+        const newGame = gameWithAlmostDiagonalVictoryForPlayerTwoInColumn2();
+        newGame.letActivePlayerDropADisc(2);
+        newGame.lastPlayedColumn = 2;
+        newGame.lastPlayedRow = 3;
+        expect(
+          newGame.countNumberOfDiscsOfActivePlayerInDiagonal(1, 1)
+        ).toEqual(2);
+      });
+      it("- Player 2 has 1 disc connected in the top left corner", () => {
+        const newGame = gameWithAlmostDiagonalVictoryForPlayerTwoInColumn2();
+        newGame.letActivePlayerDropADisc(2);
+        newGame.lastPlayedColumn = 2;
+        newGame.lastPlayedRow = 3;
+        expect(
+          newGame.countNumberOfDiscsOfActivePlayerInDiagonal(-1, -1)
+        ).toEqual(1);
+      });
+      it("- Player 2 has 0 discs connected in the bottom left corner", () => {
+        const newGame = gameWithAlmostDiagonalVictoryForPlayerTwoInColumn2();
+        newGame.letActivePlayerDropADisc(2);
+        newGame.lastPlayedColumn = 2;
+        newGame.lastPlayedRow = 3;
+        expect(
+          newGame.countNumberOfDiscsOfActivePlayerInDiagonal(1, -1)
+        ).toEqual(0);
+      });
+      it("- Player 2 has 0 discs connected in the bottom left corner", () => {
+        const newGame = gameWithAlmostDiagonalVictoryForPlayerTwoInColumn2();
+        newGame.letActivePlayerDropADisc(2);
+        newGame.lastPlayedColumn = 2;
+        newGame.lastPlayedRow = 3;
+        expect(
+          newGame.countNumberOfDiscsOfActivePlayerInDiagonal(-1, 1)
+        ).toEqual(0);
+      });
+      it("- Player 1 has 2 discs connected in the top right corner", () => {
+        const newGame = gameWithAlmostDiagonalVictoryForPlayerOneInColumn2();
+        newGame.letActivePlayerDropADisc(2);
+        newGame.lastPlayedColumn = 2;
+        newGame.lastPlayedRow = 4;
+        expect(
+          newGame.countNumberOfDiscsOfActivePlayerInDiagonal(-1, 1)
+        ).toEqual(2);
+      });
+      it("- Player 2 has 1 disc in the top right corner but it is not connected", () => {
+        const newGame = gameWithAlmostDiagonalVictoryForPlayerOneInColumn2();
+        newGame.letActivePlayerDropADisc(1);
+        newGame.letActivePlayerDropADisc(2);
+        newGame.letActivePlayerDropADisc(1);
+        newGame.letActivePlayerDropADisc(2);
+        newGame.lastPlayedColumn = 2;
+        newGame.lastPlayedRow = 3;
+        expect(
+          newGame.countNumberOfDiscsOfActivePlayerInDiagonal(-1, 1)
+        ).toEqual(0);
       });
     });
   });
