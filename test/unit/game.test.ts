@@ -1,7 +1,7 @@
 import { Game } from "../../src/game";
 
 describe("This suite tests the game functionality of connect4.", () => {
-  describe("One of the most important concepts is that players have to take turns.", () => {
+  describe("Players have to take turns.", () => {
     it("Player 2 becomes the active player after player 1 has taken a turn", () => {
       const newGame = new Game();
       newGame.switchActivePlayer();
@@ -17,7 +17,7 @@ describe("This suite tests the game functionality of connect4.", () => {
     });
   });
   describe("The game needs to be able to determine whether there are 4 discs in a row", () => {
-    describe("The game needs to be able to determine the longest streak of the discs of the active player in a given line of discs", () => {
+    describe("To do so the game needs to be able to determine the longest streak of the discs of the active player in a given line of discs", () => {
       it("A line of 7 empty cells => 0", () => {
         const game = new Game();
         const line = ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"];
@@ -42,7 +42,7 @@ describe("This suite tests the game functionality of connect4.", () => {
 
         expect(game.determineMaximumStreakOfActivePlayerDiscs(line)).toEqual(3);
       });
-      it("One cell --> 1", () => {
+      it("Just one red disc --> 1", () => {
         const game = new Game();
         const line = ["🔴"];
         expect(game.determineMaximumStreakOfActivePlayerDiscs(line)).toEqual(1);

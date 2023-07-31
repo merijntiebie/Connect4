@@ -99,6 +99,8 @@ Good luck and enjoy!
 ⚫🔴🟡🟡🔴⚫⚫
 🔴🟡🟡🔴🟡🔴⚫
 
+
+
 ✅ Sixth diagonal
 ⚫⚫⚫⚫⚫⚫⚫
 ⚫⚫⚫⚫⚫⚫⚫
@@ -138,3 +140,7 @@ Good luck and enjoy!
 ### Playing
 ✅ Player 1 -> column 0 -> disc in column zero | player 2 new active player | column 0 is the last played column
 ✅ Player 2 -> column 1 -> disc in column 1 | player 1 new active player | column 1 is the last played column
+
+## Technical
+
+The game has to be accessible through REST calls

@@ -121,7 +121,7 @@ describe("This unit test suite tests the functionality of the board of a game ca
   });
 
   describe("We need to check if the game is won by a diagonal victory. ", () => {
-    describe("To do this we need to extract the first diagonal (top left to bottom right).", () => {
+    describe("To do this we need to extract the first diagonal \\ (top left to bottom right).", () => {
       it("Extract the first diagonal from a board", () => {
         const board = testBoardForExtractingDiagonal();
         const row = 5;
@@ -151,7 +151,7 @@ describe("This unit test suite tests the functionality of the board of a game ca
         );
       });
     });
-    describe("To do this we need to extract the second diagonal (top right to bottom left).", () => {
+    describe("To do this we need to extract the second diagonal / (top right to bottom left).", () => {
       it("Extract the first diagonal from a board", () => {
         const board = testBoardForExtractingDiagonal();
         const row = 0;
