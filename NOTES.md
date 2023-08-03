@@ -146,3 +146,17 @@ Player one places his disc in the 2nd colum --> victory
 ✅ Player 2 -> column 1 -> disc in column 1 | player 1 new active player | column 1 is the last played column | row 5 is the last played row
 
 
+# Containerization
+
+✅ - Create an OpenAPI definition
+✅ -- Edit Post response: board as beautiful string
+✅ - Create the corresponding REST API in Connect4 (including mock functionality) using the Express framework
+🙌 - Create an E2E test in ReadyAPI
+-- Finish the E2E test: assert board using regex
+- Create a function that starts a new game of Connect4, plays the game as bots and returns the winner and board state
+- Implement this function into the API
+
+# Further considerations
+
+- Create tests and functionality to handle the case that there is a draw
+- Create functionality to handle the case that a player attempts to play in a column that is already full
