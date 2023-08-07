@@ -16,6 +16,8 @@ class Game {
 
   winner: Player | null;
 
+  finished: boolean;
+
   constructor() {
     this.board = new Board();
     this.player1 = new Player("player 1", "🔴");
@@ -24,6 +26,7 @@ class Game {
     this.lastPlayedColumn = -1;
     this.lastPlayedRow = -1;
     this.winner = null;
+    this.finished = false;
   }
 
   getActivePlayer(): Player {
@@ -60,15 +63,19 @@ class Game {
     this.determineRowOfLastPlayedDisc();
     if (this.checkIfPlayerWinsVertically() === true) {
       this.winner = this.activePlayer;
+      this.finished = true;
     }
     if (this.checkIfPlayerWinsHorizontally() === true) {
       this.winner = this.activePlayer;
+      this.finished = true;
     }
     if (this.checkIfPlayerWinsDiagonallyTopLeftToBottomRight() === true) {
       this.winner = this.activePlayer;
+      this.finished = true;
     }
     if (this.checkIfPlayerWinsDiagonallyTopRightToBottomLeft() === true) {
       this.winner = this.activePlayer;
+      this.finished = true;
     }
     this.switchActivePlayer();
   }
@@ -155,10 +162,23 @@ class Game {
   }
 
   playGame() {
-    while (this.winner === undefined) {
+    while (this.finished === false) {
       this.play(Math.floor(Math.random() * 7));
     }
   }
+
+  setActivePlayer(player: Player) {
+  this.activePlayer = player;
+  }
+
+  setLastPlayedColumn(column: number) {
+  this.lastPlayedColumn = column;
+    }
+
+  setLastPlayedRow(row: number) {
+    this.lastPlayedRow = row;
+      }
+  
 }
 
 export { Game };

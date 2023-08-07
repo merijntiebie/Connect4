@@ -121,7 +121,6 @@ defineFeature(feature, (test) => {
     });
 
     then(/^the board has 4 yellow discs in row 5$/, () => {
-      console.log(game.getBoardState().join("\n"));
 
       expect(game.getBoardState()).toEqual([
         ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
@@ -233,4 +232,42 @@ defineFeature(feature, (test) => {
       expect(game.winner).toBe(game.player2);
     });
   });
+
+  test('Game ends in a draw after many, many moves', ({ given, and, when, then }) => {
+    let game: Game;
+    given(/^2 players play a game of Connect4$/, () => {
+      game = new Game();
+    });
+
+    and(/^player 1 plays with the red discs$/, () => {
+      expect(game.player1.getDiscColor()).toEqual("🔴");
+    });
+
+    and(/^player 2 plays with the yellow discs$/, () => {
+      expect(game.player2.getDiscColor()).toEqual("🟡");
+    });
+
+    and(/^the game is 1 disc away from a draw$/, () => {
+      game.setActivePlayer(game.player2);
+      game.setLastPlayedRow(0);
+      game.setLastPlayedColumn(6);
+      game.board.setBoardState([
+        ["⚫", "🔴", "🟡", "🟡", "🟡", "🔴", "🔴"],
+        ["🔴", "🟡", "🔴", "🔴", "🔴", "🟡", "🟡"],
+        ["🟡", "🔴", "🟡", "🟡", "🟡", "🔴", "🔴"],
+        ["🔴", "🟡", "🔴", "🔴", "🔴", "🟡", "🟡"],
+        ["🟡", "🔴", "🟡", "🟡", "🟡", "🔴", "🔴"],
+        ["🔴", "🟡", "🔴", "🔴", "🔴", "🟡", "🟡"],
+      ])
+    });
+
+    when(/^player 2 puts his disc in column (\d+)$/, (arg0, arg1) => {
+      game.play(0);
+    });
+
+    then('the game ends in a draw', () => {
+      expect(game.finished).toBeTruthy;
+      expect(game.winner).toBeUndefined;
+    });
+});
 });

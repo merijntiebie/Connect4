@@ -160,5 +160,26 @@ Player one places his disc in the 2nd colum --> victory
 # Further considerations
 
 💡 - Create tests and functionality to handle the case that there is a draw
+    --> function for createGameState | boardState, activePlayer, lastRowPlayed, lastColumnPlayed
+
+    
 -- Create function to set board state so test cases can be easily made
 - Create functionality to handle the case that a player attempts to play in a column that is already full
+
+
+⚫🔴🟡🟡🟡🔴🔴
+🔴🟡🔴🔴🔴🟡🟡
+🟡🔴🟡🟡🟡🔴🔴
+🔴🟡🔴🔴🔴🟡🟡
+🟡🔴🟡🟡🟡🔴🔴
+🔴🟡🔴🔴🔴🟡🟡
+
+
+[
+        ["⚫", "🔴", "🟡", "🟡", "🟡", "🔴", "🔴"],
+        ["🔴", "🟡", "🔴", "🔴", "🔴", "🟡", "🟡"],
+        ["🟡", "🔴", "🟡", "🟡", "🟡", "🔴", "🔴"],
+        ["🔴", "🟡", "🔴", "🔴", "🔴", "🟡", "🟡"],
+        ["🟡", "🔴", "🟡", "🟡", "🟡", "🔴", "🔴"],
+        ["🔴", "🟡", "🔴", "🔴", "🔴", "🟡", "🟡"],
+      ]

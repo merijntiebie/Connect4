@@ -46,6 +46,11 @@ class Board {
   formatBoard() {
     return this.board.map((row) => row.join("")).join("\n");
   }
+
+  setBoardState(boardState: string[][]) {
+    this.board = boardState;
+      }
+
 }
 
 export { Board };
