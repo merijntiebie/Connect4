@@ -71,3 +71,5 @@ Scenario: Player 2 wins with a diagonal victory after 14 moves
 	When player 2 puts a disc in column 1
 	Then the board contains 4 yellow discs in a diagonal
 	And player 2 wins with a diagonal victory
+
+	([⚫🟡🔴]{7}\n){6}
