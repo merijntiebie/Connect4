@@ -49,8 +49,11 @@ class Board {
 
   setBoardState(boardState: string[][]) {
     this.board = boardState;
-      }
+  }
 
+  isFull() {
+    return false;
+  }
 }
 
 export { Board };

@@ -161,6 +161,7 @@ Player one places his disc in the 2nd colum --> victory
 
 💡 - Create tests and functionality to handle the case that there is a draw
     --> function for createGameState | boardState, activePlayer, lastRowPlayed, lastColumnPlayed
+    --> function to test if a board is full 🙌
 
     
 -- Create function to set board state so test cases can be easily made

@@ -77,6 +77,9 @@ class Game {
       this.winner = this.activePlayer;
       this.finished = true;
     }
+    if (this.board.isFull()) {
+      this.finished = true;
+    }
     this.switchActivePlayer();
   }
 
@@ -151,7 +154,7 @@ class Game {
       row < boardState.length && onlyDiscsOfSameColorFound === true;
       row += rowDirection
     ) {
-      if (boardState[row][column] === this.activePlayer.getDiscColor()) {
+      if (boardState[row]?.[column] === this.activePlayer.getDiscColor()) {
         numberOfDiscsOfActivePlayer += 1;
         column += columnDirection;
       } else {

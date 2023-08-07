@@ -137,6 +137,7 @@ defineFeature(feature, (test) => {
     });
 
     and(/^player 2 wins the game with a horizontal victory$/, () => {
+      expect(game.finished).toBeTruthy();
       expect(game.winner).toBe(game.player2);
     });
   });
@@ -229,6 +230,7 @@ defineFeature(feature, (test) => {
     });
 
     and(/^player 2 wins with a diagonal victory$/, () => {
+      expect(game.finished).toBeTruthy();
       expect(game.winner).toBe(game.player2);
     });
   });
@@ -258,16 +260,16 @@ defineFeature(feature, (test) => {
         ["🔴", "🟡", "🔴", "🔴", "🔴", "🟡", "🟡"],
         ["🟡", "🔴", "🟡", "🟡", "🟡", "🔴", "🔴"],
         ["🔴", "🟡", "🔴", "🔴", "🔴", "🟡", "🟡"],
-      ])
+      ]);
     });
 
-    when(/^player 2 puts his disc in column (\d+)$/, (arg0, arg1) => {
+    when(/^player 2 puts his disc in column (\d+)$/, () => {
       game.play(0);
     });
 
     then('the game ends in a draw', () => {
-      expect(game.finished).toBeTruthy;
-      expect(game.winner).toBeUndefined;
+      expect(game.finished).toBeTruthy();
+      expect(game.winner).toBeUndefined();
     });
 });
 });

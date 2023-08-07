@@ -97,6 +97,13 @@ describe("This unit test suite tests the functionality of the board of a game ca
     });
   });
 
+  describe("We need to be able to determine if the board is full, so we can end in a draw", () => {
+    it("An empty board is not full", () => {
+      const board = new Board();
+      expect(board.isFull()).toBeFalsy();
+    });
+  });
+
   describe("The board needs to be formatted so it is readable in de api", () => {
     it("An empty board is formatted correctly", () => {
       const board = new Board();

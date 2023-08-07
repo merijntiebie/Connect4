@@ -153,6 +153,17 @@ function gameWithFourYellowDiscsInSecondColumnInterruptedByARedDisc() {
   game.lastPlayedColumn = 1;
 }
 
+export function gameWithAStackOf5DiscsInFirstColumn() {
+  const game = new Game();
+  game.play(0);
+  game.play(0);
+  game.play(0);
+  game.play(0);
+  game.play(0);
+
+  return game;
+}
+
 export {
   gameWithAlmostVerticalVictoryForPlayerOne,
   gameWithAlmostHorizontalVictoryForPlayerTwo,

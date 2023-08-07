@@ -6,6 +6,7 @@ import {
   gameWithTwoColorsInOneRowAndNoWinner,
   gameWithAlmostDiagonalVictoryForPlayerTwoInColumn2,
   gameWithAlmostDiagonalVictoryForPlayerOneInColumn2,
+  gameWithAStackOf5DiscsInFirstColumn,
 } from "../doubles/game.doubles";
 
 import { gameWherePlayerOneJustDroppedADiscInColumnZero } from "./game.doubles";
@@ -166,6 +167,16 @@ describe("newGame suite tests the game functionality of connect4.", () => {
         newGame.lastPlayedRow = 3;
         expect(
           newGame.countNumberOfDiscsOfActivePlayerInDiagonal(-1, 1)
+        ).toEqual(0);
+      });
+      it("- Player 2 has 1 disc in the top left corner on top of a stack of discs, the rest of the board is empty", () => {
+        const newGame = gameWithAStackOf5DiscsInFirstColumn();
+        newGame.letActivePlayerDropADisc(0);
+        newGame.lastPlayedColumn = 0;
+        newGame.lastPlayedRow = 0;
+
+        expect(
+          newGame.countNumberOfDiscsOfActivePlayerInDiagonal(-1, -1)
         ).toEqual(0);
       });
     });
