@@ -96,4 +96,19 @@ describe("This unit test suite tests the functionality of the board of a game ca
       expect(board.extractColumn(1)).toEqual(secondColumn);
     });
   });
+
+  describe("The board needs to be formatted so it is readable in de api", () => {
+    it("An empty board is formatted correctly", () => {
+      const board = new Board();
+
+      const expectedOutput = `⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫`;
+
+      expect(board.formatBoard()).toEqual(expectedOutput);
+    });
+  });
 });

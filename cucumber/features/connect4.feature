@@ -72,4 +72,30 @@ Scenario: Player 2 wins with a diagonal victory after 14 moves
 	Then the board contains 4 yellow discs in a diagonal
 	And player 2 wins with a diagonal victory
 
-	([⚫🟡🔴]{7}\n){6}
+	Scenario: Game ends in a draw after many, many moves
+		⚫🔴🟡🟡🟡🔴🔴      🟡🔴🟡🟡🟡🔴🔴
+		🔴🟡🔴🔴🔴🟡🟡      🔴🟡🔴🔴🔴🟡🟡
+		🟡🔴🟡🟡🟡🔴🔴      🟡🔴🟡🟡🟡🔴🔴
+		🔴🟡🔴🔴🔴🟡🟡   >  🔴🟡🔴🔴🔴🟡🟡
+		🟡🔴🟡🟡🟡🔴🔴      🟡🔴🟡🟡🟡🔴🔴
+		🔴🟡🔴🔴🔴🟡🟡      🔴🟡🔴🔴🔴🟡🟡
+
+		Given 2 players play a game of Connect4
+		And player 1 plays with the red discs
+		And player 2 plays with the yellow discs
+		And player 1 has put a disc in column 0
+		And player 2 has put a disc in column 1
+		And player 1 has put a disc in column 1
+		And player 2 has put a disc in column 2
+		And player 1 has put a disc in column 1
+		And player 2 has put a disc in column 2
+		And player 1 has put a disc in column 3
+		And player 2 has put a disc in column 3
+		And player 1 has put a disc in column 3
+		And player 2 has put a disc in column 4
+		And player 1 has put a disc in column 4
+		And player 2 has put a disc in column 2
+		And player 1 has put a disc in column 5
+		When player 2 puts a disc in column 1
+		Then the board contains 4 yellow discs in a diagonal
+		And player 2 wins with a diagonal victory

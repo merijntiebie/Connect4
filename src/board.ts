@@ -42,6 +42,10 @@ class Board {
     const extractedColumn = this.board.map((row) => row[column]);
     return extractedColumn;
   }
+
+  formatBoard() {
+    return this.board.map((row) => row.join("")).join("\n");
+  }
 }
 
 export { Board };

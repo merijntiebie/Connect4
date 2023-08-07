@@ -153,6 +153,12 @@ class Game {
     }
     return numberOfDiscsOfActivePlayer;
   }
+
+  playGame() {
+    while (this.winner === undefined) {
+      this.play(Math.floor(Math.random() * 7));
+    }
+  }
 }
 
 export { Game };

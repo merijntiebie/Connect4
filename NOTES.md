@@ -153,11 +153,12 @@ Player one places his disc in the 2nd colum --> victory
 ✅ - Create the corresponding REST API in Connect4 (including mock functionality) using the Express framework
 ✅ - Create an E2E test in ReadyAPI
 ✅ -- Finish the E2E test: assert board using regex
-🙌 - Create a function that starts a new game of Connect4, plays the game as bots and returns the winner and board state
--- Move these functions to a seperate file or to the right classes so the API is not started on the unit tests
-- Implement this function into the API
+✅ - Create a function that starts a new game of Connect4, plays the game as bots and returns the winner and board state
+✅ -- Move these functions to a seperate file or to the right classes so the API is not started on the unit tests
+✅ - Implement this function into the API
 
 # Further considerations
 
-- Create tests and functionality to handle the case that there is a draw
+💡 - Create tests and functionality to handle the case that there is a draw
+-- Create function to set board state so test cases can be easily made
 - Create functionality to handle the case that a player attempts to play in a column that is already full
