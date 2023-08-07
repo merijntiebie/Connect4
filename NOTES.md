@@ -151,9 +151,10 @@ Player one places his disc in the 2nd colum --> victory
 ✅ - Create an OpenAPI definition
 ✅ -- Edit Post response: board as beautiful string
 ✅ - Create the corresponding REST API in Connect4 (including mock functionality) using the Express framework
-🙌 - Create an E2E test in ReadyAPI
--- Finish the E2E test: assert board using regex
-- Create a function that starts a new game of Connect4, plays the game as bots and returns the winner and board state
+✅ - Create an E2E test in ReadyAPI
+✅ -- Finish the E2E test: assert board using regex
+🙌 - Create a function that starts a new game of Connect4, plays the game as bots and returns the winner and board state
+-- Move these functions to a seperate file or to the right classes so the API is not started on the unit tests
 - Implement this function into the API
 
 # Further considerations

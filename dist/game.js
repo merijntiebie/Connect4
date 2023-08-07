@@ -6,8 +6,8 @@ const player_1 = require("./player");
 class Game {
     constructor() {
         this.board = new board_1.Board();
-        this.player1 = new player_1.Player("🔴");
-        this.player2 = new player_1.Player("🟡");
+        this.player1 = new player_1.Player("player 1", "🔴");
+        this.player2 = new player_1.Player("player 2", "🟡");
         this.activePlayer = this.player1;
         this.lastPlayedColumn = -1;
         this.lastPlayedRow = -1;

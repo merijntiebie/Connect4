@@ -28,7 +28,7 @@ paths:
                   summary: Game ended in a draw
                   value:
                     winner: "draw"
-                    state: "R,R,Y,R,Y,R,Y,R\nR,Y,R,Y,R,Y,R,Y\nY,R,Y,R,Y,R,Y,R\nR,Y,R,Y,R,Y,R,Y\nY,R,Y,R,Y,R,Y,R\nR,Y,R,Y,R,Y,R,Y"
+                    state: "⚫⚫⚫⚫⚫⚫⚫\n⚫⚫⚫⚫⚫⚫⚫\n⚫⚫⚫⚫⚫⚫⚫\n⚫🔴🟡🔴⚫⚫⚫\n⚫🔴🟡🟡🔴⚫⚫\n🔴🟡🟡🔴🟡🔴⚫"
         '400':
           description: Error occurred
           content:

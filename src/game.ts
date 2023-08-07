@@ -18,8 +18,8 @@ class Game {
 
   constructor() {
     this.board = new Board();
-    this.player1 = new Player("🔴");
-    this.player2 = new Player("🟡");
+    this.player1 = new Player("player 1", "🔴");
+    this.player2 = new Player("player 2", "🟡");
     this.activePlayer = this.player1;
     this.lastPlayedColumn = -1;
     this.lastPlayedRow = -1;
