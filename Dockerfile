@@ -1,5 +1,5 @@
 # Use the official Node 18 image as a base image
-FROM node:18
+FROM node:18-alpine
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
@@ -14,7 +14,8 @@ RUN npm install
 # RUN npm install -g some-global-package
 
 # Copy the rest of the application code into the container
-COPY . .
+COPY src/ ./src/
+COPY tsconfig.json ./
 
 # Build the TypeScript application
 RUN npm run build
