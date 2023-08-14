@@ -46,4 +46,4 @@ jobs:
     #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - name: Build the Docker image
-      run: docker build . --file Dockerfile -t --tag connect4:$(date +%s)
+      run: docker build . -t ns/connect4:latest
