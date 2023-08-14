@@ -1,5 +1,4 @@
 import { Board } from "../../src/board";
-import { gameWithAlmostVerticalVictoryForPlayerOne } from "../doubles/game.doubles";
 import { boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo } from "./board.doubles";
 
 describe("This unit test suite tests the functionality of the board of a game called Connect 4.", () => {
@@ -86,12 +85,14 @@ describe("This unit test suite tests the functionality of the board of a game ca
 
   describe("We need to check if the game is won by a vertical victory. To do this we need to extract a column from the board.", () => {
     it("Extract the first column from the board", () => {
-      const board = boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo();
+      const board =
+        boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo();
       const firstColumn = ["⚫", "⚫", "⚫", "🔴", "🔴", "🔴"];
       expect(board.extractColumn(0)).toEqual(firstColumn);
     });
     it("Extract the second column from the board", () => {
-      const board = boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo();
+      const board =
+        boardWithThreeRedDiscsInColumnOneAndThreeYellowDiscsInColumnTwo();
       const secondColumn = ["⚫", "⚫", "⚫", "🟡", "🟡", "🟡"];
       expect(board.extractColumn(1)).toEqual(secondColumn);
     });

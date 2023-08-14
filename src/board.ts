@@ -51,7 +51,9 @@ class Board {
     this.board = boardState;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   isFull() {
+    // TODO: Implement
     return false;
   }
 }

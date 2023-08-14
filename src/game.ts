@@ -171,17 +171,16 @@ class Game {
   }
 
   setActivePlayer(player: Player) {
-  this.activePlayer = player;
+    this.activePlayer = player;
   }
 
   setLastPlayedColumn(column: number) {
-  this.lastPlayedColumn = column;
-    }
+    this.lastPlayedColumn = column;
+  }
 
   setLastPlayedRow(row: number) {
     this.lastPlayedRow = row;
-      }
-  
+  }
 }
 
 export { Game };
