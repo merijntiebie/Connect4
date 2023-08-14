@@ -1,5 +1,5 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
-import { Connect4 } from "../../src/connect4";
+import { Game } from "../../src/game";
 
 const feature = loadFeature("./cucumber/features/connect4.feature");
 
@@ -10,46 +10,46 @@ defineFeature(feature, (test) => {
     when,
     then,
   }) => {
-    let game: Connect4;
+    let game: Game;
 
     given(/^2 players play a game of Connect4$/, () => {
-      game = new Connect4();
+      game = new Game();
     });
 
-    and(/^player (\d+) plays with the red discs$/, (player) => {
-      game.setPlayerDisk(parseInt(player), "🔴");
+    and(/^player 1 plays with the red discs$/, () => {
+      expect(game.player1.getDiscColor()).toEqual("🔴");
     });
 
-    and(/^player (\d+) plays with the yellow discs$/, (player) => {
-      game.setPlayerDisk(parseInt(player), "🟡");
+    and(/^player 2 plays with the yellow discs$/, () => {
+      expect(game.player2.getDiscColor()).toEqual("🟡");
     });
 
-    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
-      game.play(parseInt(player), parseInt(column));
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
 
-    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
-      game.play(parseInt(player), parseInt(column));
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
-    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
-      game.play(parseInt(player), parseInt(column));
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
-    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
-      game.play(parseInt(player), parseInt(column));
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
-    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
-      game.play(parseInt(player), parseInt(column));
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
-    and(/^player (\d+) has put a disc in column (\d+)$/, (player, column) => {
-      game.play(parseInt(player), parseInt(column));
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
 
-    when(/^player (\d+) puts a disc in column (\d+)$/, (player, column) => {
-      game.play(parseInt(player), parseInt(column));
+    when(/^player 1 puts a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
 
     then(/^the board has 4 red discs in column 0$/, () => {
-      expect(game.board).toEqual([
+      expect(game.getBoardState()).toEqual([
         ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
         ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
         ["🔴", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
@@ -64,7 +64,81 @@ defineFeature(feature, (test) => {
     });
 
     and(/^player 1 wins the game with a vertical victory$/, () => {
-      expect(game.getWinner()).toBe(1);
+      expect(game.winner).toBe(game.player1);
+    });
+  });
+
+  test("Player 2 wins with a horizontal victory after 8 moves", ({
+    given,
+    and,
+    when,
+    then,
+  }) => {
+    let game: Game;
+
+    given(/^2 players play a game of Connect4$/, () => {
+      game = new Game();
+    });
+
+    and(/^player 1 plays with the red discs$/, () => {
+      expect(game.player1.getDiscColor()).toEqual("🔴");
+    });
+
+    and(/^player 2 plays with the yellow discs$/, () => {
+      expect(game.player2.getDiscColor()).toEqual("🟡");
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    when(/^player 2 puts a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    then(/^the board has 4 yellow discs in row 5$/, () => {
+
+      expect(game.getBoardState()).toEqual([
+        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["🔴", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["🔴", "🔴", "⚫", "⚫", "⚫", "⚫", "⚫"],
+        ["🔴", "🟡", "🟡", "🟡", "🟡", "⚫", "⚫"],
+      ]);
+    });
+
+    and(/^the board has 3 red discs in column 0$/, () => {
+      // See then
+    });
+
+    and(/^player 2 wins the game with a horizontal victory$/, () => {
+      expect(game.finished).toBeTruthy();
+      expect(game.winner).toBe(game.player2);
     });
   });
 
@@ -74,42 +148,78 @@ defineFeature(feature, (test) => {
     when,
     then,
   }) => {
-    let game: Connect4;
+    let game: Game;
 
-    given(/^2 players play a game of Connect4$/, () => {
-      game = new Connect4();
+    given(/^2 players play a game of Connect(\d+)$/, () => {
+      game = new Game();
     });
 
-    and(/^player (\d+) plays with the red discs$/, (player) => {
-      game.setPlayerDisk(parseInt(player), "🔴");
+    and(/^player 1 plays with the red discs$/, (column) => {
+      expect(game.player1.getDiscColor()).toEqual("🔴");
     });
 
-    and(/^player (\d+) plays with the yellow discs$/, (player) => {
-      game.setPlayerDisk(parseInt(player), "🟡");
+    and(/^player 2 plays with the yellow discs$/, (column) => {
+      expect(game.player2.getDiscColor()).toEqual("🟡");
     });
 
-    and(/^player 1 has just put his disc in column 3$/, () => {
-      game.lastPlayer = 1;
-      game.lastCoordinate = [3, 3];
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
 
-    and("the current board looks like", () => {
-      game.board = [
-        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-        ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
-        ["⚫", "🔴", "🟡", "🔴", "⚫", "⚫", "⚫"],
-        ["⚫", "🔴", "🟡", "🟡", "🔴", "⚫", "⚫"],
-        ["🔴", "🟡", "🟡", "🔴", "🟡", "🔴", "⚫"],
-      ];
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
 
-    when(/^player 2 puts a disc in column 1$/, () => {
-      game.play(2, 1);
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
     });
 
-    then("the board looks like", () => {
-      expect(game.board).toEqual([
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 2 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    and(/^player 1 has put a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    when(/^player 2 puts a disc in column (\d+)$/, (column) => {
+      game.play(parseInt(column));
+    });
+
+    then(/^the board contains 4 yellow discs in a diagonal$/, () => {
+      expect(game.getBoardState()).toEqual([
         ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
         ["⚫", "⚫", "⚫", "⚫", "⚫", "⚫", "⚫"],
         ["⚫", "🟡", "⚫", "⚫", "⚫", "⚫", "⚫"],
@@ -120,7 +230,46 @@ defineFeature(feature, (test) => {
     });
 
     and(/^player 2 wins with a diagonal victory$/, () => {
-      expect(game.getWinner()).toEqual(2);
+      expect(game.finished).toBeTruthy();
+      expect(game.winner).toBe(game.player2);
     });
   });
+
+  test('Game ends in a draw after many, many moves', ({ given, and, when, then }) => {
+    let game: Game;
+    given(/^2 players play a game of Connect4$/, () => {
+      game = new Game();
+    });
+
+    and(/^player 1 plays with the red discs$/, () => {
+      expect(game.player1.getDiscColor()).toEqual("🔴");
+    });
+
+    and(/^player 2 plays with the yellow discs$/, () => {
+      expect(game.player2.getDiscColor()).toEqual("🟡");
+    });
+
+    and(/^the game is 1 disc away from a draw$/, () => {
+      game.setActivePlayer(game.player2);
+      game.setLastPlayedRow(0);
+      game.setLastPlayedColumn(6);
+      game.board.setBoardState([
+        ["⚫", "🔴", "🟡", "🟡", "🟡", "🔴", "🔴"],
+        ["🔴", "🟡", "🔴", "🔴", "🔴", "🟡", "🟡"],
+        ["🟡", "🔴", "🟡", "🟡", "🟡", "🔴", "🔴"],
+        ["🔴", "🟡", "🔴", "🔴", "🔴", "🟡", "🟡"],
+        ["🟡", "🔴", "🟡", "🟡", "🟡", "🔴", "🔴"],
+        ["🔴", "🟡", "🔴", "🔴", "🔴", "🟡", "🟡"],
+      ]);
+    });
+
+    when(/^player 2 puts his disc in column (\d+)$/, () => {
+      game.play(0);
+    });
+
+    then('the game ends in a draw', () => {
+      expect(game.finished).toBeTruthy();
+      expect(game.winner).toBeUndefined();
+    });
+});
 });

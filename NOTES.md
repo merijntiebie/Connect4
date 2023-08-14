@@ -19,74 +19,152 @@ Player 1 starts the game every time and alternates with player 2.
 The columns are numbered 0-6 left to right.
 Good luck and enjoy!
 
-# Units 
-## Players can choose their own disks
-
+# Player Class
+## Units
+## Players have their own disks
 ✅ Player 1 -> Red 
 ✅ Player 2 -> Yellow
 
-## Players can play a disk in a column
-✅ Empty board, player 1 puts his disk in column 0 -> column 0 has a red disk in the bottom row, including last player and coordinate played
-✅ Previous board, player 2 puts his disk in column 1 -> column 1 has a yellow disk in the bottom row, including last player and coordinate played
+# Board Class
+## Units 
+### Board creation
+✅ We start with an empty board
+### A disk should be dropped in a column
+#### Empty board
+✅ red disc in column 0
+✅ yellow disc in column 1
+✅ red disc in column 4
+#### Partially filled column
+✅ 1st column, red disc on top of yellow disc
+#### Column full --> error
+✅ Column 4 full --> error
+#### Unknown column --> error
+✅ Column 8 --> error
+### Extract a column from the board
+✅ extract the first column, that contains 3 red discs
+✅ extract the 2nd column, that contains 3 yellow discs
+# Game class
+## Units
 
-## Vertical
-Player 1 wins:
+### CheckIfPlayerWinsHorizontally:
+✅ bottom row: 🔴🟡🟡🟡🟡⚫⚫ --> true
+✅ fifth row:🔴🔴⚫⚫⚫⚫⚫ --> false
+✅ fourth row: ⚫⚫⚫⚫⚫⚫⚫ --> false
+✅ bottom row and red is active player: 🔴🟡🟡🟡🟡⚫⚫ --> false
+✅ bottom row: 🔴🟡🔴🔴🟡🟡🔴 --> false
+✅ 🔴🟡🟡🟡🟡🟡⚫ --> true
+
+### CheckIfPlayerWinsVertically:
+✅ first column: ⚫⚫⚫🔴🔴🔴 --> false
+✅ first column: ⚫⚫🔴🔴🔴🔴 --> true
+✅ second column: ⚫⚫⚫🟡🟡🟡 --> false
+✅ second column: ⚫⚫🟡🟡🟡🟡 --> true
+✅ second column: ⚫🟡🟡🔴🟡🟡 --> false
+### In which row was the last disc dropped?
+✅ Empty board, column 0 --> 5
+✅ Then again column 0 --> 4
+✅ And again --> 3
+
+## CheckNumberOfDiscsOfActivePlayerInDiagonal
+
+✅ - play in column 2 | active player 2
 ⚫⚫⚫⚫⚫⚫⚫
 ⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫ -> no win ✅
+⚫🟡⚫⚫⚫⚫⚫     ✅ 2 discs in bottom right corner
+⚫🔴⚫🔴⚫⚫⚫     ✅ 1 disc in top left corner
+⚫🔴🟡🟡🔴⚫⚫     ✅ 0 discs in bottom left corner    
+🔴🟡🟡🔴🟡🔴⚫     ✅ 0 discs in top right corner
+
+
+Player one places his disc in the 2nd colum --> victory
+✅ play in column 2 | active player 1
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫🟡⚫⚫     ✅ 2 discs in top right corner
+⚫⚫⚫⚫🔴⚫⚫
+⚫🟡⚫🔴🟡⚫⚫
+⚫🟡⚫🟡🔴⚫⚫
+🔴🔴🟡🔴🟡🔴⚫
+
+Player one places his disc in the 2nd colum --> victory
+✅ play in column 2 | active player 2
+⚫⚫⚫⚫⚫⚫⚫
+⚫🔴⚫⚫🟡⚫⚫     ✅ 0 discs in top right corner
+⚫🔴⚫⚫🔴⚫⚫
+⚫🟡⚫🔴🟡⚫⚫
+⚫🟡🟡🟡🔴⚫⚫
+🔴🔴🟡🔴🟡🔴⚫
+
+## Components
+
+### Check if board contains a vertical victory
+✅ Player one just placed his disc in the 1st colum --> victory
+⚫⚫⚫⚫⚫⚫⚫ 
+⚫⚫⚫⚫⚫⚫⚫
 🔴⚫⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-🔴⚫⚫⚫⚫⚫⚫ -> is a win ✅
-🔴⚫⚫⚫⚫⚫⚫
 🔴🟡⚫⚫⚫⚫⚫
-🔴🟡⚫⚫⚫⚫⚫
+### Check if board contains a horizontal victory
+✅ bottom row: 🔴🟡🟡🟡⚫⚫⚫ --> false
+✅ bottom row: 🔴🟡🟡🟡🟡⚫⚫ --> true
 
-
-# Components!
-## Diagonal victory
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-🔴⚫⚫🟡⚫⚫⚫ -> is a win ✅
-🔴⚫🟡⚫⚫⚫⚫
-🔴🟡🔴⚫⚫⚫⚫
-🟡🟡🔴🟡⚫⚫⚫
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫🟡⚫⚫⚫ -> is not a win ✅
-🔴⚫🟡🟡⚫⚫⚫
-🔴🟡🔴🔴⚫⚫⚫
-🔴🟡🔴🟡⚫⚫⚫
-
-⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫
-🔴⚫⚫🟡⚫⚫⚫ -> is a win, last disc played is in column 1 
-🔴⚫🟡⚫⚫⚫⚫
-🔴🟡🔴⚫⚫⚫⚫
-🟡🟡🔴🟡⚫⚫⚫
-
-
-# Pomodoro goal: finish unit tests for determing amount of discs in every diagonal direction
-# Units for this component
-
-Diagonal: look upward to the right for same disks and return number of disks found
-
-
+### Check if board contains a diagonal victory
+✅ Player two places his disc in the 1st colum --> victory
 ⚫⚫⚫⚫⚫⚫⚫
 ⚫⚫⚫⚫⚫⚫⚫
 ⚫⚫⚫⚫⚫⚫⚫
-🔴⚫🟡🟡⚫⚫⚫ --> last disk: column 1, find one yellow disk ✅
-🔴🟡🔴🔴⚫⚫⚫
-🔴🟡🔴🟡⚫⚫⚫
+⚫🔴🟡🔴⚫⚫⚫
+⚫🔴🟡🟡🔴⚫⚫
+🔴🟡🟡🔴🟡🔴⚫
 
+✅ Player two places his disc in the 2nd colum --> victory
 ⚫⚫⚫⚫⚫⚫⚫
 ⚫⚫⚫⚫⚫⚫⚫
-⚫⚫⚫⚫⚫⚫⚫ --> last disk: column 2, find zero yellow disks ✅
-🔴⚫🟡🟡⚫⚫⚫
-🔴🟡🔴🔴⚫⚫⚫
-🔴🟡🔴🟡⚫⚫⚫
+⚫🟡⚫⚫⚫⚫⚫
+⚫🔴⚫🔴⚫⚫⚫
+⚫🔴🟡🟡🔴⚫⚫
+🔴🟡🟡🔴🟡🔴⚫
+
+✅ Player one places his disc in the 4th colum --> victory
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫⚫⚫⚫
+⚫🟡🟡🔴🟡⚫⚫
+⚫🟡🔴🟡🔴⚫⚫
+🔴🔴🟡🔴🟡🔴⚫
+
+✅ Player one places his disc in the 2nd colum --> victory
+⚫⚫⚫⚫⚫⚫⚫
+⚫⚫⚫⚫🟡⚫⚫
+⚫⚫⚫⚫🔴⚫⚫
+⚫🟡⚫🔴🟡⚫⚫
+⚫🟡⚫🟡🔴⚫⚫
+🔴🔴🟡🔴🟡🔴⚫
+
+### Playing
+✅ Player 1 -> column 0 -> disc in column zero | player 2 new active player | column 0 is the last played column | row 5 is the last played row
+✅ Player 2 -> column 1 -> disc in column 1 | player 1 new active player | column 1 is the last played column | row 5 is the last played row
+
+
+# Containerization
+
+✅ - Create an OpenAPI definition
+✅ -- Edit Post response: board as beautiful string
+✅ - Create the corresponding REST API in Connect4 (including mock functionality) using the Express framework
+✅ - Create an E2E test in ReadyAPI
+✅ -- Finish the E2E test: assert board using regex
+✅ - Create a function that starts a new game of Connect4, plays the game as bots and returns the winner and board state
+✅ -- Move these functions to a seperate file or to the right classes so the API is not started on the unit tests
+✅ - Implement this function into the API
+
+# Further considerations
+
+💡 - Create tests and functionality to handle the case that there is a draw
+    --> function for createGameState | boardState, activePlayer, lastRowPlayed, lastColumnPlayed
+    --> function to test if a board is full 🙌
+
+    
+-- Create function to set board state so test cases can be easily made
+- Create functionality to handle the case that a player attempts to play in a column that is already full
+
+
