@@ -157,6 +157,7 @@ Player one places his disc in the 2nd colum --> victory
 ✅ -- Move these functions to a seperate file or to the right classes so the API is not started on the unit tests
 ✅ - Implement this function into the API
 
+
 # Further considerations
 
 💡 - Create tests and functionality to handle the case that there is a draw
