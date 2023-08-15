@@ -56,4 +56,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ns/connect4:latest
+        tags: merijntiebie/connect4:latest
